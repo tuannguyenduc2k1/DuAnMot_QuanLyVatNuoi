@@ -31,7 +31,7 @@
         android:id="@+id/edt_tendangnhap"
         android:layout_width="800px"
         android:layout_height="120px"
-        android:hint="Tên đăng nhập"
+        android:hint="aaaaaaaaaaaaaaaaa"
         android:textStyle="italic"
         android:padding="15px"
         android:background="@drawable/bogocedittext"
