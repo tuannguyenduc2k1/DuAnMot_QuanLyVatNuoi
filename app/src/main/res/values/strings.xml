@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Quản Lý Vật Nuôi</string>
+    <string name="action_home">Home</string>
+    <string name="action_loai_dong_vat">Pet</string>
+    <string name="action_hoa_don">Hóa Đơn</string>
+    <string name="action_thong_ke">Thống Kê</string>
+    <string name="action_cai_dat">Cài Đặt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/action_home"
+          android:id="@+id/action_home"
+          android:icon="@drawable/icon_home" />
+
+    <item android:title="@string/action_loai_dong_vat"
+          android:icon="@drawable/icon_loadongvat"
+          android:id="@+id/action_loai_dong_vat"/>
+
+    <item android:title="@string/action_hoa_don"
+          android:icon="@drawable/hoadonn"
+          android:id="@+id/action_hoa_don"/>
+
+    <item android:title="@string/action_thong_ke"
+          android:icon="@drawable/icon_thongke"
+          android:id="@+id/action_thong_ke"/>
+
+    <item android:title="@string/action_cai_dat"
+          android:icon="@drawable/icon_caidat"
+          android:id="@+id/action_cai_dat"/>
+</menu>
