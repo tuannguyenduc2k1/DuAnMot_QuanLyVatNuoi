@@ -43,9 +43,9 @@
         android:id="@+id/ext_matkhau"
         android:layout_width="800px"
         android:layout_height="120px"
-        android:hint="Mật khẩu"
+       android:text="aaaaa"
         android:textStyle="italic"
-
+        android:password="true"
         android:padding="15px"
         android:background="@drawable/bogocedittext"
         app:layout_constraintRight_toRightOf="parent"
