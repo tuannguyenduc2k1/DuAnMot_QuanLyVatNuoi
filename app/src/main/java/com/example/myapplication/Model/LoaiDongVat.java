@@ -1,20 +1,27 @@
 package com.example.myapplication.Model;
 
 public class LoaiDongVat {
-    private String loaiDongVat;
+    private String mLoaiDongVat;
 
     public LoaiDongVat() {
     }
 
     public LoaiDongVat(String loaiDongVat) {
-        this.loaiDongVat = loaiDongVat;
+        this.mLoaiDongVat = loaiDongVat;
     }
 
     public String getLoaiDongVat() {
-        return loaiDongVat;
+        return mLoaiDongVat;
     }
 
     public void setLoaiDongVat(String loaiDongVat) {
-        this.loaiDongVat = loaiDongVat;
+        this.mLoaiDongVat = loaiDongVat;
+    }
+
+    @Override
+    public String toString() {
+        return "LoaiDongVat{" +
+                "mLoaiDongVat='" + mLoaiDongVat + '\'' +
+                '}';
     }
 }
