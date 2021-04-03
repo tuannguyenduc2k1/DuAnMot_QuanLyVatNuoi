@@ -1,23 +1,25 @@
 package com.example.myapplication.Model;
 
+import java.util.Date;
+
 public class HoaDonNhap {
     private String mMaDongVat;
-    private String mMaHoaDonXuat;
-    private Double mGiaXuat;
-    private int mSoLuongXuat;
-    private String mNgayXuat;
-    private String mGhiChuXuat;
+    private String mMaHoaDonNhap;
+    private Double mGiaNhap;
+    private int mSoLuongNhap;
+    private Date mNgayNhap;
+    private String mGhiChuNhap;
 
     public HoaDonNhap() {
     }
 
-    public HoaDonNhap(String mMaDongVat, String mMaHoaDonXuat, Double mGiaXuat, int mSoLuongXuat, String mNgayXuat, String mGhiChuXuat) {
+    public HoaDonNhap(String mMaDongVat, String mMaHoaDonNhap, Double mGiaNhap, int mSoLuongNhap, Date mNgayNhap, String mGhiChuNhap) {
         this.mMaDongVat = mMaDongVat;
-        this.mMaHoaDonXuat = mMaHoaDonXuat;
-        this.mGiaXuat = mGiaXuat;
-        this.mSoLuongXuat = mSoLuongXuat;
-        this.mNgayXuat = mNgayXuat;
-        this.mGhiChuXuat = mGhiChuXuat;
+        this.mMaHoaDonNhap = mMaHoaDonNhap;
+        this.mGiaNhap = mGiaNhap;
+        this.mSoLuongNhap = mSoLuongNhap;
+        this.mNgayNhap = mNgayNhap;
+        this.mGhiChuNhap = mGhiChuNhap;
     }
 
     public String getmMaDongVat() {
@@ -28,55 +30,43 @@ public class HoaDonNhap {
         this.mMaDongVat = mMaDongVat;
     }
 
-    public String getmMaHoaDonXuat() {
-        return mMaHoaDonXuat;
+    public String getmMaHoaDonNhap() {
+        return mMaHoaDonNhap;
     }
 
-    public void setmMaHoaDonXuat(String mMaHoaDonXuat) {
-        this.mMaHoaDonXuat = mMaHoaDonXuat;
+    public void setmMaHoaDonNhap(String mMaHoaDonNhap) {
+        this.mMaHoaDonNhap = mMaHoaDonNhap;
     }
 
-    public Double getmGiaXuat() {
-        return mGiaXuat;
+    public Double getmGiaNhap() {
+        return mGiaNhap;
     }
 
-    public void setmGiaXuat(Double mGiaXuat) {
-        this.mGiaXuat = mGiaXuat;
+    public void setmGiaNhap(Double mGiaNhap) {
+        this.mGiaNhap = mGiaNhap;
     }
 
-    public int getmSoLuongXuat() {
-        return mSoLuongXuat;
+    public int getmSoLuongNhap() {
+        return mSoLuongNhap;
     }
 
-    public void setmSoLuongXuat(int mSoLuongXuat) {
-        this.mSoLuongXuat = mSoLuongXuat;
+    public void setmSoLuongNhap(int mSoLuongNhap) {
+        this.mSoLuongNhap = mSoLuongNhap;
     }
 
-    public String getmNgayXuat() {
-        return mNgayXuat;
+    public Date getmNgayNhap() {
+        return mNgayNhap;
     }
 
-    public void setmNgayXuat(String mNgayXuat) {
-        this.mNgayXuat = mNgayXuat;
+    public void setmNgayNhap(Date mNgayNhap) {
+        this.mNgayNhap = mNgayNhap;
     }
 
-    public String getmGhiChuXuat() {
-        return mGhiChuXuat;
+    public String getmGhiChuNhap() {
+        return mGhiChuNhap;
     }
 
-    public void setmGhiChuXuat(String mGhiChuXuat) {
-        this.mGhiChuXuat = mGhiChuXuat;
-    }
-
-    @Override
-    public String toString() {
-        return "HoaDonNhap{" +
-                "mMaDongVat='" + mMaDongVat + '\'' +
-                ", mMaHoaDonXuat='" + mMaHoaDonXuat + '\'' +
-                ", mGiaXuat=" + mGiaXuat +
-                ", mSoLuongXuat=" + mSoLuongXuat +
-                ", mNgayXuat='" + mNgayXuat + '\'' +
-                ", mGhiChuXuat='" + mGhiChuXuat + '\'' +
-                '}';
+    public void setmGhiChuNhap(String mGhiChuNhap) {
+        this.mGhiChuNhap = mGhiChuNhap;
     }
 }
