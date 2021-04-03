@@ -32,10 +32,12 @@ public class Registration extends AppCompatActivity {
     EditText Tendangnhap;
     EditText MatKhau;
     EditText Nhaplaimatkhau;
-    Intent intent;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     ProgressDialog pd;
+    String str_tendangnhap ;
+    String str_matKhau ;
+    String str_nhaplaimatkhau ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +54,9 @@ public class Registration extends AppCompatActivity {
                 pd.setMessage("Đang Load");
                 pd.show();
 
-                String str_tendangnhap = Tendangnhap.getText().toString();
-                String str_matKhau = MatKhau.getText().toString();
-                String str_nhaplaimatkhau = Nhaplaimatkhau.getText().toString();
+                str_tendangnhap = Tendangnhap.getText().toString();
+                str_matKhau = MatKhau.getText().toString();
+                str_nhaplaimatkhau = Nhaplaimatkhau.getText().toString();
 
                 if (TextUtils.isEmpty(str_tendangnhap) || TextUtils.isEmpty(str_matKhau) || TextUtils.isEmpty(str_nhaplaimatkhau)){
                     pd.dismiss();
@@ -68,10 +70,10 @@ public class Registration extends AppCompatActivity {
             }
         });
     }
+
     private  void registration  (String tendangnhap, String matkhau,String nhaplaimatkhau){
         firebaseAuth.createUserWithEmailAndPassword(tendangnhap,matkhau)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -82,7 +84,9 @@ public class Registration extends AppCompatActivity {
 
                     HashMap<String, Object> hashMap = new HashMap<>();
                     hashMap.put("id",userid);
-                    hashMap.put("tendangnhap",nhaplaimatkhau.toLowerCase());
+                    hashMap.put("tendangnhap",tendangnhap);
+                    hashMap.put("matkhau",matkhau);
+                    hashMap.put("nhaplaimatkhau",nhaplaimatkhau);
                     hashMap.put("bio","");
                     databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -98,6 +102,7 @@ public class Registration extends AppCompatActivity {
                 } else {
                     pd.dismiss();
                     Toast.makeText(Registration.this, "Đăng nhập thất bại",Toast.LENGTH_LONG).show();
+
                 }
             }
         });
