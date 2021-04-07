@@ -16,14 +16,14 @@
 
         </activity>
         <activity android:name=".Dangnhap.Login">
-
-        </activity>
-        <activity android:name=".Dangnhap.SplashScreem">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Dangnhap.SplashScreem">
+
         </activity>
         <activity android:name=".Dangnhap.Registration"></activity>
         <activity android:name=".Dialog.DialogLoaiDongVat"></activity>
