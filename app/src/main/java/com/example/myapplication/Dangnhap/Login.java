@@ -3,6 +3,7 @@ package com.example.myapplication.Dangnhap;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.service.controls.actions.FloatAction;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +13,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.myapplication.ActivityFragment.CaiDatFragment;
 import com.example.myapplication.ActivityFragment.MainActivity;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 import org.w3c.dom.Text;
 
 public class Login extends AppCompatActivity {
@@ -34,13 +39,28 @@ public class Login extends AppCompatActivity {
     TextView txt_dang_ki;
     Intent intent;
     FirebaseAuth firebaseAuth;
-
+    FirebaseUser firebaseUserl;
+    //hàm tự đọng lưu mật khẩu và đăng nhập
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseUserl = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUserl != null){
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         unit();
         unitUI();
+      /*  CaiDatFragment caiDatFragment = new CaiDatFragment();
+        FragmentManager manager = getSupportFragmentManager();
+      manager.beginTransaction().add(R.id.action_cai_dat,caiDatFragment).commit();
+
+       */
     }
 
     private void unitUI() {
@@ -53,8 +73,10 @@ public class Login extends AppCompatActivity {
                 String edt_tendangnhap = tendangnhap.getText().toString();
                 String edt_matkhau = matkhau.getText().toString();
                 if (TextUtils.isEmpty(edt_tendangnhap) || TextUtils.isEmpty(edt_matkhau)){
+                    pd.dismiss();
                     Toast.makeText(Login.this, "Không được để trống", Toast.LENGTH_SHORT).show();
                 } else {
+
                     firebaseAuth.signInWithEmailAndPassword(edt_tendangnhap,edt_matkhau)
                             .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                         @Override

@@ -30,14 +30,17 @@ import java.util.HashMap;
 public class Registration extends AppCompatActivity {
     Button BtnRegistration;
     EditText Tendangnhap;
+    EditText Sodienthoai;
     EditText MatKhau;
-    EditText Nhaplaimatkhau;
+    EditText Hovaten;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     ProgressDialog pd;
+    String str_hovaten ;
     String str_tendangnhap ;
+    String str_sodienthoai ;
     String str_matKhau ;
-    String str_nhaplaimatkhau ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,25 +56,25 @@ public class Registration extends AppCompatActivity {
                 pd = new ProgressDialog(Registration.this);
                 pd.setMessage("Đang Load");
                 pd.show();
-
+                str_hovaten = Hovaten.getText().toString();
                 str_tendangnhap = Tendangnhap.getText().toString();
                 str_matKhau = MatKhau.getText().toString();
-                str_nhaplaimatkhau = Nhaplaimatkhau.getText().toString();
+                str_sodienthoai = Sodienthoai.getText().toString();
 
-                if (TextUtils.isEmpty(str_tendangnhap) || TextUtils.isEmpty(str_matKhau) || TextUtils.isEmpty(str_nhaplaimatkhau)){
+                if (TextUtils.isEmpty(str_tendangnhap) || TextUtils.isEmpty(str_matKhau) || TextUtils.isEmpty(str_hovaten) || TextUtils.isEmpty(str_sodienthoai) ){
                     pd.dismiss();
                     Toast.makeText(Registration.this, "Không được để trống",Toast.LENGTH_LONG).show();
                 } else if(str_matKhau.length()<6){
                     pd.dismiss();
                     Toast.makeText(Registration.this, "Mật khẩu không được để dưới 6 kí tự ",Toast.LENGTH_LONG).show();
                 } else {
-                    registration(str_tendangnhap,str_matKhau,str_nhaplaimatkhau);
+                    registration(str_hovaten,str_tendangnhap,str_matKhau,str_sodienthoai);
                 }
             }
         });
     }
 
-    private  void registration  (String tendangnhap, String matkhau,String nhaplaimatkhau){
+    private  void registration  (String hovaten,String tendangnhap,String sodienthoai, String matkhau){
         firebaseAuth.createUserWithEmailAndPassword(tendangnhap,matkhau)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -84,10 +87,12 @@ public class Registration extends AppCompatActivity {
 
                     HashMap<String, Object> hashMap = new HashMap<>();
                     hashMap.put("id",userid);
+                    hashMap.put("hoten",hovaten);
                     hashMap.put("tendangnhap",tendangnhap);
                     hashMap.put("matkhau",matkhau);
-                    hashMap.put("nhaplaimatkhau",nhaplaimatkhau);
+                    hashMap.put("sdt",sodienthoai);
                     hashMap.put("bio","");
+                    hashMap.put("Image","https://firebasestorage.googleapis.com/v0/b/quan-ly-vat-nuoi.appspot.com/o/profile.png?alt=media&token=a71de2b2-8d20-4d7e-94dd-9c7ea830ff95");
                     databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -109,8 +114,9 @@ public class Registration extends AppCompatActivity {
     }
     private void unit() {
         BtnRegistration = findViewById(R.id.btn_dangKi);
-        Tendangnhap = findViewById(R.id.edt_dktendangnhap);
+        Tendangnhap = findViewById(R.id.edt_dkemail);
         MatKhau = findViewById(R.id.ext_dkmatkhau);
-        Nhaplaimatkhau = findViewById(R.id.ext_dkmatkhau1);
+        Hovaten =  findViewById(R.id.ext_user_name);
+        Sodienthoai = findViewById(R.id.ext_sodienthaoi);
     }
 }

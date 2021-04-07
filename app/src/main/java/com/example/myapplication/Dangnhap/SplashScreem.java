@@ -13,17 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class SplashScreem extends AppCompatActivity {
-    FirebaseUser firebaseUserl;
-    @Override
-    protected void onStart() {
-        super.onStart();
-        firebaseUserl = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (firebaseUserl != null){
-            startActivity(new Intent(SplashScreem.this, MainActivity.class));
-            finish();
-        }
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

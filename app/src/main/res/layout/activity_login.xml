@@ -28,9 +28,9 @@
         android:gravity="center_horizontal" />
     <EditText
         android:id="@+id/edt_tendangnhap"
-        android:layout_width="800px"
+        android:layout_width="1000px"
         android:layout_height="120px"
-        android:hint="Tên đăng nhập"
+        android:hint="Gmail"
         android:textStyle="italic"
         android:padding="15px"
         android:background="@drawable/bogocedittext"
@@ -40,12 +40,11 @@
         android:layout_marginTop="70px"/>
     <EditText
         android:id="@+id/ext_matkhau"
-        android:layout_width="800px"
+        android:layout_width="1000px"
         android:layout_height="120px"
         android:hint="Mật khẩu"
         android:textStyle="italic"
         android:password="true"
-        android:text="aaaaaaa"
         android:padding="15px"
         android:background="@drawable/bogocedittext"
         app:layout_constraintRight_toRightOf="parent"
@@ -58,7 +57,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="84dp"
         android:text="Quên mật khẩu?"
         android:textSize="48px"
         app:layout_constraintRight_toRightOf="@+id/ext_matkhau"
@@ -66,7 +64,7 @@
 
     <Button
         android:id="@+id/btn_dangnhap"
-        android:layout_width="800px"
+        android:layout_width="1000px"
         android:layout_height="120px"
         android:text="ĐĂNG NHẬP"
         android:layout_marginTop="50px"
