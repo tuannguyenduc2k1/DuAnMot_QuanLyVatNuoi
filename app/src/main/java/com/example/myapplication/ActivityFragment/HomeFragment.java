@@ -51,14 +51,14 @@ public class HomeFragment extends Fragment {
         lv_tin_tuc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                String link = tin_tucList.get(position).getLink();
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+//                String link = tin_tucList.get(position).getLink();
+//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
 
-//                Intent intent = new Intent(MainActivity.this , Show_tin_tucActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putString("link" , tin_tucList.get(position).getLink());
-//                intent.putExtras(bundle);
-//                startActivity(intent);
+                Intent intent = new Intent(getActivity() , OpenBao.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("link" , tin_tucList.get(position).getLink());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 
