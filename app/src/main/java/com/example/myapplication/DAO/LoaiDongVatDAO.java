@@ -27,18 +27,19 @@ public class LoaiDongVatDAO {
     //insert
     public long insertLoaiDongVat(LoaiDongVat ldv){
         ContentValues values = new ContentValues();
-        values.put(Name.loaiDongVat,ldv.getLoaiDongVat());
+        values.put(Name.loaiDongVat,ldv.getmLoaiDongVat());
         return db.insert("LoaiDongVat",null,values);
     }
     //update
     public int update(LoaiDongVat ldv){
         ContentValues values = new ContentValues();
-        values.put(Name.loaiDongVat,ldv.getLoaiDongVat());
-        return db.update("LoaiDongVat",values,"loaiDongVat=?",new String[]{String.valueOf(ldv.getLoaiDongVat())}) ;
+        values.put(Name.loaiDongVat,ldv.getmLoaiDongVat());
+        return db.update("LoaiDongVat",values,"loaiDongVat=?",new String[]{String.valueOf(ldv.getmLoaiDongVat())}) ;
     }
     //delete
-    public int delete(LoaiDongVat ldv){
-        return db.delete("LoaiDongVat","loaiDongVat=?",new String[]{String.valueOf(ldv.getLoaiDongVat())});
+    public int delete(String ldv){
+
+        return db.delete("LoaiDongVat","loaiDongVat=?",new String[]{ldv});
     }
     //get all
     public List<LoaiDongVat> getAll() throws ParseException{
@@ -51,7 +52,7 @@ public class LoaiDongVatDAO {
         Cursor c = db.rawQuery(sql,selectionArgs);
         while (c.moveToNext()){
             LoaiDongVat ldv = new LoaiDongVat();
-            ldv.setLoaiDongVat(c.getString(c.getColumnIndex(Name.loaiDongVat)));
+            ldv.setmLoaiDongVat(c.getString(c.getColumnIndex(Name.loaiDongVat)));
             list.add(ldv);
         }
         return list;

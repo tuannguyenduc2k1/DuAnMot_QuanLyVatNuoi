@@ -15,8 +15,9 @@ import java.util.List;
 
 public class DongVatDAO {
     public static final String TABLE_NAME = "DongVat";
-    public static final String SQL_DONG_VAT = "CREAT TABLE DongVat(maDongVat text primary key , loaiDongVat text , soLuong int , ghiChu text )";
+    public static final String SQL_DONG_VAT = "CREATE TABLE DongVat(maDongVat text primary key , loaiDongVat text , soLuong int , ghiChu text )";
     public static final String TAG = "DongVatDAO";
+
     private SQLiteDatabase db;
     private DBHelper dbHelper;
 

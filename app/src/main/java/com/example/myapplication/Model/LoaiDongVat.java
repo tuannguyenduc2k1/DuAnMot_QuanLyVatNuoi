@@ -6,22 +6,15 @@ public class LoaiDongVat {
     public LoaiDongVat() {
     }
 
-    public LoaiDongVat(String loaiDongVat) {
-        this.mLoaiDongVat = loaiDongVat;
+    public LoaiDongVat(String mLoaiDongVat) {
+        this.mLoaiDongVat = mLoaiDongVat;
     }
 
-    public String getLoaiDongVat() {
+    public String getmLoaiDongVat() {
         return mLoaiDongVat;
     }
 
-    public void setLoaiDongVat(String loaiDongVat) {
-        this.mLoaiDongVat = loaiDongVat;
-    }
-
-    @Override
-    public String toString() {
-        return "LoaiDongVat{" +
-                "mLoaiDongVat='" + mLoaiDongVat + '\'' +
-                '}';
+    public void setmLoaiDongVat(String mLoaiDongVat) {
+        this.mLoaiDongVat = mLoaiDongVat;
     }
 }

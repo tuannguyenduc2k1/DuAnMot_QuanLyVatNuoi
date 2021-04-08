@@ -1,6 +1,7 @@
 package com.example.myapplication.Dialog;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,5 +14,8 @@ public class DialogDongVat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_dong_vat_add);
+    }
+
+    public void LuuDongVat_add(View view) {
     }
 }

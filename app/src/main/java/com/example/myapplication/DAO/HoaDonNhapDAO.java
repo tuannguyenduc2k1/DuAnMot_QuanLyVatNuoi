@@ -15,7 +15,7 @@ import java.util.List;
 
 public class HoaDonNhapDAO {
     public static final String TABLE_NAME = "HoaDonNhap";
-    public static final String SQL_HOA_DON_NHAP = "CREAT TABLE HoaDonNhap(maHoaDonNhapVatNuoi text primary key , maDongVat text primary key , gianNhap double , soLuongNhap double , ngayNhap date , ghiChu String )";
+    public static final String SQL_HOA_DON_NHAP = "CREATE TABLE HoaDonNhap(maHoaDonNhapVatNuoi text primary key , maDongVat text , gianNhap double , soLuongNhap double , ngayNhap date , ghiChu String )";
     public static final String TAG = "HoaDonNhapDAO";
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     private SQLiteDatabase db;
