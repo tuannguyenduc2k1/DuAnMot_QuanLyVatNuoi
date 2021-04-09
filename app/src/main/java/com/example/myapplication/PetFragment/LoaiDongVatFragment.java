@@ -23,6 +23,7 @@ import android.widget.ListView;
 import com.example.myapplication.Adapter.AdapterLoaiDongVat;
 import com.example.myapplication.DAO.LoaiDongVatDAO;
 import com.example.myapplication.Dialog.DialogLoaiDongVat;
+import com.example.myapplication.Dialog.DialogLoaiDongVatUpdate;
 import com.example.myapplication.Model.LoaiDongVat;
 import com.example.myapplication.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -65,6 +66,12 @@ public class LoaiDongVatFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 //xu li onclick khi bam vao item
+                startActivity(new Intent(getContext(), DialogLoaiDongVat.class));
+                Intent intent = new Intent(getActivity(), DialogLoaiDongVatUpdate.class);
+                Bundle b = new Bundle();
+                b.putString("LOAIDONGVAT", loaiDongVatList.get(position).getmLoaiDongVat());
+                intent.putExtras(b);
+                startActivity(intent);
 
             }
         });
@@ -72,8 +79,7 @@ public class LoaiDongVatFragment extends Fragment {
         btnFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), DialogLoaiDongVat.class));
-
+                startActivity(new Intent(getActivity(),DialogLoaiDongVat.class));
             }
         });
 

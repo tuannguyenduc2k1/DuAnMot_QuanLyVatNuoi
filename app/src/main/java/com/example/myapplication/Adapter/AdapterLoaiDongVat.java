@@ -48,13 +48,21 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup viewGroup) {
-        ViewHoder hoder;
+        ViewHoder hoder ;
         if(convertView == null){
             hoder = new ViewHoder();
             convertView = inflater.inflate(R.layout.row_item_loai_dong_vat,null);
-            hoder.txtLoaiDongVat = convertView.findViewById(R.id.tv_loaiDongvVat_dongVat_add);
+            hoder.txtLoaiDongVat = convertView.findViewById(R.id.tv_name_row_item_loai_dong_vat);
             hoder.imgUpdate = convertView.findViewById(R.id.img_update_loai_dong_vat);
             hoder.imgDelete = convertView.findViewById(R.id.img_delete_loai_dong_vat);
+            loaiDongVatDAO = new LoaiDongVatDAO(context);
+            LoaiDongVat loaiDongVat = arrLoaiDongVat.get(position);
+            convertView.setTag(hoder);
+            hoder.txtLoaiDongVat.setText("Đây là con: "+loaiDongVat.getmLoaiDongVat());
+
+
+
+
             hoder.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -64,13 +72,8 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
                         notifyDataSetChanged();
                 }
             });
-            hoder.imgUpdate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
         }
+
         return convertView;
     }
 
@@ -81,6 +84,8 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
     public static class ViewHoder{
         TextView txtLoaiDongVat;
         ImageView imgDelete,imgUpdate;
+        String ldv;
+
     }
     @Override
     public void notifyDataSetInvalidated() {
