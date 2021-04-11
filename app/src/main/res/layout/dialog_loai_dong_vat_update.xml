@@ -40,11 +40,22 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_quay_lai_loai_dong_vat_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quayLai"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="Quay Lại" />
+
+        <Button
             android:id="@+id/btn_luu_loai_dong_vat_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="updateDongVat"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:text="Lưu" />
+
     </LinearLayout>
 </LinearLayout>

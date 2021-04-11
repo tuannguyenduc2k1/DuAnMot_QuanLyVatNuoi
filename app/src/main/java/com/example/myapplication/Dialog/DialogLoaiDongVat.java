@@ -26,10 +26,10 @@ public class DialogLoaiDongVat extends AppCompatActivity {
     private EditText edt_ldv;
     private Button btn_Add;
     private ListView lv;
-    Context context;
-    List<LoaiDongVat> loaiDongVatList;
-    AdapterLoaiDongVat adapterLoaiDongVat;
-    LoaiDongVatDAO loaiDongVatDAO;
+//    Context context;
+//    List<LoaiDongVat> loaiDongVatList;
+//    AdapterLoaiDongVat adapterLoaiDongVat;
+//    LoaiDongVatDAO loaiDongVatDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,5 +56,10 @@ public class DialogLoaiDongVat extends AppCompatActivity {
             }
         });
     }
+
+    public void quayLaii(View view) {
+        finish();
+    }
+
 
 }

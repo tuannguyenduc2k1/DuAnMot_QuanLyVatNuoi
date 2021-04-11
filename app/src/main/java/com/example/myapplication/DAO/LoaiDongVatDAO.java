@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.myapplication.Database.DBHelper;
 import com.example.myapplication.Model.LoaiDongVat;
@@ -34,7 +35,23 @@ public class LoaiDongVatDAO {
     public int update(LoaiDongVat ldv){
         ContentValues values = new ContentValues();
         values.put(Name.loaiDongVat,ldv.getmLoaiDongVat());
-        return db.update("LoaiDongVat",values,"loaiDongVat=?",new String[]{String.valueOf(ldv.getmLoaiDongVat())}) ;
+        int result = db.update("LoaiDongVat",values,"loaiDongVat=?",new String[]{String.valueOf(ldv.getmLoaiDongVat())}) ;
+        if(result == 0){
+            return -1;
+        }else {
+            return 1;
+        }
+    }
+//    //updateInfor
+    public long updateInforLoaiDongVat(String loaiDongVat,String ldv){
+        ContentValues value =new ContentValues();
+        value.put("loaiDongVat",ldv);
+        int result =   db.update("LoaiDongVat",value,"loaiDongVat = ? " ,new String[]{loaiDongVat});
+        if(result==0){
+            return -1;
+        }
+        return 1;
+
     }
     //delete
     public int delete(String ldv){
@@ -46,6 +63,21 @@ public class LoaiDongVatDAO {
         String sql =" select * from LoaiDongVat ";
             return getData(sql);
     }
+//    //get allLoaiDV
+//    public List<LoaiDongVat> getAllLDV(){
+//        List<LoaiDongVat> lstLDV = new ArrayList<>();
+//        Cursor c =db.query(TABLE_NAME,null,null,null,null,null,null);
+//        c.moveToFirst();
+//        while (c.isAfterLast() == false){
+//            LoaiDongVat ldv = new LoaiDongVat();
+//            ldv.setmLoaiDongVat(c.getString(0));
+//            lstLDV.add(ldv);
+//            Log.d("//=====", ldv.toString());
+//            c.moveToNext();
+//        }
+//        c.close();
+//        return  lstLDV;
+//    }
 
     private List<LoaiDongVat> getData(String sql,String... selectionArgs) throws ParseException{
         List<LoaiDongVat> list = new ArrayList<>();
