@@ -5,8 +5,7 @@
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-
-    <androidx.recyclerview.widget.RecyclerView
+        <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="18dp"

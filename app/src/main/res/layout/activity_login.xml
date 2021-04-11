@@ -45,7 +45,6 @@
         android:hint="Mật khẩu"
         android:textStyle="italic"
         android:password="true"
-        android:text="aaaaaaa"
         android:padding="15px"
         android:background="@drawable/bogocedittext"
         app:layout_constraintRight_toRightOf="parent"

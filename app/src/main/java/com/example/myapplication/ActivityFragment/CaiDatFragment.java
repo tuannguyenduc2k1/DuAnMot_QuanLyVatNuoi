@@ -10,37 +10,40 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.GenericLifecycleObserver;
+
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Dangnhap.Login;
-import com.example.myapplication.Dangnhap.Registration;
+
 import com.example.myapplication.Model.UserDangNhap;
 import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+
+
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class CaiDatFragment extends Fragment {
-
-    ImageView dangxuat, image_profile;
+    CircleImageView image_profile;
+    ImageView dangxuat;
     TextView hovaten, diachi, gmail, sodienthoai, gioitinh, tentrangtrai, ngaysinh;
-    FirebaseUser firebaseUser;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference reference;
-    String profileid;
 
+    FirebaseFirestore firebaseFirestore ;
+    FirebaseAuth firebaseAuth;
+
+    String UserID;
     public CaiDatFragment() {
         // Required empty public constructor
     }
@@ -49,10 +52,7 @@ public class CaiDatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cai_dat,container,false);
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        SharedPreferences preferences = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
-        profileid = preferences.getString("profileid","none");
 
         dangxuat  =  view.findViewById(R.id.dangxuat);
         image_profile  =  view.findViewById(R.id.image_profile);
@@ -63,11 +63,52 @@ public class CaiDatFragment extends Fragment {
         gioitinh  =  view.findViewById(R.id.gioitinh);
         tentrangtrai  =  view.findViewById(R.id.tentrangtrai);
         ngaysinh  =  view.findViewById(R.id.ngaysinh);
-        userInfo();
 
-        if (profileid.equals(firebaseUser.getUid())){
 
-        }
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        UserID = firebaseAuth.getCurrentUser().getUid();
+
+        DocumentReference documentReference = firebaseFirestore.collection("Users").document(UserID);
+        documentReference.addSnapshotListener( new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+
+                hovaten.setText(documentSnapshot.getString("Hovaten"));
+                sodienthoai.setText(documentSnapshot.getString("Sodienthoai"));
+                gmail.setText(documentSnapshot.getString("Tendangnhap"));
+            }
+
+        });
+
+//        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//        firebaseUser = firebaseAuth.getCurrentUser();
+//        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                UserDangNhap userDangNhap = snapshot.getValue(UserDangNhap.class);
+//                assert userDangNhap !=null;
+//                hovaten.setText(userDangNhap.getHovaten());
+//                if (userDangNhap.getImage_profile().equals("default")){
+//                    image_profile.setImageResource(R.drawable.ic_baseline_add_24);
+//                }else {
+////                    Glide.with(getApplicatiomContext()).load(userDangNhap.getImage_profile()).into(image_profile);
+//                }
+//         }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//
+//
+//        userInfo();
+//
+//        if (profileid.equals(firebaseUser.getUid())){
+//
+//        }
 
         dangxuat.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -79,39 +120,43 @@ public class CaiDatFragment extends Fragment {
        });
      return view;
     }
+
+    private void unit() {
+    }
+
     private void userInfo(){
 //        DatabaseReference all = FirebaseDatabase.getInstance().getReference();
-        Query query = FirebaseDatabase.getInstance().getReference("Users");
-        query.addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                    UserDangNhap user = snapshot.getValue(UserDangNhap.class);
-
-                    hovaten.setText(snapshot.getValue().toString());
-                    gmail.setText(user.getGmail());
-                    sodienthoai.setText(user.getSodienthoai());
-                }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+//        Query query = FirebaseDatabase.getInstance().getReference("Users");
+//        query.addChildEventListener(new ChildEventListener() {
+//                @Override
+//                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                    UserDangNhap user = snapshot.getValue(UserDangNhap.class);
+//
+//                    hovaten.setText(snapshot.getValue().toString());
+//                    gmail.setText(user.getGmail());
+//                    sodienthoai.setText(user.getSodienthoai());
+//                }
+//
+//                @Override
+//                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//                }
+//
+//                @Override
+//                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//
+//                }
+//
+//                @Override
+//                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
 
 //                reference  = FirebaseDatabase.getInstance().getReference("Users");
 //                    reference.addValueEventListener(new ValueEventListener() {
