@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +25,6 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
 
 
     public AdapterLoaiDongVat(Activity context, List<LoaiDongVat> arrLoaiDongVat) {
-        super();
         this.context = context;
         this.arrLoaiDongVat = arrLoaiDongVat;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -45,7 +43,7 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return 0;
     }
 
     @Override
@@ -59,27 +57,26 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
             hoder.imgDelete = convertView.findViewById(R.id.img_delete_loai_dong_vat);
             loaiDongVatDAO = new LoaiDongVatDAO(context);
             LoaiDongVat loaiDongVat = arrLoaiDongVat.get(position);
+            convertView.setTag(hoder);
             hoder.txtLoaiDongVat.setText("Đây là con: "+loaiDongVat.getmLoaiDongVat());
+
+
+
+
             hoder.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    loaiDongVatDAO.delete(arrLoaiDongVat.get(position).getmLoaiDongVat());
-                    arrLoaiDongVat.remove(position);
-                    Toast.makeText(context, "Xoa Thanh Cong", Toast.LENGTH_SHORT).show();
-                    notifyDataSetChanged();
+                        loaiDongVatDAO.delete(arrLoaiDongVat.get(position).getmLoaiDongVat());
+                        arrLoaiDongVat.remove(position);
+                        Toast.makeText(context, "Xoa Thanh Cong", Toast.LENGTH_SHORT).show();
+                        notifyDataSetChanged();
                 }
             });
-            convertView.setTag(hoder);
-
-
         }
+
         return convertView;
     }
 
-    @Override
-    public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();
-    }
     public void changeDataset(List<LoaiDongVat> ldv) {
         this.arrLoaiDongVat = ldv;
         notifyDataSetChanged();
@@ -87,6 +84,11 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
     public static class ViewHoder{
         TextView txtLoaiDongVat;
         ImageView imgDelete,imgUpdate;
-    }
+        String ldv;
 
+    }
+    @Override
+    public void notifyDataSetInvalidated() {
+        super.notifyDataSetInvalidated();
+    }
 }

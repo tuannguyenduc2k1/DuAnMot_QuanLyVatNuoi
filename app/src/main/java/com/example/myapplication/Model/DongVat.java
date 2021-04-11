@@ -51,10 +51,10 @@ package com.example.myapplication.Model;
      @Override
      public String toString() {
          return "DongVat{" +
-                 "mLoaiDongVat='" + mLoaiDongVat + '\'' +
-                 ", mMaDongVat='" + mMaDongVat + '\'' +
-                 ", mSoLuongDongVat=" + mSoLuongDongVat +
-                 ", mGhiChu='" + mGhiChu + '\'' +
+                 "LOAIDONGVAT='" + mLoaiDongVat + '\'' +
+                 ", MADONGVAT='" + mMaDongVat + '\'' +
+                 ", SOLUONG=" + mSoLuongDongVat +
+                 ", GHICHU='" + mGhiChu + '\'' +
                  '}';
      }
  }
