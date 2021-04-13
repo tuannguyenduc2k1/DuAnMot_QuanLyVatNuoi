@@ -45,7 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="Hủy" />
+            android:onClick="quayLaii"
+            android:text="Quay Lại" />
 
         <Button
             android:id="@+id/btn_luu_loai_dong_vat_add"

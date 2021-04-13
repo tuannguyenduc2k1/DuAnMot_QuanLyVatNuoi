@@ -114,7 +114,11 @@ public class DialogDongVat extends AppCompatActivity {
     public void getTheLoai() {
 
         loaiDongVatDAO = new LoaiDongVatDAO(DialogDongVat.this);
-        listdongVat = loaiDongVatDAO.getAllTheLoai();
+        try {
+            listdongVat = loaiDongVatDAO.getAll();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         ArrayAdapter<LoaiDongVat> dataAdapter = new ArrayAdapter<LoaiDongVat>(this,
                 android.R.layout.simple_spinner_item, listdongVat);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

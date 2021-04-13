@@ -10,17 +10,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.Adapter.AdapterLoaiDongVat;
+import com.example.myapplication.DAO.LoaiDongVatDAO;
+import com.example.myapplication.Model.LoaiDongVat;
 import com.example.myapplication.PetFragment.DongVatFragment;
 import com.example.myapplication.PetFragment.LoaiDongVatFragment;
 import com.example.myapplication.PetFragment.PetViewPagerAdapter;
 import com.example.myapplication.R;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.ParseException;
+import java.util.List;
+
 
 public class PetFragment extends Fragment{
     private View mView;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
 
     public PetFragment() {
         // Required empty public constructor
@@ -40,4 +47,5 @@ public class PetFragment extends Fragment{
 
          return mView;
     }
+
 }

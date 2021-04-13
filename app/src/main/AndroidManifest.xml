@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
-
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".Dialog.DialogDongVatUpdate"></activity>
-        <activity android:name=".ActivityFragment.MainActivity"></activity>
+        android:theme="@style/Theme.MyApplication">
+        <activity android:name=".ActivityFragment.MainActivity">
+
+        </activity>
         <activity android:name=".Dangnhap.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,14 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dangnhap.SplashScreem"></activity>
-        <activity android:name=".Dangnhap.Registration" />
-        <activity android:name=".Dialog.DialogLoaiDongVat" />
-        <activity android:name=".Dialog.DialogDongVat" />
-        <activity android:name=".Dialog.DialogHoaDonXuat" />
-        <activity android:name=".Dialog.DialogHoaDonNhap" />
-        <activity android:name=".ActivityFragment.OpenBao" />
-        <activity android:name=".Dialog.DialogLoaiDongVatUpdate" />
+        <activity android:name=".Dangnhap.SplashScreem">
+
+        </activity>
+        <activity android:name=".Dangnhap.Registration"></activity>
+        <activity android:name=".Dialog.DialogLoaiDongVat"></activity>
+        <activity android:name=".Dialog.DialogDongVat"></activity>
+        <activity android:name=".Dialog.DialogHoaDonXuat"></activity>
+        <activity android:name=".Dialog.DialogHoaDonNhap"></activity>
+        <activity android:name=".ActivityFragment.OpenBao"></activity>
+        <activity android:name=".Dialog.DialogLoaiDongVatUpdate"></activity>
+
     </application>
 
 </manifest>

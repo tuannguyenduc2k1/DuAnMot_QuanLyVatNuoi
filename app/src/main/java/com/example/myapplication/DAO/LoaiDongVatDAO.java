@@ -29,65 +29,68 @@ public class LoaiDongVatDAO {
     public long insertLoaiDongVat(LoaiDongVat ldv){
         ContentValues values = new ContentValues();
         values.put(Name.loaiDongVat,ldv.getmLoaiDongVat());
-        try {
-            if (db.insert(TABLE_NAME, null, values) == -1) {
-                return -1;
-            }
-        } catch (Exception ex) {
-            Log.e(TAG, ex.toString());
-        }
-        return 1;
-    }
-    public List<LoaiDongVat> getAllTheLoai() {
-        List<LoaiDongVat> lsdongvay = new ArrayList<>();
-        Cursor c = db.query(TABLE_NAME, null, null, null, null, null, null);
-        c.moveToFirst();
-        while (c.isAfterLast() == false) {
-            LoaiDongVat ee = new LoaiDongVat();
-            ee.setmLoaiDongVat(c.getString(0));
-            lsdongvay.add(ee);
-            Log.d("//=====", ee.toString());
-            c.moveToNext();
-        }
-        c.close();
-        return lsdongvay;
+        return db.insert("LoaiDongVat",null,values);
     }
     //update
-    public int update(String ldv,String s){
+    public int update(LoaiDongVat ldv){
         ContentValues values = new ContentValues();
-        values.put("loaidongvat", s);
-        int result = db.update(TABLE_NAME, values, "loaidongvat=?", new
-                String[]{ldv});
-        if (result == 0) {
+        values.put(Name.loaiDongVat,ldv.getmLoaiDongVat());
+        int result = db.update("LoaiDongVat",values,"loaiDongVat=?",new String[]{String.valueOf(ldv.getmLoaiDongVat())}) ;
+        if(result == 0){
+            return -1;
+        }else {
+            return 1;
+        }
+    }
+//    //updateInfor
+    public long updateInforLoaiDongVat(String loaiDongVat,String ldv){
+        ContentValues value =new ContentValues();
+        value.put("loaiDongVat",ldv);
+        int result =   db.update("LoaiDongVat",value,"loaiDongVat = ? " ,new String[]{loaiDongVat});
+        if(result==0){
             return -1;
         }
         return 1;
+
     }
     //delete
     public int delete(String ldv){
 
-        return db.delete("loaidongvat","loaidongvat=?",new String[]{ldv});
+        return db.delete("LoaiDongVat","loaiDongVat=?",new String[]{ldv});
     }
     //get all
-//    public List<LoaiDongVat> getAll() throws ParseException{
-//        String sql =" select * from LoaiDongVat ";
-//            return getData(sql);
-//    }
-
-//    public List<LoaiDongVat> getData(String sql,String... selectionArgs) throws ParseException{
-//        List<LoaiDongVat> list = new ArrayList<>();
-//        Cursor c = db.rawQuery(sql,selectionArgs);
-//        while (c.moveToNext()){
-//            LoaiDongVat ldv = new LoaiDongVat();
-//            ldv.setmLoaiDongVat(c.getString(c.getColumnIndex(Name.loaiDongVat)));
-//            list.add(ldv);
-//        }
-//        return list;
-//    }
-    private static class Name{
-        public static String loaiDongVat = "loaidongvat";
+    public List<LoaiDongVat> getAll() throws ParseException{
+        String sql =" select * from LoaiDongVat ";
+            return getData(sql);
     }
+//    //get allLoaiDV
+//    public List<LoaiDongVat> getAllLDV(){
+//        List<LoaiDongVat> lstLDV = new ArrayList<>();
+//        Cursor c =db.query(TABLE_NAME,null,null,null,null,null,null);
+//        c.moveToFirst();
+//        while (c.isAfterLast() == false){
+//            LoaiDongVat ldv = new LoaiDongVat();
+//            ldv.setmLoaiDongVat(c.getString(0));
+//            lstLDV.add(ldv);
+//            Log.d("//=====", ldv.toString());
+//            c.moveToNext();
+//        }
+//        c.close();
+//        return  lstLDV;
+//    }
 
-
+    private List<LoaiDongVat> getData(String sql,String... selectionArgs) throws ParseException{
+        List<LoaiDongVat> list = new ArrayList<>();
+        Cursor c = db.rawQuery(sql,selectionArgs);
+        while (c.moveToNext()){
+            LoaiDongVat ldv = new LoaiDongVat();
+            ldv.setmLoaiDongVat(c.getString(c.getColumnIndex(Name.loaiDongVat)));
+            list.add(ldv);
+        }
+        return list;
+    }
+    private static class Name{
+        public static String loaiDongVat = "loaiDongVat";
+    }
 
 }
