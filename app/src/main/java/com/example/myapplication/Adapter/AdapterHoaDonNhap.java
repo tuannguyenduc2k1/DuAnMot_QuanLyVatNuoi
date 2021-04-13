@@ -90,8 +90,8 @@ public class AdapterHoaDonNhap extends BaseAdapter {
     }
 
     @Override
-    public void notifyDataSetInvalidated() {
-        super.notifyDataSetInvalidated();
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
     }
 
     public void changeDataset(List<HoaDonNhap> items){

@@ -86,8 +86,8 @@ public class AdapterDongVat extends  BaseAdapter {
 
         }
             convertView.setTag(hoder);
-            hoder.DongVat.setText(dongVat.getmMaDongVat());
-            hoder.maDongVat.setText(dongVat.getmLoaiDongVat());
+            hoder.maDongVat.setText("Con : "+dongVat.getmMaDongVat());
+            hoder.DongVat.setText(dongVat.getmLoaiDongVat());
             hoder.soLuong.setText(""+dongVat.getmSoLuongDongVat());
             hoder.ghiChu.setText(dongVat.getmGhiChu());
             return convertView;
@@ -110,9 +110,9 @@ public class AdapterDongVat extends  BaseAdapter {
             sachFilter = new CustomFilter();
         return sachFilter;
     }
-    public void resetData() {
-        getSortSach = getGetSortSach;
-    }
+//    public void resetData() {
+//        getSortSach = getGetSortSach;
+//    }
     public static class ViewHoder{
         TextView DongVat;
         TextView maDongVat;
