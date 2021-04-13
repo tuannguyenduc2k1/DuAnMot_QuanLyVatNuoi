@@ -17,8 +17,9 @@ public class LoaiDongVat {
     public void setmLoaiDongVat(String mLoaiDongVat) {
         this.mLoaiDongVat = mLoaiDongVat;
     }
+
     @Override
     public String toString() {
-        return getmLoaiDongVat() ;
+        return ""+mLoaiDongVat;
     }
 }

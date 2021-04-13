@@ -40,7 +40,7 @@ public class DialogLoaiDongVat extends AppCompatActivity {
         btn_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoaiDongVatDAO loaiDongVatDAO = new LoaiDongVatDAO(DialogLoaiDongVat.this);
+                loaiDongVatDAO = new LoaiDongVatDAO(DialogLoaiDongVat.this);
                 LoaiDongVat ldv = new LoaiDongVat(edt_ldv.getText().toString());
                 try{
                     if(loaiDongVatDAO.insertLoaiDongVat(ldv) > 0 ){
@@ -58,6 +58,7 @@ public class DialogLoaiDongVat extends AppCompatActivity {
     }
 
     public void quayLaii(View view) {
+
         finish();
     }
 }

@@ -69,4 +69,16 @@ public class HoaDonXuat {
     public void setmGhiChuXuat(String mGhiChuXuat) {
         this.mGhiChuXuat = mGhiChuXuat;
     }
+
+    @Override
+    public String toString() {
+        return "HoaDonXuat{" +
+                "mMaDongVat='" + mMaDongVat + '\'' +
+                ", mMaHoaDonXuat='" + mMaHoaDonXuat + '\'' +
+                ", mGiaXuat=" + mGiaXuat +
+                ", mSoLuongXuat=" + mSoLuongXuat +
+                ", mNgayXuat=" + mNgayXuat +
+                ", mGhiChuXuat='" + mGhiChuXuat + '\'' +
+                '}';
+    }
 }

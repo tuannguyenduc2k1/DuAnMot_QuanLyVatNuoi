@@ -10,7 +10,7 @@ import com.example.myapplication.PetFragment.DongVatFragment;
 import com.example.myapplication.PetFragment.LoaiDongVatFragment;
 
 public class HoaDonViewPagerAdapter extends FragmentStatePagerAdapter {
-    private String TiTleTab[]={"Hóa Đơn Xuất","Hóa Đơn Nhập"};
+    private String TiTleTab[]={"Hóa Đơn Nhập","Hóa Đơn Xuất"};
 
 
     public HoaDonViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {super(fm,behavior); }
@@ -21,15 +21,12 @@ public class HoaDonViewPagerAdapter extends FragmentStatePagerAdapter {
         switch (position){
             case 0:
                 return new HoaDonNhapFragment();
-
             case 1:
                 return new HoaDonXuatFragment();
 
-            default:
-                return new HoaDonNhapFragment();
         }
 
-
+        return null;
     }
 
     @Override

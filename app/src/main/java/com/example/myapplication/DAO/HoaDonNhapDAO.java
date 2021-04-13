@@ -15,26 +15,30 @@ import java.util.List;
 
 public class HoaDonNhapDAO {
     public static final String TABLE_NAME = "HoaDonNhap";
-    public static final String SQL_HOA_DON_NHAP = "CREATE TABLE HoaDonNhap(maHoaDonNhapVatNuoi text primary key , maDongVat text , gianNhap double , soLuongNhap double , ngayNhap date , ghiChu String )";
+    public static final String SQL_HOA_DON_NHAP = "CREATE TABLE HoaDonNhap(maHoaDonNhap text primary key , maDongVat text , giaNhap double , soLuongNhap int , ngayNhap date , ghiChu date )";
     public static final String TAG = "HoaDonNhapDAO";
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    private SQLiteDatabase db;
+
+
+    private static SQLiteDatabase db;
     private DBHelper dbHelper;
+
+
     public HoaDonNhapDAO(Context context) {
         dbHelper = new DBHelper(context);
         db = dbHelper.getWritableDatabase();
     }
-    public long insertHoaDonNhap(HoaDonNhap hdn){
-        ContentValues values = new ContentValues();
-        values.put(Name.maDongVat,hdn.getmMaDongVat());
-        values.put(Name.maHoaDonNhap,hdn.getmMaHoaDonNhap());
-        values.put(Name.giaNhap,hdn.getmGiaNhap());
-        values.put(Name.soLuongNhap,hdn.getmSoLuongNhap());
-        values.put(Name.ngayNhap,sdf.format(hdn.getmNgayNhap()));
-        values.put(Name.ghiChu,hdn.getmGhiChuNhap());
 
-        return db.insert("HoaDonNhap",null,values);
-    }
+public long insertHoaDonNhap(HoaDonNhap hdn){
+    ContentValues values = new ContentValues();
+    values.put(Name.maDongVat,hdn.getmMaDongVat());
+    values.put(Name.maHoaDonNhap,hdn.getmMaHoaDonNhap());
+    values.put(Name.giaNhap,hdn.getmGiaNhap());
+    values.put(Name.soLuongNhap,hdn.getmSoLuongNhap());
+    values.put(Name.ngayNhap,hdn.getmNgayNhap());
+    values.put(Name.ghiChu,hdn.getmGhiChuNhap());
+
+    return db.insert("HoaDonNhap",null,values);
+}
     //update
     public int update(HoaDonNhap hdn){
         ContentValues values = new ContentValues();
@@ -42,14 +46,18 @@ public class HoaDonNhapDAO {
         values.put(Name.maHoaDonNhap,hdn.getmMaHoaDonNhap());
         values.put(Name.giaNhap,hdn.getmGiaNhap());
         values.put(Name.soLuongNhap,hdn.getmSoLuongNhap());
-        values.put(Name.ngayNhap,sdf.format(hdn.getmNgayNhap()));
+        values.put(Name.ngayNhap,hdn.getmNgayNhap());
         values.put(Name.ghiChu,hdn.getmGhiChuNhap());
 
         return db.update("HoaDonNhap",values,"maHoaDonNhap=?",new String[]{String.valueOf(hdn.getmMaHoaDonNhap())}) ;
     }
 
     public int delete(String id) {
-        return db.delete("HoaDonNhap", "maHoaDonNhap=?", new String[]{id});
+
+        int result = db.delete("HoaDonNhap", "maHoaDonNhap=?", new String[]{id});
+        if (result == 0)
+            return -1;
+        return 1;
     }
 
     public List<HoaDonNhap> getAll() throws ParseException {
@@ -65,7 +73,7 @@ public class HoaDonNhapDAO {
             obj.setmMaHoaDonNhap(c.getString(c.getColumnIndex(Name.maHoaDonNhap)));
             obj.setmGiaNhap(c.getDouble(c.getColumnIndex(Name.giaNhap)));
             obj.setmSoLuongNhap(c.getInt(c.getColumnIndex(Name.soLuongNhap)));
-            obj.setmNgayNhap(sdf.parse(c.getString(c.getColumnIndex(Name.ngayNhap))));
+            obj.setmNgayNhap(c.getString(c.getColumnIndex(Name.ngayNhap)));
             obj.setmGhiChuNhap(c.getString(c.getColumnIndex(Name.ghiChu)));
             list.add(obj);
         }

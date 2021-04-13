@@ -7,13 +7,13 @@ public class HoaDonNhap {
     private String mMaHoaDonNhap;
     private Double mGiaNhap;
     private int mSoLuongNhap;
-    private Date mNgayNhap;
+    private String mNgayNhap;
     private String mGhiChuNhap;
 
     public HoaDonNhap() {
     }
 
-    public HoaDonNhap(String mMaDongVat, String mMaHoaDonNhap, Double mGiaNhap, int mSoLuongNhap, Date mNgayNhap, String mGhiChuNhap) {
+    public HoaDonNhap(String mMaDongVat, String mMaHoaDonNhap, Double mGiaNhap, int mSoLuongNhap, String mNgayNhap, String mGhiChuNhap) {
         this.mMaDongVat = mMaDongVat;
         this.mMaHoaDonNhap = mMaHoaDonNhap;
         this.mGiaNhap = mGiaNhap;
@@ -54,11 +54,11 @@ public class HoaDonNhap {
         this.mSoLuongNhap = mSoLuongNhap;
     }
 
-    public Date getmNgayNhap() {
+    public String getmNgayNhap() {
         return mNgayNhap;
     }
 
-    public void setmNgayNhap(Date mNgayNhap) {
+    public void setmNgayNhap(String mNgayNhap) {
         this.mNgayNhap = mNgayNhap;
     }
 
@@ -68,5 +68,10 @@ public class HoaDonNhap {
 
     public void setmGhiChuNhap(String mGhiChuNhap) {
         this.mGhiChuNhap = mGhiChuNhap;
+    }
+
+    @Override
+    public String toString() {
+        return ""+mMaDongVat;
     }
 }

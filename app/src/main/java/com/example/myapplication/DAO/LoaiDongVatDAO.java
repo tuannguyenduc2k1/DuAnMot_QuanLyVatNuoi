@@ -56,28 +56,16 @@ public class LoaiDongVatDAO {
     //delete
     public int delete(String ldv){
 
-        return db.delete("LoaiDongVat","loaiDongVat=?",new String[]{ldv});
+        int result = db.delete("LoaiDongVat","loaiDongVat=?",new String[]{ldv});
+        if (result == 0)
+            return -1;
+        return 1;
     }
     //get all
     public List<LoaiDongVat> getAll() throws ParseException{
         String sql =" select * from LoaiDongVat ";
             return getData(sql);
     }
-//    //get allLoaiDV
-//    public List<LoaiDongVat> getAllLDV(){
-//        List<LoaiDongVat> lstLDV = new ArrayList<>();
-//        Cursor c =db.query(TABLE_NAME,null,null,null,null,null,null);
-//        c.moveToFirst();
-//        while (c.isAfterLast() == false){
-//            LoaiDongVat ldv = new LoaiDongVat();
-//            ldv.setmLoaiDongVat(c.getString(0));
-//            lstLDV.add(ldv);
-//            Log.d("//=====", ldv.toString());
-//            c.moveToNext();
-//        }
-//        c.close();
-//        return  lstLDV;
-//    }
 
     private List<LoaiDongVat> getData(String sql,String... selectionArgs) throws ParseException{
         List<LoaiDongVat> list = new ArrayList<>();

@@ -10,6 +10,7 @@ import com.example.myapplication.Database.DBHelper;
 import com.example.myapplication.Model.DongVat;
 
 import java.text.ParseException;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class DongVatDAO {
     public static final String SQL_DONG_VAT = "CREATE TABLE DongVat(maDongVat text primary key , loaiDongVat text , soLuong int , ghiChu text )";
     public static final String TAG = "DongVatDAO";
 
-    private SQLiteDatabase db;
+
+    private static SQLiteDatabase db;
     private DBHelper dbHelper;
 
     public DongVatDAO(Context context){
@@ -109,7 +111,7 @@ public class DongVatDAO {
         return list;
     }
 
-    public List<DongVat> getAllTheLoai() {
+    public static List<DongVat> getAllTheLoai() {
         List<DongVat> lsdongvay = new ArrayList<>();
         Cursor c = db.query(TABLE_NAME, null, null, null, null, null, null);
         c.moveToFirst();
