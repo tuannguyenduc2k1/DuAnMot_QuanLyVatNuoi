@@ -63,7 +63,19 @@ public class AdapterDongVat extends  BaseAdapter {
             hoder.maDongVat = convertView.findViewById(R.id.dv_madongvat);
             hoder.soLuong = convertView.findViewById(R.id.dv_soluong);
             hoder.ghiChu = convertView.findViewById(R.id.dv_ghichu);
-            hoder.imgDelete = convertView.findViewById(R.id.img_delete_loai_dong_vat);
+            hoder.update = convertView.findViewById(R.id.dv_sua);
+            hoder.imgDelete = convertView.findViewById(R.id.dv_xoa);
+            hoder.imgDelete.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    dongVatDAO.delete(getSortSach.get(position).getmMaDongVat());
+                    getSortSach.remove(position);
+                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    notifyDataSetChanged();
+                }
+            });
+            convertView.setTag(hoder);
 
         } else
             hoder = (ViewHoder) convertView.getTag();
@@ -107,6 +119,7 @@ public class AdapterDongVat extends  BaseAdapter {
          TextView soLuong;
         TextView ghiChu;
         ImageView imgDelete;
+        ImageView update;
         String ldv;
 
     }

@@ -35,12 +35,10 @@ public class DialogLoaiDongVatUpdate extends AppCompatActivity {
 
         loaiDongVatDAO = new LoaiDongVatDAO(this);
 
-
         Intent in = getIntent();
         Bundle c = in.getExtras();
         ldv = c.getString("LOAIDONGVAT");
         edtLoaiDongVatUpdate.setText(ldv);
-
         btnLoaiDongVatUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

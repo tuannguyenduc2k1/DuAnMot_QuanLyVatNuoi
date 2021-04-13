@@ -50,14 +50,13 @@ public class DongVatDAO {
         return 1;
     }
     //update
-    public int update(String maSach, String a, String b , int f, String d) {
+    public int update(String maSach, String a , int f, String d) {
         ContentValues values = new ContentValues();
         values.put("maDongVat", a);
-        values.put("loaiDongVat", b);
         values.put("soLuong", f);
         values.put("ghiChu", d);
 
-        int result = db.update(TABLE_NAME, values, "maSach=?", new
+        int result = db.update(TABLE_NAME, values, "maDongVat=?", new
                 String[]{maSach});
         if (result == 0) {
             return -1;
@@ -66,8 +65,8 @@ public class DongVatDAO {
     }
 
     //delete
-    public int delete(DongVat dv){
-        return db.delete("maDongVat","maDongVat=?",new String[]{String.valueOf(dv.getmMaDongVat())});
+    public int delete(String dv){
+        return db.delete(TABLE_NAME,"loaiDongVat=?",new String[]{dv});
     }
     //get all
     public List<DongVat> getAll() throws ParseException {

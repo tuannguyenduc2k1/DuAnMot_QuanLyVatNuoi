@@ -57,23 +57,21 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
             hoder.imgDelete = convertView.findViewById(R.id.img_delete_loai_dong_vat);
             loaiDongVatDAO = new LoaiDongVatDAO(context);
             LoaiDongVat loaiDongVat = arrLoaiDongVat.get(position);
+
             convertView.setTag(hoder);
+
             hoder.txtLoaiDongVat.setText("Đây là con: "+loaiDongVat.getmLoaiDongVat());
-
-
-
             hoder.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                         loaiDongVatDAO.delete(arrLoaiDongVat.get(position).getmLoaiDongVat());
                         arrLoaiDongVat.remove(position);
                         Toast.makeText(context, "Xoa Thanh Cong", Toast.LENGTH_SHORT).show();
-                    notifyDataSetInvalidated();
+                        notifyDataSetInvalidated();
 
                 }
             });
         }
-
         return convertView;
     }
     @Override
@@ -81,12 +79,9 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
         super.notifyDataSetChanged();
     }
 
-
-
     public void changeDataset(List<LoaiDongVat> ldv) {
         this.arrLoaiDongVat = ldv;
         notifyDataSetChanged();
-
     }
     public static class ViewHoder{
         TextView txtLoaiDongVat;

@@ -58,7 +58,6 @@ public class LoaiDongVatFragment extends Fragment {
         registerForContextMenu(lv_ldv);
 
         loaiDongVatDAO = new LoaiDongVatDAO(getActivity());
-
         loaiDongVatList = loaiDongVatDAO.getAllTheLoai();
         adapterLoaiDongVat = new AdapterLoaiDongVat(getActivity(),loaiDongVatList);
         lv_ldv.setAdapter(adapterLoaiDongVat);
@@ -71,7 +70,6 @@ public class LoaiDongVatFragment extends Fragment {
                 b.putString("LOAIDONGVAT", loaiDongVatList.get(position).getmLoaiDongVat());
                 intent.putExtras(b);
                 startActivity(intent);
-
             }
         });
         btnFloatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +83,7 @@ public class LoaiDongVatFragment extends Fragment {
 
         return mView;
 
+
     }
     //load lai du lieu
     @Override
@@ -94,4 +93,6 @@ public class LoaiDongVatFragment extends Fragment {
         loaiDongVatList = loaiDongVatDAO.getAllTheLoai();
         adapterLoaiDongVat.changeDataset(loaiDongVatList);
     }
-}
+
+    }
+

@@ -2,14 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
         <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="18dp"
-        android:id="@+id/recycler_dong_vat"/>
+        android:id="@+id/lv_dong_vat"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_action_float_add_dong_vat"
