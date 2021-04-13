@@ -57,7 +57,6 @@ public class DialogLoaiDongVatUpdate extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Update thanh cong", Toast.LENGTH_SHORT).show();
         }
 
-
     }
 
 

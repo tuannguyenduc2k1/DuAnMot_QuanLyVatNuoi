@@ -62,7 +62,6 @@ public class LoaiDongVatFragment extends Fragment {
         }
         adapterLoaiDongVat = new AdapterLoaiDongVat(getActivity(),loaiDongVatList);
         lv_ldv.setAdapter(adapterLoaiDongVat);
-
         lv_ldv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -85,6 +84,7 @@ public class LoaiDongVatFragment extends Fragment {
         });
 
 
+
         return mView;
 
     }
@@ -98,10 +98,6 @@ public class LoaiDongVatFragment extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        try {
-            adapterLoaiDongVat.changeDataset(loaiDongVatDAO.getAll());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        adapterLoaiDongVat.changeDataset(loaiDongVatList);
     }
 }

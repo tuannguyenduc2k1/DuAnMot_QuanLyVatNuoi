@@ -41,7 +41,6 @@ public class DialogDongVat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_dong_vat_add);
-
         unit();
         getTheLoai();
         unitUI();

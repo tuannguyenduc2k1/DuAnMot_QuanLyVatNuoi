@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -19,6 +20,7 @@ import com.example.myapplication.Adapter.AdapterLoaiDongVat;
 import com.example.myapplication.DAO.DongVatDAO;
 import com.example.myapplication.DAO.LoaiDongVatDAO;
 import com.example.myapplication.Dialog.DialogDongVat;
+import com.example.myapplication.Dialog.DialogDongVatUpdate;
 import com.example.myapplication.Dialog.DialogLoaiDongVat;
 import com.example.myapplication.Dialog.DialogLoaiDongVatUpdate;
 import com.example.myapplication.Model.DongVat;
@@ -34,7 +36,7 @@ public class DongVatFragment extends Fragment {
     private View mView;
     private FloatingActionButton btnFloatingActionButton;
     public static List<DongVat> lsDongvat = new ArrayList<>();
-    ListView lv_ldv;
+    private ListView listView;
     DongVatDAO dongVatDAO;
     AdapterDongVat adapterDongVat = null;
 
@@ -48,31 +50,54 @@ public class DongVatFragment extends Fragment {
                              Bundle savedInstanceState) {
         mView =  inflater.inflate(R.layout.fragment_dong_vat, container, false);
 
-        lv_ldv = (ListView)mView.findViewById(R.id.recycler_dong_vat);
+        listView = (ListView)mView.findViewById(R.id.lv_dong_vat);
 
         btnFloatingActionButton = (FloatingActionButton)mView.findViewById(R.id.btn_action_float_add_dong_vat);
+        /*registerForContextMenu(lv_ldv);
 
-        dongVatDAO = new DongVatDAO(getActivity());
-        lsDongvat = dongVatDAO.getAllTheLoai();
-        adapterDongVat = new AdapterDongVat(getActivity(),lsDongvat);
-        lv_ldv.setAdapter(adapterDongVat);
+        loaiDongVatDAO = new LoaiDongVatDAO(getActivity());
+        loaiDongVatList = loaiDongVatDAO.getAllTheLoai();
+        adapterLoaiDongVat = new AdapterLoaiDongVat(getActivity(),loaiDongVatList);
+        lv_ldv.setAdapter(adapterLoaiDongVat);
         lv_ldv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 //xu li onclick khi bam vao item
-                DongVat dongVat = new DongVat();
                 Intent intent = new Intent(getActivity(), DialogLoaiDongVatUpdate.class);
                 Bundle b = new Bundle();
+                b.putString("LOAIDONGVAT", loaiDongVatList.get(position).getmLoaiDongVat());
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+        btnFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),DialogLoaiDongVat.class));
+            }
+        });
+
+*/
+        dongVatDAO = new DongVatDAO(getActivity());
+        lsDongvat = dongVatDAO.getAllTheLoai();
+        adapterDongVat = new AdapterDongVat(getActivity(),lsDongvat);
+        listView.setAdapter(adapterDongVat);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DongVat dongVat = (DongVat) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getActivity(),DialogDongVatUpdate.class);
+                Bundle b = new Bundle();
                 b.putString("LOAIDONGVAT", dongVat.getmLoaiDongVat());
-                b.putString("MADONGVAT", dongVat.getmMaDongVat());
+                b.putString("MADONGVAT",dongVat.getmMaDongVat());
                 b.putString("SOLUONG", String.valueOf(dongVat.getmSoLuongDongVat()));
                 b.putString("GHICHU", dongVat.getmGhiChu());
                 intent.putExtras(b);
                 startActivity(intent);
-
             }
         });
-        lv_ldv.setTextFilterEnabled(true);
+
+        listView.setTextFilterEnabled(true);
 
         btnFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +105,6 @@ public class DongVatFragment extends Fragment {
                 startActivity(new Intent(getActivity(),DialogDongVat.class));
             }
         });
-
-
 
         return mView;
     }

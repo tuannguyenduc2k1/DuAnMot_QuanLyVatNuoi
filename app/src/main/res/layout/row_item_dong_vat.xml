@@ -17,15 +17,24 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:padding="7dp"
+                android:gravity=""
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/dv_sua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/dv_xoa"
+                    android:layout_marginRight="50px"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    />
 
                 <ImageView
-                    android:id="@+id/dangxuat"
+                    android:id="@+id/dv_xoa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_dehaze_24"
+                    android:src="@drawable/ic_baseline_delete_24"
                     />
 
                 <TextView

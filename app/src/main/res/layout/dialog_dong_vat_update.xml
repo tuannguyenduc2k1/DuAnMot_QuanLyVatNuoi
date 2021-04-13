@@ -17,21 +17,6 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_loaiDongvVat_dongVat_update"
-        android:textColor="#FF0000"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        android:paddingBottom="5dp"
-        android:text="Loại Động Vật:" />
-
-    <Spinner
-        android:id="@+id/spiner_loaiDongVat_dongVat_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="15dp" />
-
-    <TextView
         android:id="@+id/tv_ma_dong_vat_update"
         android:textColor="#FF0000"
         android:layout_width="match_parent"
