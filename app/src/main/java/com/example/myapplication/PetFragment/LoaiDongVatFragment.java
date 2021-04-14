@@ -66,7 +66,6 @@ public class LoaiDongVatFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 //xu li onclick khi bam vao item
-                startActivity(new Intent(getActivity(), DialogLoaiDongVat.class));
                 Intent intent = new Intent(getActivity(), DialogLoaiDongVatUpdate.class);
                 Bundle b = new Bundle();
                 b.putString("LOAIDONGVAT", loaiDongVatList.get(position).getmLoaiDongVat());

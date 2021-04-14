@@ -32,6 +32,8 @@
         <activity android:name=".Dialog.DialogHoaDonNhap"></activity>
         <activity android:name=".ActivityFragment.OpenBao"></activity>
         <activity android:name=".Dialog.DialogLoaiDongVatUpdate"></activity>
+        <activity android:name=".Dialog.DialogDongVatUpdate"></activity>
+        <activity android:name=".Dialog.DialogHoaDonNhapUpdate"></activity>
 
 
     </application>

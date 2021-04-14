@@ -59,15 +59,15 @@ public class DialogDongVat extends AppCompatActivity {
 
                  }
             });
-            Intent in = getIntent();//load data into form
-            Bundle b = in.getExtras();
-            if (b != null) {
-                madongvat.setText(b.getString("MADONGVAT"));
-                soluong.setText(b.getString("SOLUONG"));
-                ghichu.setText(b.getString("GHICHU"));
-                String loaidongvat = b.getString("LOAIDONGVAT");
-                spnloaidongvat.setSelection(checkPositionTheLoai(loaidongvat));
-        }
+//            Intent in = getIntent();//load data into form
+//            Bundle b = in.getExtras();
+//            if (b != null) {
+//                madongvat.setText(b.getString("MADONGVAT"));
+//                soluong.setText(b.getString("SOLUONG"));
+//                ghichu.setText(b.getString("GHICHU"));
+//                String loaidongvat = b.getString("LOAIDONGVAT");
+//                spnloaidongvat.setSelection(checkPositionTheLoai(loaidongvat));
+//        }
 
         luu.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -97,12 +97,6 @@
         android:layout_marginVertical="5dp"
         android:hint="Ngày Xuất"
         android:inputType="number" />
-       <Button
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="chọn"
-           android:id="@+id/btn_chon_ngay_hoa_don_xuat_add"
-           ></Button>
     </LinearLayout>
     <TextView
         android:textColor="#FF0000"

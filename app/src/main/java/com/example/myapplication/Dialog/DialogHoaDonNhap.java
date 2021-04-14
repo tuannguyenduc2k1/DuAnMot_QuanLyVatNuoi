@@ -37,9 +37,9 @@ import java.util.List;
 import static java.lang.Double.parseDouble;
 
 public class DialogHoaDonNhap extends AppCompatActivity {
-    Context context;
+//    Context context;
     EditText edtNgayNhap,edtMaHoaDonNhap,edtGiaNhap,edtSoLuong,edtGhiChu;
-    List<HoaDonNhap> lstHoaDonNhap = new ArrayList<>();
+//    List<HoaDonNhap> lstHoaDonNhap = new ArrayList<>();
     List<DongVat> lstDongVat = new ArrayList<>();
     HoaDonNhapDAO hoaDonNhapDAO;
     DongVatDAO dongVatDAO;
@@ -47,7 +47,6 @@ public class DialogHoaDonNhap extends AppCompatActivity {
     ListView listView;
     Spinner spinnerMaDongVat;
     String maDongVat = "";
-
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -130,15 +129,3 @@ public class DialogHoaDonNhap extends AppCompatActivity {
 
 
 }
-// loaiDongVatDAO = new LoaiDongVatDAO(DialogLoaiDongVat.this);
-//                LoaiDongVat ldv = new LoaiDongVat(edt_ldv.getText().toString());
-//                try{
-//                    if(loaiDongVatDAO.insertLoaiDongVat(ldv) > 0 ){
-//                        onBackPressed();
-//                        Toast.makeText(DialogLoaiDongVat.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        Toast.makeText(DialogLoaiDongVat.this, "Them That Bai", Toast.LENGTH_SHORT).show();
-//                    }
-//                }catch (Exception ex){
-//                    Log.e("Lỗi:", ex.toString());
-//                }

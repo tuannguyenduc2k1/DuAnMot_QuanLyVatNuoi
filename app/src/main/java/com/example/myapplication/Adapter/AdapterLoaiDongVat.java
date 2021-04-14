@@ -21,14 +21,14 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
     public Activity context;
     public LayoutInflater inflater;
     List<LoaiDongVat> arrLoaiDongVat;
-    //List<LoaiDongVat> arrGetLoaiDongVat;
+    List<LoaiDongVat> arrGetLoaiDongVat;
     LoaiDongVatDAO loaiDongVatDAO;
 
 
     public AdapterLoaiDongVat(Activity context, List<LoaiDongVat> arrLoaiDongVat) {
         this.context = context;
         this.arrLoaiDongVat = arrLoaiDongVat;
-        //this.arrGetLoaiDongVat = arrLoaiDongVat;
+        this.arrGetLoaiDongVat = arrLoaiDongVat;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         loaiDongVatDAO = new LoaiDongVatDAO(context);
     }
@@ -57,10 +57,7 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
             hoder.txtLoaiDongVat = convertView.findViewById(R.id.tv_name_row_item_loai_dong_vat);
             hoder.imgUpdate = convertView.findViewById(R.id.img_update_loai_dong_vat);
             hoder.imgDelete = convertView.findViewById(R.id.img_delete_loai_dong_vat);
-            loaiDongVatDAO = new LoaiDongVatDAO(context);
-            LoaiDongVat loaiDongVat = arrLoaiDongVat.get(position);
 
-            hoder.txtLoaiDongVat.setText("Đây là con: "+loaiDongVat.getmLoaiDongVat());
 
             hoder.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,9 +69,12 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
                 }
             });
             convertView.setTag(hoder);
-        }
-
-        return convertView;
+        }else
+            hoder = (ViewHoder) convertView.getTag();
+            LoaiDongVat loaiDongVat = arrLoaiDongVat.get(position);
+            convertView.setTag(hoder);
+            hoder.txtLoaiDongVat.setText("Đây là con: "+loaiDongVat.getmLoaiDongVat());
+            return convertView;
     }
     @Override
     public void notifyDataSetChanged() {
@@ -91,7 +91,6 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
     public static class ViewHoder{
         TextView txtLoaiDongVat;
         ImageView imgDelete,imgUpdate;
-        String ldv;
 
     }
 }

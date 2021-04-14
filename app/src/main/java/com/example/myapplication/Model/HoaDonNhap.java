@@ -72,6 +72,13 @@ public class HoaDonNhap {
 
     @Override
     public String toString() {
-        return ""+mMaDongVat;
+        return "HoaDonNhap{" +
+                "mMaDongVat='" + mMaDongVat + '\'' +
+                ", mMaHoaDonNhap='" + mMaHoaDonNhap + '\'' +
+                ", mGiaNhap=" + mGiaNhap +
+                ", mSoLuongNhap=" + mSoLuongNhap +
+                ", mNgayNhap='" + mNgayNhap + '\'' +
+                ", mGhiChuNhap='" + mGhiChuNhap + '\'' +
+                '}';
     }
 }

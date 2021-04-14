@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.DAO.HoaDonNhapDAO;
+import com.example.myapplication.Model.DongVat;
 import com.example.myapplication.Model.HoaDonNhap;
 import com.example.myapplication.Model.LoaiDongVat;
 import com.example.myapplication.R;
@@ -25,6 +26,7 @@ public class AdapterHoaDonNhap extends BaseAdapter {
     public Activity context;
     public LayoutInflater inflater;
     List<HoaDonNhap> lstHoaDonNhap;
+    List<HoaDonNhap> lstGetHoaDonNhap;
     HoaDonNhapDAO hoaDonNhapDAO;
 
     public AdapterHoaDonNhap(Activity context,  List<HoaDonNhap> lstHoaDonNhap) {
@@ -32,6 +34,7 @@ public class AdapterHoaDonNhap extends BaseAdapter {
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.lstHoaDonNhap = lstHoaDonNhap;
+        this.lstGetHoaDonNhap = lstHoaDonNhap;
         hoaDonNhapDAO = new HoaDonNhapDAO(context);
     }
 
@@ -63,10 +66,6 @@ public class AdapterHoaDonNhap extends BaseAdapter {
             hoaDonNhapDAO = new HoaDonNhapDAO(context);
             HoaDonNhap hdn = lstHoaDonNhap.get(position);
             converView.setTag(hoder);
-            hoder.txtMaHoaDonNhapVatNuoi.setText(""+hdn.getmMaHoaDonNhap());
-            hoder.txtNgayNhap.setText(""+hdn.getmNgayNhap());
-            hoder.txtGiaNhap.setText(""+hdn.getmGiaNhap());
-
             hoder.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -77,7 +76,14 @@ public class AdapterHoaDonNhap extends BaseAdapter {
                 }
             });
 
-        }
+        }else
+            hoder = (ViewHoder) converView.getTag();
+            HoaDonNhap hdn = lstHoaDonNhap.get(position);
+            converView.setTag(hoder);
+            hoder.txtMaHoaDonNhapVatNuoi.setText(""+hdn.getmMaHoaDonNhap());
+            hoder.txtNgayNhap.setText(""+hdn.getmNgayNhap());
+            hoder.txtGiaNhap.setText(""+hdn.getmGiaNhap());
+
 
         return converView;
     }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
@@ -12,7 +13,9 @@ import androidx.fragment.app.Fragment;
 import com.example.myapplication.Adapter.AdapterHoaDonNhap;
 import com.example.myapplication.DAO.HoaDonNhapDAO;
 import com.example.myapplication.DAO.LoaiDongVatDAO;
+import com.example.myapplication.Dialog.DialogDongVatUpdate;
 import com.example.myapplication.Dialog.DialogHoaDonNhap;
+import com.example.myapplication.Dialog.DialogHoaDonNhapUpdate;
 import com.example.myapplication.Model.HoaDonNhap;
 import com.example.myapplication.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -52,9 +55,20 @@ public class HoaDonNhapFragment extends Fragment {
         }
         adapterHoaDonNhap = new AdapterHoaDonNhap(getActivity(),lstHoaDonNhap);
         listView.setAdapter(adapterHoaDonNhap);
-        //adapterLoaiDongVat = new AdapterLoaiDongVat(getActivity(),loaiDongVatList);
-        //        lv_ldv.setAdapter(adapterLoaiDongVat);
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent = new Intent(getActivity(), DialogHoaDonNhapUpdate.class);
+                Bundle b = new Bundle();
+                b.putString("MAHOADONNHAP",lstHoaDonNhap.get(position).getmMaHoaDonNhap());
+                b.putString("GIANHAP",String.valueOf( lstHoaDonNhap.get(position).getmGiaNhap()));
+                b.putString("SOLUONGNHAP", String.valueOf(lstHoaDonNhap.get(position).getmSoLuongNhap()));
+                b.putString("NGAYNHAP",lstHoaDonNhap.get(position).getmNgayNhap());
+                b.putString("GHICHU", lstHoaDonNhap.get(position).getmGhiChuNhap());
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override

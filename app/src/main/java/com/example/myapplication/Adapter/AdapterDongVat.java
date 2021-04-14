@@ -66,7 +66,6 @@ public class AdapterDongVat extends  BaseAdapter {
             hoder.update = convertView.findViewById(R.id.dv_sua);
             hoder.imgDelete = convertView.findViewById(R.id.dv_xoa);
             hoder.imgDelete.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
                     dongVatDAO.delete(getSortSach.get(position).getmMaDongVat());
@@ -80,11 +79,6 @@ public class AdapterDongVat extends  BaseAdapter {
         } else
             hoder = (ViewHoder) convertView.getTag();
             DongVat dongVat = getSortSach.get(position);
-        if (position % 3 == 0) {
-
-        } else {
-
-        }
             convertView.setTag(hoder);
             hoder.maDongVat.setText("Con : "+dongVat.getmMaDongVat());
             hoder.DongVat.setText(dongVat.getmLoaiDongVat());
@@ -110,9 +104,9 @@ public class AdapterDongVat extends  BaseAdapter {
             sachFilter = new CustomFilter();
         return sachFilter;
     }
-//    public void resetData() {
-//        getSortSach = getGetSortSach;
-//    }
+    public void resetData() {
+        getSortSach = getGetSortSach;
+    }
     public static class ViewHoder{
         TextView DongVat;
         TextView maDongVat;

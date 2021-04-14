@@ -52,12 +52,9 @@ public long insertHoaDonNhap(HoaDonNhap hdn){
         return db.update("HoaDonNhap",values,"maHoaDonNhap=?",new String[]{String.valueOf(hdn.getmMaHoaDonNhap())}) ;
     }
 
-    public int delete(String id) {
+    public long delete(String id) {
+        return  db.delete("HoaDonNhap", "maHoaDonNhap=?", new String[]{id});
 
-        int result = db.delete("HoaDonNhap", "maHoaDonNhap=?", new String[]{id});
-        if (result == 0)
-            return -1;
-        return 1;
     }
 
     public List<HoaDonNhap> getAll() throws ParseException {

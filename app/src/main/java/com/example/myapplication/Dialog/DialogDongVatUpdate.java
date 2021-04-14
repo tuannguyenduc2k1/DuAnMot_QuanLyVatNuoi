@@ -32,20 +32,20 @@ public class DialogDongVatUpdate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_dong_vat_update);
         unit();
-        dongVatDAO = new DongVatDAO(this);
 
+
+        dongVatDAO = new DongVatDAO(this);
         Intent in = getIntent();
         Bundle b = in.getExtras();
-        ldv = b.getString("LOAIDONGVAT");
-        mdv = b.getString("MATHELOAI");
+        //ldv = b.getString("LOAIDONGVAT");
+        mdv = b.getString("LOAIDONGVAT");
         sl = b.getString("SOLUONG");
         gc = b.getString("GHICHU");
         in.putExtras(b);
-        startActivity(in);
-
         madongvat.setText(mdv);
         soluong.setText(sl);
         ghichu.setText(gc);
+
 
         luu.setOnClickListener(new View.OnClickListener() {
             @Override

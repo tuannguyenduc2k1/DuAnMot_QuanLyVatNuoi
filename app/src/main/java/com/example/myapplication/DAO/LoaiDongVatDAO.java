@@ -54,12 +54,10 @@ public class LoaiDongVatDAO {
 
     }
     //delete
-    public int delete(String ldv){
+    public long delete(String ldv){
 
-        int result = db.delete("LoaiDongVat","loaiDongVat=?",new String[]{ldv});
-        if (result == 0)
-            return -1;
-        return 1;
+        return  db.delete("LoaiDongVat","loaiDongVat=?",new String[]{ldv});
+
     }
     //get all
     public List<LoaiDongVat> getAll() throws ParseException{
