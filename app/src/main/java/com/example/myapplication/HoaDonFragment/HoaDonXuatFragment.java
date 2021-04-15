@@ -17,6 +17,7 @@ import com.example.myapplication.DAO.HoaDonXuatDAO;
 import com.example.myapplication.Dialog.DialogHoaDonNhap;
 import com.example.myapplication.Dialog.DialogHoaDonNhapUpdate;
 import com.example.myapplication.Dialog.DialogHoaDonXuat;
+import com.example.myapplication.Dialog.DialogHoaDonXuatUpdate;
 import com.example.myapplication.Model.HoaDonNhap;
 import com.example.myapplication.Model.HoaDonXuat;
 import com.example.myapplication.R;
@@ -60,14 +61,14 @@ public class HoaDonXuatFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Intent intent = new Intent(getActivity(), DialogHoaDonNhapUpdate.class);
-                Bundle b = new Bundle();
-                b.putString("MAHOADONXUAT",lstHoaDonXuat.get(position).getmMaHoaDonXuat());
-                b.putString("GIAXUAT",String.valueOf( lstHoaDonXuat.get(position).getmGiaXuat()));
-                b.putString("SOLUONGXUAT", String.valueOf(lstHoaDonXuat.get(position).getmSoLuongXuat()));
-                b.putString("NGAYXUAT", String.valueOf(lstHoaDonXuat.get(position).getmNgayXuat()));
-                b.putString("GHICHUXUAT", lstHoaDonXuat.get(position).getmGhiChuXuat());
-                intent.putExtras(b);
+                Intent intent = new Intent(getActivity(), DialogHoaDonXuatUpdate.class);
+                Bundle bb = new Bundle();
+                bb.putString("MAHOADONXUAT",lstHoaDonXuat.get(position).getmMaHoaDonXuat());
+                bb.putString("GIAXUAT",String.valueOf( lstHoaDonXuat.get(position).getmGiaXuat()));
+                bb.putString("SOLUONGXUAT", String.valueOf(lstHoaDonXuat.get(position).getmSoLuongXuat()));
+                bb.putString("NGAYXUAT", String.valueOf(lstHoaDonXuat.get(position).getmNgayXuat()));
+                bb.putString("GHICHUXUAT", lstHoaDonXuat.get(position).getmGhiChuXuat());
+                intent.putExtras(bb);
                 startActivity(intent);
             }
         });

@@ -87,7 +87,7 @@ public class AdapterHoaDonXuat extends BaseAdapter {
         TextView txtNgayXuat;
         TextView txtGiaXuat;
         ImageView imgDelete;
-//      ImageView imgUpdate;
+
     }
 
     @Override
