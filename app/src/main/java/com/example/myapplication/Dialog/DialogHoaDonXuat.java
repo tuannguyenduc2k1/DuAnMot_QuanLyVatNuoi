@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -30,6 +31,7 @@ import java.util.List;
 public class DialogHoaDonXuat extends AppCompatActivity {
     //    Context context;
     EditText edtNgayXuat, edtMaHoaDonXuat, edtGiaXuat, edtSoLuong, edtGhiChu;
+    Button btnThem;
     //    List<HoaDonNhap> lstHoaDonNhap = new ArrayList<>();
     List<DongVat> lstDongVat = new ArrayList<>();
     HoaDonXuatDAO hoaDonXuatDAO;
@@ -56,6 +58,7 @@ public class DialogHoaDonXuat extends AppCompatActivity {
         edtSoLuong = findViewById(R.id.ed_nhap_so_luong_hoaDonXuat_add);
         edtNgayXuat = findViewById(R.id.ed_nhap_ngay_nhap_hoa_don_xuat_add);
         edtGhiChu = findViewById(R.id.ed_nhap_ghi_chu_hoaDonXuat_add);
+        btnThem = findViewById(R.id.btn_luu_hoa_don_xuat_add);
         listView = findViewById(R.id.lv_hoa_don_xuat);
 
         //su kien chon Spinner
@@ -80,11 +83,29 @@ public class DialogHoaDonXuat extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         month = month+1;
                         String date = day+"/"+month+"/"+year;
-                        edtGiaXuat.setText(date);
+                        edtNgayXuat.setText(date);
 
                     }
                 }, year, month, day);
                 datePickerDialog.show();
+            }
+        });
+
+        btnThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hoaDonXuatDAO = new HoaDonXuatDAO(DialogHoaDonXuat.this);//
+                HoaDonXuat hoaDonXuat = new HoaDonXuat( edtMaHoaDonXuat.getText().toString(),maDongVat, Double.parseDouble(edtGiaXuat.getText().toString()), Integer.parseInt(edtSoLuong.getText().toString()), edtNgayXuat.getText().toString(), edtGhiChu.getText().toString());
+                try {
+                    if (hoaDonXuatDAO.insertHoaDonXuat(hoaDonXuat) > 0) {
+                        onBackPressed();
+                        Toast.makeText(DialogHoaDonXuat.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(DialogHoaDonXuat.this, "Them That Bai", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception ex) {
+                    Log.e("Lỗi:", ex.toString());
+                }
             }
         });
     }
@@ -98,18 +119,5 @@ public class DialogHoaDonXuat extends AppCompatActivity {
         spinnerMaDongVat.setAdapter(adapter);
     }
 
-    public void btnLuuHoaDonXuat(View view) {
-        hoaDonXuatDAO = new HoaDonXuatDAO(DialogHoaDonXuat.this);//
-        HoaDonXuat hoaDonXuat = new HoaDonXuat(edtMaHoaDonXuat.getText().toString(), maDongVat, Double.parseDouble(edtGiaXuat.getText().toString()), Integer.parseInt(edtSoLuong.getText().toString()), edtNgayXuat.getText().toString(), edtGhiChu.getText().toString());
-        try {
-            if (hoaDonXuatDAO.insertHoaDonXuat(hoaDonXuat) > 0) {
-                onBackPressed();
-                Toast.makeText(DialogHoaDonXuat.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(DialogHoaDonXuat.this, "Them That Bai", Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception ex) {
-            Log.e("Lỗi:", ex.toString());
-        }
-    }
+
 }

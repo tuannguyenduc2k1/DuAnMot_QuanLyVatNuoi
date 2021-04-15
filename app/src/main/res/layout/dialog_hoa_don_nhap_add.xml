@@ -99,7 +99,6 @@
             android:hint="Ngày Nhập" />
 
     </LinearLayout>
-
     <TextView
         android:textColor="#FF0000"
         android:layout_width="match_parent"

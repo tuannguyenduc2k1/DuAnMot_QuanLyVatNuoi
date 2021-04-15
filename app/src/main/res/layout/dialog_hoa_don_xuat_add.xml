@@ -93,7 +93,6 @@
         android:id="@+id/ed_nhap_ngay_nhap_hoa_don_xuat_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_marginVertical="5dp"
         android:hint="Ngày Xuất" />
     </LinearLayout>

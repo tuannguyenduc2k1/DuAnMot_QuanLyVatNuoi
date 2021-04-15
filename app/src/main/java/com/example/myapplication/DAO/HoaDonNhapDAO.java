@@ -15,7 +15,7 @@ import java.util.List;
 
 public class HoaDonNhapDAO {
     public static final String TABLE_NAME = "HoaDonNhap";
-    public static final String SQL_HOA_DON_NHAP = "CREATE TABLE HoaDonNhap(maHoaDonNhap text primary key , maDongVat text , giaNhap double , soLuongNhap int , ngayNhap date , ghiChu date )";
+    public static final String SQL_HOA_DON_NHAP = "CREATE TABLE HoaDonNhap(maHoaDonNhap text primary key , maDongVat text , giaNhap double , soLuongNhap int , ngayNhap date , ghiChu text )";
     public static final String TAG = "HoaDonNhapDAO";
 
 

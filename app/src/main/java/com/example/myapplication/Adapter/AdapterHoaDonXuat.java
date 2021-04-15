@@ -55,10 +55,10 @@ public class AdapterHoaDonXuat extends BaseAdapter {
         if (converView == null){
             hoder = new ViewHoder();
             converView = inflater.inflate(R.layout.row_item_hoa_don_xuat,null);
-            hoder.txtMaHoaDonXuatVatNuoi = converView.findViewById(R.id.tv_ma_hoa_don_nhap_item);
+            hoder.txtMaHoaDonXuatVatNuoi = converView.findViewById(R.id.tv_ma_hoa_don_xuat_item);
             hoder.txtNgayXuat = converView.findViewById(R.id.tv_ngay_xuat_hoa_don_xuat_item);
             hoder.txtGiaXuat = converView.findViewById(R.id.tv_gia_xuat_hoa_don_xuat_item);
-            hoder.imgDelete = converView.findViewById(R.id.img_update_hoa_don_xuat_item);
+            hoder.imgDelete = converView.findViewById(R.id.img_delete_hoa_don_nhap_item);
             hoaDonXuatDAO = new HoaDonXuatDAO(context);
             HoaDonXuat hdx = lstHoaDonXuat.get(position);
             converView.setTag(hoder);
