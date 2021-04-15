@@ -16,10 +16,11 @@ import java.util.List;
 
 public class HoaDonXuatDAO {
     public static final String TABLE_NAME = "HoaDonXuat";
-    public static final String SQL_HOA_DON_XUAT = "CREATE TABLE HoaDonXuat(maHoaDonXuatVatNuoi text primary key , maDongVat text  , giaXuat double , soLuongXuat int , ngayXuat date , ghiChu text )";
+    public static final String SQL_HOA_DON_XUAT = "CREATE TABLE HoaDonXuat(maHoaDonXuatVatNuoi text primary key , maDongVat text  , giaXuat double , soLuongXuat int , ngayXuat text , ghiChu text )";
     public static final String TAG = "HoaDonXuatDAO";
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    private SQLiteDatabase db;
+
+
+    private static SQLiteDatabase db;
     private DBHelper dbHelper;
 
     public HoaDonXuatDAO(Context context) {
@@ -32,7 +33,7 @@ public class HoaDonXuatDAO {
         values.put(Name.maHoaDonXuat,hdx.getmMaHoaDonXuat());
         values.put(Name.giaXuat,hdx.getmGiaXuat());
         values.put(Name.soLuongXuat,hdx.getmSoLuongXuat());
-        values.put(Name.ngayXuat,sdf.format(hdx.getmNgayXuat()));
+        values.put(Name.ngayXuat,hdx.getmNgayXuat());
         values.put(Name.ghiChu,hdx.getmGhiChuXuat());
 
         return db.insert("HoaDonXuat",null,values);
@@ -44,7 +45,7 @@ public class HoaDonXuatDAO {
         values.put(Name.maHoaDonXuat,hdx.getmMaHoaDonXuat());
         values.put(Name.giaXuat,hdx.getmGiaXuat());
         values.put(Name.soLuongXuat,hdx.getmSoLuongXuat());
-        values.put(Name.ngayXuat,sdf.format(hdx.getmNgayXuat()));
+        values.put(Name.ngayXuat,hdx.getmNgayXuat());
         values.put(Name.ghiChu,hdx.getmGhiChuXuat());
 
         return db.update("HoaDonXuat",values,"maHoaDonXuat=?",new String[]{String.valueOf(hdx.getmMaHoaDonXuat())}) ;
@@ -67,7 +68,7 @@ public class HoaDonXuatDAO {
             obj.setmMaHoaDonXuat(c.getString(c.getColumnIndex(Name.maHoaDonXuat)));
             obj.setmGiaXuat(c.getDouble(c.getColumnIndex(Name.giaXuat)));
             obj.setmSoLuongXuat(c.getInt(c.getColumnIndex(Name.soLuongXuat)));
-            obj.setmNgayXuat(sdf.parse(c.getString(c.getColumnIndex(Name.ngayXuat))));
+            obj.setmNgayXuat(c.getString(c.getColumnIndex(Name.ngayXuat)));
             obj.setmGhiChuXuat(c.getString(c.getColumnIndex(Name.ghiChu)));
             list.add(obj);
         }

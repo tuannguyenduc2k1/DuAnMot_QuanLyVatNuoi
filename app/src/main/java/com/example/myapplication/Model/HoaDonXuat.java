@@ -7,13 +7,13 @@ public class HoaDonXuat {
     private String mMaHoaDonXuat;
     private Double mGiaXuat;
     private int mSoLuongXuat;
-    private Date mNgayXuat;
+    private String mNgayXuat;
     private String mGhiChuXuat;
 
     public HoaDonXuat() {
     }
 
-    public HoaDonXuat(String mMaDongVat, String mMaHoaDonXuat, Double mGiaXuat, int mSoLuongXuat, Date mNgayXuat, String mGhiChuXuat) {
+    public HoaDonXuat(String mMaDongVat, String mMaHoaDonXuat, Double mGiaXuat, int mSoLuongXuat, String mNgayXuat, String mGhiChuXuat) {
         this.mMaDongVat = mMaDongVat;
         this.mMaHoaDonXuat = mMaHoaDonXuat;
         this.mGiaXuat = mGiaXuat;
@@ -54,11 +54,11 @@ public class HoaDonXuat {
         this.mSoLuongXuat = mSoLuongXuat;
     }
 
-    public Date getmNgayXuat() {
+    public String getmNgayXuat() {
         return mNgayXuat;
     }
 
-    public void setmNgayXuat(Date mNgayXuat) {
+    public void setmNgayXuat(String mNgayXuat) {
         this.mNgayXuat = mNgayXuat;
     }
 
@@ -77,7 +77,7 @@ public class HoaDonXuat {
                 ", mMaHoaDonXuat='" + mMaHoaDonXuat + '\'' +
                 ", mGiaXuat=" + mGiaXuat +
                 ", mSoLuongXuat=" + mSoLuongXuat +
-                ", mNgayXuat=" + mNgayXuat +
+                ", mNgayXuat='" + mNgayXuat + '\'' +
                 ", mGhiChuXuat='" + mGhiChuXuat + '\'' +
                 '}';
     }

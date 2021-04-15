@@ -79,8 +79,7 @@ public class AdapterHoaDonXuat extends BaseAdapter {
             hoder.txtMaHoaDonXuatVatNuoi.setText(""+hdx.getmMaHoaDonXuat());
             hoder.txtNgayXuat.setText(""+hdx.getmNgayXuat());
             hoder.txtGiaXuat.setText(""+hdx.getmGiaXuat());
-
-
+            
         return converView;
     }
     public static class ViewHoder{
@@ -88,7 +87,7 @@ public class AdapterHoaDonXuat extends BaseAdapter {
         TextView txtNgayXuat;
         TextView txtGiaXuat;
         ImageView imgDelete;
-//        ImageView imgUpdate;
+//      ImageView imgUpdate;
     }
 
     @Override

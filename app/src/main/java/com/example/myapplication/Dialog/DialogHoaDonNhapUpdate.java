@@ -41,7 +41,7 @@ public class DialogHoaDonNhapUpdate extends AppCompatActivity {
 
         Intent in = getIntent();
         Bundle b = in.getExtras();
-        mhdn = b.getString("MAHOADONNHAP");
+        mhdn = b.getString("m");
         gn = b.getString("GIANHAP");
         sln = b.getString("SOLUONGNHAP");
         nn = b.getString("NGAYNHAP");

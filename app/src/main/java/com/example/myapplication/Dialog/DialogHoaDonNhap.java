@@ -43,7 +43,7 @@ public class DialogHoaDonNhap extends AppCompatActivity {
     List<DongVat> lstDongVat = new ArrayList<>();
     HoaDonNhapDAO hoaDonNhapDAO;
     DongVatDAO dongVatDAO;
-    AdapterHoaDonNhap adapterHoaDonNhap;
+//    AdapterHoaDonNhap adapterHoaDonNhap;
     ListView listView;
     Spinner spinnerMaDongVat;
     String maDongVat = "";
@@ -124,8 +124,5 @@ public class DialogHoaDonNhap extends AppCompatActivity {
         }
 
     }
-
-
-
 
 }

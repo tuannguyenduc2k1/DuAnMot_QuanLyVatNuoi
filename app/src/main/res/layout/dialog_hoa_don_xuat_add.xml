@@ -26,7 +26,7 @@
         android:text="Mã Động Vật:" />
 
     <Spinner
-        android:id="@+id/spiner_maDongVat_hoaDon_add"
+        android:id="@+id/spiner_maDongVat_hoaDonXuat_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="15dp" />
@@ -95,8 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginVertical="5dp"
-        android:hint="Ngày Xuất"
-        android:inputType="number" />
+        android:hint="Ngày Xuất" />
     </LinearLayout>
     <TextView
         android:textColor="#FF0000"
@@ -130,6 +129,7 @@
             android:id="@+id/btn_luu_hoa_don_xuat_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="btnLuuHoaDonXuat"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:text="Lưu" />

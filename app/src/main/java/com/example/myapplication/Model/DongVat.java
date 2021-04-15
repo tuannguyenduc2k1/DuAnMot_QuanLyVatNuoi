@@ -1,17 +1,17 @@
 package com.example.myapplication.Model;
 
  public class DongVat {
-     private String mLoaiDongVat;
      private String mMaDongVat;
+     private String mLoaiDongVat;
      private int mSoLuongDongVat;
      private String mGhiChu;
 
      public DongVat() {
      }
 
-     public DongVat(String mLoaiDongVat, String mMaDongVat, int mSoLuongDongVat, String mGhiChu) {
-         this.mLoaiDongVat = mLoaiDongVat;
+     public DongVat(String mMaDongVat, String mLoaiDongVat, int mSoLuongDongVat, String mGhiChu) {
          this.mMaDongVat = mMaDongVat;
+         this.mLoaiDongVat = mLoaiDongVat;
          this.mSoLuongDongVat = mSoLuongDongVat;
          this.mGhiChu = mGhiChu;
      }
