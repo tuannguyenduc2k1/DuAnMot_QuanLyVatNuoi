@@ -60,7 +60,7 @@ public class HoaDonNhapFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent intent = new Intent(getActivity(), DialogHoaDonNhapUpdate.class);
                 Bundle b = new Bundle();
-                b.putString("m",lstHoaDonNhap.get(position).getmMaDongVat());
+                b.putString("m",lstHoaDonNhap.get(position).getmMaHoaDonNhap());
                 b.putString("GIANHAP",String.valueOf( lstHoaDonNhap.get(position).getmGiaNhap()));
                 b.putString("SOLUONGNHAP", String.valueOf(lstHoaDonNhap.get(position).getmSoLuongNhap()));
                 b.putString("NGAYNHAP",lstHoaDonNhap.get(position).getmNgayNhap());

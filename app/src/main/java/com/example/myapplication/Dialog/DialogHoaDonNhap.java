@@ -68,6 +68,7 @@ public class DialogHoaDonNhap extends AppCompatActivity {
         listView = findViewById(R.id.lv_hoa_don_nhap);
 
 
+
         //su kien chon Spinner
         spinnerMaDongVat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -80,6 +81,7 @@ public class DialogHoaDonNhap extends AppCompatActivity {
 
             }
         });
+
 
         //su kien chon ngay
         edtNgayNhap.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +113,7 @@ public class DialogHoaDonNhap extends AppCompatActivity {
 
     public void btnLuuHoaDonNhap(View view) {
             hoaDonNhapDAO = new HoaDonNhapDAO(DialogHoaDonNhap.this);//
-            HoaDonNhap hoaDonNhap = new HoaDonNhap(edtMaHoaDonNhap.getText().toString(),maDongVat,Double.parseDouble(edtGiaNhap.getText().toString()),Integer.parseInt(edtSoLuong.getText().toString()), edtNgayNhap.getText().toString(),edtGhiChu.getText().toString());
+            HoaDonNhap hoaDonNhap = new HoaDonNhap(maDongVat,edtMaHoaDonNhap.getText().toString(),Double.parseDouble(edtGiaNhap.getText().toString()),Integer.parseInt(edtSoLuong.getText().toString()), edtNgayNhap.getText().toString(),edtGhiChu.getText().toString());
             try{
                 if(hoaDonNhapDAO.insertHoaDonNhap(hoaDonNhap) > 0 ){
                         onBackPressed();

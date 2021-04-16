@@ -55,7 +55,6 @@ public class DongVatDAO {
     public long update(String dongVat, String ma ,  String ghiChu) {
         ContentValues values = new ContentValues();
         values.put("maDongVat", ma);
-        //values.put("soLuong", soLuong);
         values.put("ghiChu", ghiChu);
         int result = db.update(TABLE_NAME, values, "maDongVat=?", new String[]{dongVat});
         if (result == 0) {
@@ -101,7 +100,6 @@ public class DongVatDAO {
             DongVat dv = new DongVat();
             dv.setmMaDongVat(c.getString(c.getColumnIndex(Name.maDongVat)));
             dv.setmLoaiDongVat(c.getString(c.getColumnIndex(Name.loaiDongVat)));
-            //dv.setmSoLuongDongVat(c.getInt(c.getColumnIndex(Name.soLuongDongVat)));
             dv.setmGhiChu(c.getString(c.getColumnIndex(Name.ghiChuDongVat)));
             list.add(dv);
         }
@@ -116,7 +114,6 @@ public class DongVatDAO {
             DongVat dv = new DongVat();
             dv.setmMaDongVat(c.getString(0));
             dv.setmLoaiDongVat(c.getString(1));
-            //dv.setmSoLuongDongVat(c.getInt(2));
             dv.setmGhiChu(c.getString(2));
             lsdongvay.add(dv);
             Log.d("//=====", dv.toString());
@@ -129,7 +126,6 @@ public class DongVatDAO {
     private static class Name{
         public static String maDongVat = "maDongVat";
         public static String loaiDongVat = "loaiDongVat";
-       // public static String soLuongDongVat = "soLuong";
         public static String ghiChuDongVat = "ghiChu";
 
 

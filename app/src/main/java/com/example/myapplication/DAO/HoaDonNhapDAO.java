@@ -40,16 +40,18 @@ public long insertHoaDonNhap(HoaDonNhap hdn){
     return db.insert("HoaDonNhap",null,values);
 }
     //update
-    public int update(HoaDonNhap hdn){
+    public long update(String hoaDonNhap,String maHDN,String giaNhap,String sln,String ngayNhap,String ghiChu){
         ContentValues values = new ContentValues();
-        values.put(Name.maDongVat,hdn.getmMaDongVat());
-        values.put(Name.maHoaDonNhap,hdn.getmMaHoaDonNhap());
-        values.put(Name.giaNhap,hdn.getmGiaNhap());
-        values.put(Name.soLuongNhap,hdn.getmSoLuongNhap());
-        values.put(Name.ngayNhap,hdn.getmNgayNhap());
-        values.put(Name.ghiChu,hdn.getmGhiChuNhap());
-
-        return db.update("HoaDonNhap",values,"maHoaDonNhap=?",new String[]{String.valueOf(hdn.getmMaHoaDonNhap())}) ;
+        values.put(Name.maHoaDonNhap,maHDN);
+        values.put(Name.giaNhap,giaNhap);
+        values.put(Name.soLuongNhap,sln);
+        values.put(Name.ngayNhap,ngayNhap);
+        values.put(Name.ghiChu,ghiChu);
+        int result =  db.update("HoaDonNhap",values,"maHoaDonNhap=?",new String[]{hoaDonNhap}) ;
+        if (result == 0) {
+            return -1;
+        }
+        return 1;
     }
 
     public long delete(String id) {

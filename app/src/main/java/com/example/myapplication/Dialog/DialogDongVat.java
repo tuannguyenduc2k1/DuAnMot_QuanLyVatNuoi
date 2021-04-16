@@ -59,14 +59,14 @@ public class DialogDongVat extends AppCompatActivity {
 
                  }
             });
-            Intent in = getIntent();//load data into form
-            Bundle b = in.getExtras();
-            if (b != null) {
-                madongvat.setText(b.getString("MADONGVAT"));
-                ghichu.setText(b.getString("GHICHU"));
-                String loaidongvat = b.getString("LOAIDONGVAT");
-                spnloaidongvat.setSelection(checkPositionTheLoai(loaidongvat));
-        }
+//            Intent in = getIntent();//load data into form
+//            Bundle b = in.getExtras();
+//            if (b != null) {
+//                madongvat.setText(b.getString("MADONGVAT"));
+//                ghichu.setText(b.getString("GHICHU"));
+//                String loaidongvat = b.getString("LOAIDONGVAT");
+//                spnloaidongvat.setSelection(checkPositionTheLoai(loaidongvat));
+//        }
 
         luu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,14 +123,14 @@ public class DialogDongVat extends AppCompatActivity {
         spnloaidongvat.setAdapter(dataAdapter);
 
     }
-    public int checkPositionTheLoai(String loaiDongVat) {
-        for (int i = 0; i < listdongVat.size(); i++) {
-            if (loaiDongVat.equals(listdongVat.get(i).getmLoaiDongVat())) {
-                return i;
-            }
-        }
-        return 0;
-    }
+//    public int checkPositionTheLoai(String loaiDongVat) {
+//        for (int i = 0; i < listdongVat.size(); i++) {
+//            if (loaiDongVat.equals(listdongVat.get(i).getmLoaiDongVat())) {
+//                return i;
+//            }
+//        }
+//        return 0;
+//    }
 
     public void showBook(View view) {
         finish();

@@ -35,6 +35,7 @@ public class AdapterHoaDonNhap extends BaseAdapter {
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.lstHoaDonNhap = lstHoaDonNhap;
         this.lstGetHoaDonNhap = lstHoaDonNhap;
+
         hoaDonNhapDAO = new HoaDonNhapDAO(context);
     }
 
@@ -61,7 +62,9 @@ public class AdapterHoaDonNhap extends BaseAdapter {
             converView = inflater.inflate(R.layout.row_item_hoa_don_nhap,null);
             hoder.txtMaHoaDonNhapVatNuoi = converView.findViewById(R.id.tv_ma_hoa_don_nhap_item);
             hoder.txtNgayNhap = converView.findViewById(R.id.tv_ngay_nhap_hoa_don_nhap_item);
-            hoder.txtGiaNhap = converView.findViewById(R.id.tv_gia_nhap_hoa_don_nhap_item);
+            //hoder.txtGiaNhap = converView.findViewById(R.id.tv_gia_nhap_hoa_don_nhap_item);
+            hoder.txtMaDongVat = converView.findViewById(R.id.tv_ma_dong_vat_nhap_item);
+            hoder.txtTongGiaNhap = converView.findViewById(R.id.tv_tong_gia_hoa_don_nhap_item);
             hoder.imgDelete = converView.findViewById(R.id.img_delete_hoa_don_nhap_item);
             hoaDonNhapDAO = new HoaDonNhapDAO(context);
             HoaDonNhap hdn = lstHoaDonNhap.get(position);
@@ -80,9 +83,11 @@ public class AdapterHoaDonNhap extends BaseAdapter {
             hoder = (ViewHoder) converView.getTag();
             HoaDonNhap hdn = lstHoaDonNhap.get(position);
             converView.setTag(hoder);
-            hoder.txtMaHoaDonNhapVatNuoi.setText(""+hdn.getmMaDongVat());
+            hoder.txtMaHoaDonNhapVatNuoi.setText("Mã Hóa Đơn Nhập : "+hdn.getmMaHoaDonNhap());
+            hoder.txtMaDongVat.setText(""+hdn.getmMaDongVat());
+            hoder.txtTongGiaNhap.setText(""+hdn.getmSoLuongNhap() * hdn.getmGiaNhap()+"vnd");
             hoder.txtNgayNhap.setText(""+hdn.getmNgayNhap());
-            hoder.txtGiaNhap.setText(""+hdn.getmGiaNhap());
+            //hoder.txtGiaNhap.setText(""+hdn.getmGiaNhap());
 
 
         return converView;
@@ -90,7 +95,9 @@ public class AdapterHoaDonNhap extends BaseAdapter {
     public static class ViewHoder{
         TextView txtMaHoaDonNhapVatNuoi;
         TextView txtNgayNhap;
-        TextView txtGiaNhap;
+        TextView txtMaDongVat;
+        TextView txtTongGiaNhap;
+        //TextView txtGiaNhap;
         ImageView imgDelete;
 //        ImageView imgUpdate;
     }

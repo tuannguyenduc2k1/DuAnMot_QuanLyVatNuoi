@@ -59,7 +59,18 @@ public class DialogHoaDonNhapUpdate extends AppCompatActivity {
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+// if(dongVatDAO.update(mdv,madongvat.getText().toString(),ghichu.getText().toString())>0){
+//                    Toast.makeText(getApplicationContext(), "Update thành công", Toast.LENGTH_SHORT).show();
+//                    onBackPressed();
+//                }else{
+//                    Toast.makeText(getApplicationContext(), "Update thất bại ", Toast.LENGTH_SHORT).show();
+//                }
+                if(hoaDonNhapDAO.update(mhdn,edtMaHoaDonNhap.getText().toString(),edtGiaNhap.getText().toString(),edtSoLuongNhap.getText().toString(),edtNgayNhap.getText().toString(),edtGhiChu.getText().toString())>0){
+                    Toast.makeText(getApplicationContext(), "Update thành công", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Update thất bại ", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         edtNgayNhap.setOnClickListener(new View.OnClickListener() {

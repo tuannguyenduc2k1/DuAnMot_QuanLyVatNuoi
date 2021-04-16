@@ -55,10 +55,11 @@ public class AdapterHoaDonXuat extends BaseAdapter {
         if (converView == null){
             hoder = new ViewHoder();
             converView = inflater.inflate(R.layout.row_item_hoa_don_xuat,null);
-            hoder.txtMaHoaDonXuatVatNuoi = converView.findViewById(R.id.tv_ma_hoa_don_xuat_item);
-            hoder.txtNgayXuat = converView.findViewById(R.id.tv_ngay_xuat_hoa_don_xuat_item);
-            hoder.txtGiaXuat = converView.findViewById(R.id.tv_gia_xuat_hoa_don_xuat_item);
-            hoder.imgDelete = converView.findViewById(R.id.img_delete_hoa_don_nhap_item);
+            hoder.txtMaHoaDonXuatVatNuoi = converView.findViewById(R.id.tv_ma_hoa_don_xuat_update_item);
+            hoder.txtMaHoaDongVat = converView.findViewById(R.id.tv_ma_dong_vat_xuat_item);
+            hoder.txtNgayXuat = converView.findViewById(R.id.tv_ngay_nhap_hoa_don_xuat_item);
+            hoder.txtTongGiaXuat = converView.findViewById(R.id.tv_tong_gia_hoa_don_xuat_item);
+            hoder.imgDelete = converView.findViewById(R.id.img_delete_hoa_don_xuat_item);
             hoaDonXuatDAO = new HoaDonXuatDAO(context);
             HoaDonXuat hdx = lstHoaDonXuat.get(position);
             converView.setTag(hoder);
@@ -76,16 +77,18 @@ public class AdapterHoaDonXuat extends BaseAdapter {
             hoder = (ViewHoder) converView.getTag();
             HoaDonXuat hdx = lstHoaDonXuat.get(position);
             converView.setTag(hoder);
-            hoder.txtMaHoaDonXuatVatNuoi.setText(""+hdx.getmMaHoaDonXuat());
+            hoder.txtMaHoaDonXuatVatNuoi.setText("Mã Hóa Đơn Xuất : "+hdx.getmMaDongVat());
+            hoder.txtMaHoaDongVat.setText(""+hdx.getmMaHoaDonXuat());
             hoder.txtNgayXuat.setText(""+hdx.getmNgayXuat());
-            hoder.txtGiaXuat.setText(""+hdx.getmGiaXuat());
-            
+            hoder.txtTongGiaXuat.setText(""+hdx.getmSoLuongXuat()* hdx.getmGiaXuat()+"vnd");
+
         return converView;
     }
     public static class ViewHoder{
         TextView txtMaHoaDonXuatVatNuoi;
+        TextView txtMaHoaDongVat;
         TextView txtNgayXuat;
-        TextView txtGiaXuat;
+        TextView txtTongGiaXuat;
         ImageView imgDelete;
 
     }

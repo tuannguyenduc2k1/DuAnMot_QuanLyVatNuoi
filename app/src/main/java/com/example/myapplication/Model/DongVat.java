@@ -49,6 +49,6 @@ package com.example.myapplication.Model;
 
      @Override
      public String toString() {
-         return ""+getmLoaiDongVat();
+         return ""+getmMaDongVat();
      }
  }

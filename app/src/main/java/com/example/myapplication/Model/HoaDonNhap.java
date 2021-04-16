@@ -73,8 +73,8 @@ public class HoaDonNhap {
     @Override
     public String toString() {
         return "HoaDonNhap{" +
-                "mMaDongVat='" + mMaDongVat + '\'' +
-                ", mMaHoaDonNhap='" + mMaHoaDonNhap + '\'' +
+                "mMaDongVat='" + getmMaDongVat() + '\'' +
+                ", mMaHoaDonNhap='" + getmMaHoaDonNhap() + '\'' +
                 ", mGiaNhap=" + mGiaNhap +
                 ", mSoLuongNhap=" + mSoLuongNhap +
                 ", mNgayNhap='" + mNgayNhap + '\'' +
