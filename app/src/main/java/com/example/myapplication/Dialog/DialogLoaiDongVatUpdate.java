@@ -54,7 +54,9 @@ public class DialogLoaiDongVatUpdate extends AppCompatActivity {
 
     public void updateDongVat(View view)  {
         if(loaiDongVatDAO.updateInforLoaiDongVat(ldv,edtLoaiDongVatUpdate.getText().toString())>0){
-            Toast.makeText(getApplicationContext(), "Update thanh cong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Update thành công", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(), "Update thất bại ", Toast.LENGTH_SHORT).show();
         }
 
     }

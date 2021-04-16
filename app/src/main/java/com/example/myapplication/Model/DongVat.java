@@ -3,16 +3,15 @@ package com.example.myapplication.Model;
  public class DongVat {
      private String mMaDongVat;
      private String mLoaiDongVat;
-     private int mSoLuongDongVat;
+     //private int mSoLuongDongVat;
      private String mGhiChu;
 
      public DongVat() {
      }
 
-     public DongVat(String mMaDongVat, String mLoaiDongVat, int mSoLuongDongVat, String mGhiChu) {
+     public DongVat(String mMaDongVat, String mLoaiDongVat, String mGhiChu) {
          this.mMaDongVat = mMaDongVat;
          this.mLoaiDongVat = mLoaiDongVat;
-         this.mSoLuongDongVat = mSoLuongDongVat;
          this.mGhiChu = mGhiChu;
      }
 
@@ -32,13 +31,13 @@ package com.example.myapplication.Model;
          this.mMaDongVat = mMaDongVat;
      }
 
-     public int getmSoLuongDongVat() {
-         return mSoLuongDongVat;
-     }
-
-     public void setmSoLuongDongVat(int mSoLuongDongVat) {
-         this.mSoLuongDongVat = mSoLuongDongVat;
-     }
+//     public int getmSoLuongDongVat() {
+//         return mSoLuongDongVat;
+//     }
+//
+//     public void setmSoLuongDongVat(int mSoLuongDongVat) {
+//         this.mSoLuongDongVat = mSoLuongDongVat;
+//     }
 
      public String getmGhiChu() {
          return mGhiChu;

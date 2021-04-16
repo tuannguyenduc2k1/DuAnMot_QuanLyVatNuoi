@@ -40,20 +40,23 @@ public class DialogLoaiDongVat extends AppCompatActivity {
         btn_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loaiDongVatDAO = new LoaiDongVatDAO(DialogLoaiDongVat.this);
-                LoaiDongVat ldv = new LoaiDongVat(edt_ldv.getText().toString());
-                try{
-                    if(loaiDongVatDAO.insertLoaiDongVat(ldv) > 0 ){
-                        onBackPressed();
-                        Toast.makeText(DialogLoaiDongVat.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(DialogLoaiDongVat.this, "Them That Bai", Toast.LENGTH_SHORT).show();
+
+                    loaiDongVatDAO = new LoaiDongVatDAO(DialogLoaiDongVat.this);
+                    LoaiDongVat ldv = new LoaiDongVat(edt_ldv.getText().toString());
+                    try {
+                        if (loaiDongVatDAO.insertLoaiDongVat(ldv) > 0) {
+                            onBackPressed();
+                            Toast.makeText(DialogLoaiDongVat.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(DialogLoaiDongVat.this, "Them That Bai", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (Exception ex) {
+                        Log.e("Lỗi:", ex.toString());
                     }
-                }catch (Exception ex){
-                    Log.e("Lỗi:", ex.toString());
-                }
 
             }
+
+
         });
     }
 

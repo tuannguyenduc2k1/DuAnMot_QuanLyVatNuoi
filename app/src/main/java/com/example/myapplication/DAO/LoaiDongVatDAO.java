@@ -51,7 +51,6 @@ public class LoaiDongVatDAO {
             return -1;
         }
         return 1;
-
     }
     //delete
     public long delete(String ldv){

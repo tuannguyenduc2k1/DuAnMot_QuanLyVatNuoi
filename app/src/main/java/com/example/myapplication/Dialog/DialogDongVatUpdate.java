@@ -22,6 +22,7 @@ import java.util.List;
 public class DialogDongVatUpdate extends AppCompatActivity {
     private List<LoaiDongVat> listdongVat = new ArrayList<>();
     private String mMadongvat = "";
+
     private EditText madongvat, soluong,ghichu;
     private Spinner spnloaidongvat;
     private Button huy,luu;
@@ -38,44 +39,24 @@ public class DialogDongVatUpdate extends AppCompatActivity {
         Intent in = getIntent();
         Bundle b = in.getExtras();
         //ldv = b.getString("LOAIDONGVAT");
-        mdv = b.getString("LOAIDONGVAT");
-        sl = b.getString("SOLUONG");
+        mdv = b.getString("MADONGVAT");
         gc = b.getString("GHICHU");
         in.putExtras(b);
         madongvat.setText(mdv);
-        soluong.setText(sl);
         ghichu.setText(gc);
 
 
         luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    if (dongVatDAO.update(mldv, madongvat.getText().toString(),Integer.parseInt(soluong.getText().toString()),ghichu.getText().toString())  > 0) {
-                        Toast.makeText(getApplicationContext(), "Lưu thành công", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Lưu thất bại",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                } catch (Exception ex) {
-                    String s = soluong.getText().toString();
-                    if (madongvat.getText().length() == 0 || ghichu.getText().length() == 0
-                    ) {
-                        Toast.makeText(getApplicationContext(), "Bạn chưa nhập đầy đủ thông tin ", Toast.LENGTH_SHORT).show();
-                    }
-                    try {
-                        Integer.parseInt(s);
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "Kiểm tra định dạng giá bán và số lượng ", Toast.LENGTH_SHORT).show();
-                    }
-                }
+
             }
         });
 
     }
     private void unit() {
         madongvat = findViewById(R.id.ed_nhap_maDongVat_dongVat__update);
-        soluong = findViewById(R.id.ed_nhap_so_luong_dongVat_update);
+        //soluong = findViewById(R.id.ed_nhap_so_luong_dongVat_update);
         ghichu = findViewById(R.id.ed_nhap_ghi_chu_dongVat_update);
         huy = findViewById(R.id.btn_huy_dong_vat_add);
         luu = findViewById(R.id.btn_luu_dong_vat_update);

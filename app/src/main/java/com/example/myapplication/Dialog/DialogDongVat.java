@@ -59,22 +59,21 @@ public class DialogDongVat extends AppCompatActivity {
 
                  }
             });
-//            Intent in = getIntent();//load data into form
-//            Bundle b = in.getExtras();
-//            if (b != null) {
-//                madongvat.setText(b.getString("MADONGVAT"));
-//                soluong.setText(b.getString("SOLUONG"));
-//                ghichu.setText(b.getString("GHICHU"));
-//                String loaidongvat = b.getString("LOAIDONGVAT");
-//                spnloaidongvat.setSelection(checkPositionTheLoai(loaidongvat));
-//        }
+            Intent in = getIntent();//load data into form
+            Bundle b = in.getExtras();
+            if (b != null) {
+                madongvat.setText(b.getString("MADONGVAT"));
+                ghichu.setText(b.getString("GHICHU"));
+                String loaidongvat = b.getString("LOAIDONGVAT");
+                spnloaidongvat.setSelection(checkPositionTheLoai(loaidongvat));
+        }
 
         luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                 dongVatDAO = new DongVatDAO(DialogDongVat.this);
-                DongVat dongVat = new DongVat(mMadongvat,madongvat.getText().toString(),Integer.parseInt(soluong.getText().toString()),ghichu.getText().toString());
+                DongVat dongVat = new DongVat(madongvat.getText().toString(),mMadongvat,ghichu.getText().toString());
                 if (dongVatDAO.insertDongVat(dongVat) > 0) {
                     onBackPressed();
                     Toast.makeText(getApplicationContext(), "Thêm thành công",
@@ -84,12 +83,11 @@ public class DialogDongVat extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
                 } catch (Exception ex) {
-                    String s = soluong.getText().toString();
                     if (madongvat.getText().length() == 0 || ghichu.getText().length() == 0) {
                         Toast.makeText(getApplicationContext(), "Bạn chưa nhập đầy đủ thông tin ", Toast.LENGTH_SHORT).show();
                     }
                     try {
-                        Integer.parseInt(s);
+
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "Kiểm tra định dạng số lượng ", Toast.LENGTH_SHORT).show();
                     }
@@ -102,7 +100,7 @@ public class DialogDongVat extends AppCompatActivity {
 
     private void unit() {
         madongvat = findViewById(R.id.ed_nhap_maDongVat_dongVat__add);
-        soluong = findViewById(R.id.ed_nhap_so_luong_dongVat_add);
+        //soluong = findViewById(R.id.ed_nhap_so_luong_dongVat_add);
         ghichu = findViewById(R.id.ed_nhap_ghi_chu_dongVat_add);
         spnloaidongvat = findViewById(R.id.spiner_loaiDongVat_dongVat_add);
         huy = findViewById(R.id.btn_huy_dong_vat_add);

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class DongVatDAO {
     public static final String TABLE_NAME = "DongVat";
-    public static final String SQL_DONG_VAT = "CREATE TABLE DongVat(maDongVat text primary key , loaiDongVat text , soLuong int , ghiChu text )";
+    public static final String SQL_DONG_VAT = "CREATE TABLE DongVat(maDongVat text primary key , loaiDongVat text , ghiChu text )";
     public static final String TAG = "DongVatDAO";
 
 
@@ -32,10 +32,10 @@ public class DongVatDAO {
         ContentValues values = new ContentValues();
         values.put(Name.maDongVat,dv.getmMaDongVat());
         values.put(Name.loaiDongVat,dv.getmLoaiDongVat());
-        values.put(Name.soLuongDongVat,dv.getmSoLuongDongVat());
+        //values.put(Name.soLuongDongVat,dv.getmSoLuongDongVat());
         values.put(Name.ghiChuDongVat,dv.getmGhiChu());
         if (checkPrimaryKey(dv.getmMaDongVat())) {
-            int result = db.update(TABLE_NAME, values, "DongVat=?", new
+            int result = db.update(TABLE_NAME, values, "maDongVat=?", new
                     String[]{dv.getmMaDongVat()});
             if (result == 0) {
                 return -1;
@@ -52,14 +52,12 @@ public class DongVatDAO {
         return 1;
     }
     //update
-    public int update(String maSach, String a , int f, String d) {
+    public long update(String dongVat, String ma ,  String ghiChu) {
         ContentValues values = new ContentValues();
-        values.put("maDongVat", a);
-        values.put("soLuong", f);
-        values.put("ghiChu", d);
-
-        int result = db.update(TABLE_NAME, values, "maDongVat=?", new
-                String[]{maSach});
+        values.put("maDongVat", ma);
+        //values.put("soLuong", soLuong);
+        values.put("ghiChu", ghiChu);
+        int result = db.update(TABLE_NAME, values, "maDongVat=?", new String[]{dongVat});
         if (result == 0) {
             return -1;
         }
@@ -68,7 +66,7 @@ public class DongVatDAO {
 
     //delete
     public int delete(String dv){
-        return db.delete(TABLE_NAME,"loaiDongVat=?",new String[]{dv});
+        return db.delete(TABLE_NAME,"maDongVat=?",new String[]{dv});
     }
     //get all
     public List<DongVat> getAll() throws ParseException {
@@ -103,7 +101,7 @@ public class DongVatDAO {
             DongVat dv = new DongVat();
             dv.setmMaDongVat(c.getString(c.getColumnIndex(Name.maDongVat)));
             dv.setmLoaiDongVat(c.getString(c.getColumnIndex(Name.loaiDongVat)));
-            dv.setmSoLuongDongVat(c.getInt(c.getColumnIndex(Name.soLuongDongVat)));
+            //dv.setmSoLuongDongVat(c.getInt(c.getColumnIndex(Name.soLuongDongVat)));
             dv.setmGhiChu(c.getString(c.getColumnIndex(Name.ghiChuDongVat)));
             list.add(dv);
         }
@@ -116,10 +114,10 @@ public class DongVatDAO {
         c.moveToFirst();
         while (c.isAfterLast() == false) {
             DongVat dv = new DongVat();
-            dv.setmLoaiDongVat(c.getString(0));
-            dv.setmMaDongVat(c.getString(1));
-            dv.setmSoLuongDongVat(c.getInt(2));
-            dv.setmGhiChu(c.getString(3));
+            dv.setmMaDongVat(c.getString(0));
+            dv.setmLoaiDongVat(c.getString(1));
+            //dv.setmSoLuongDongVat(c.getInt(2));
+            dv.setmGhiChu(c.getString(2));
             lsdongvay.add(dv);
             Log.d("//=====", dv.toString());
             c.moveToNext();
@@ -131,7 +129,7 @@ public class DongVatDAO {
     private static class Name{
         public static String maDongVat = "maDongVat";
         public static String loaiDongVat = "loaiDongVat";
-        public static String soLuongDongVat = "soLuong";
+       // public static String soLuongDongVat = "soLuong";
         public static String ghiChuDongVat = "ghiChu";
 
 

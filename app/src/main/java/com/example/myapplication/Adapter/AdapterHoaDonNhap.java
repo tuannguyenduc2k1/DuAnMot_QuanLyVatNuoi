@@ -80,7 +80,7 @@ public class AdapterHoaDonNhap extends BaseAdapter {
             hoder = (ViewHoder) converView.getTag();
             HoaDonNhap hdn = lstHoaDonNhap.get(position);
             converView.setTag(hoder);
-            hoder.txtMaHoaDonNhapVatNuoi.setText(""+hdn.getmMaHoaDonNhap());
+            hoder.txtMaHoaDonNhapVatNuoi.setText(""+hdn.getmMaDongVat());
             hoder.txtNgayNhap.setText(""+hdn.getmNgayNhap());
             hoder.txtGiaNhap.setText(""+hdn.getmGiaNhap());
 

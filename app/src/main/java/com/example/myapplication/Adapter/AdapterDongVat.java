@@ -61,7 +61,7 @@ public class AdapterDongVat extends  BaseAdapter {
             convertView = inflater.inflate(R.layout.row_item_dong_vat,null);
             hoder.DongVat = convertView.findViewById(R.id.dv_loaidongvat);
             hoder.maDongVat = convertView.findViewById(R.id.dv_madongvat);
-            hoder.soLuong = convertView.findViewById(R.id.dv_soluong);
+            //hoder.soLuong = convertView.findViewById(R.id.dv_soluong);
             hoder.ghiChu = convertView.findViewById(R.id.dv_ghichu);
             hoder.update = convertView.findViewById(R.id.dv_sua);
             hoder.imgDelete = convertView.findViewById(R.id.dv_xoa);
@@ -80,9 +80,9 @@ public class AdapterDongVat extends  BaseAdapter {
             hoder = (ViewHoder) convertView.getTag();
             DongVat dongVat = getSortSach.get(position);
             convertView.setTag(hoder);
-            hoder.maDongVat.setText("Con : "+dongVat.getmMaDongVat());
-            hoder.DongVat.setText(dongVat.getmLoaiDongVat());
-            hoder.soLuong.setText(""+dongVat.getmSoLuongDongVat());
+            hoder.maDongVat.setText("Con : "+dongVat.getmLoaiDongVat());
+            hoder.DongVat.setText(dongVat.getmMaDongVat());
+            //hoder.soLuong.setText(""+dongVat.getmSoLuongDongVat());
             hoder.ghiChu.setText(dongVat.getmGhiChu());
             return convertView;
 
@@ -110,7 +110,7 @@ public class AdapterDongVat extends  BaseAdapter {
     public static class ViewHoder{
         TextView DongVat;
         TextView maDongVat;
-         TextView soLuong;
+         //TextView soLuong;
         TextView ghiChu;
         ImageView imgDelete;
         ImageView update;

@@ -71,24 +71,24 @@
                         android:textSize="17dp"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16px"
-                    android:background="#ffffff"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:textSize="17dp"
-                        android:text="Số lượng:"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/dv_soluong"
-                        android:layout_width="wrap_content"
-                        android:textSize="17dp"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:padding="16px"-->
+<!--                    android:background="#ffffff"-->
+<!--                    >-->
+<!--&lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textSize="17dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="Số lượng:"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/dv_soluong"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textSize="17dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"/>&ndash;&gt;-->
+<!--                </LinearLayout>-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
