@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,7 +54,12 @@ public class DialogHoaDonXuatUpdate extends AppCompatActivity {
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(hoaDonXuatDAO.update(mhdx,edtMaHoaDonXuat.getText().toString(),edtGiaXuat.getText().toString(),edtSoLuongXuat.getText().toString(),edtNgayXuat.getText().toString(),edtGhiChu.getText().toString())>0){
+                    Toast.makeText(getApplicationContext(), "Update thành công", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Update thất bại ", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         edtNgayXuat.setOnClickListener(new View.OnClickListener() {

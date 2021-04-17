@@ -39,16 +39,20 @@ public class HoaDonXuatDAO {
         return db.insert("HoaDonXuat",null,values);
     }
     //update
-    public int update(HoaDonXuat hdx){
+    public int update(String hoaDonXuat,String maHDX,String giaXuat,String slx,String ngayXuat,String ghiChu){
         ContentValues values = new ContentValues();
-        values.put(Name.maDongVat,hdx.getmMaDongVat());
-        values.put(Name.maHoaDonXuat,hdx.getmMaHoaDonXuat());
-        values.put(Name.giaXuat,hdx.getmGiaXuat());
-        values.put(Name.soLuongXuat,hdx.getmSoLuongXuat());
-        values.put(Name.ngayXuat,hdx.getmNgayXuat());
-        values.put(Name.ghiChu,hdx.getmGhiChuXuat());
+        values.put(Name.maDongVat,hoaDonXuat);
+        values.put(Name.maHoaDonXuat,maHDX);
+        values.put(Name.giaXuat,giaXuat);
+        values.put(Name.soLuongXuat,slx);
+        values.put(Name.ngayXuat,ngayXuat);
+        values.put(Name.ghiChu,ghiChu);
 
-        return db.update("HoaDonXuat",values,"maHoaDonXuat=?",new String[]{String.valueOf(hdx.getmMaHoaDonXuat())}) ;
+        int result = db.update("HoaDonXuat",values,"maHoaDonXuat=?",new String[]{hoaDonXuat}) ;
+        if (result == 0) {
+            return -1;
+        }
+        return 1;
     }
 
     public int delete(String id) {
