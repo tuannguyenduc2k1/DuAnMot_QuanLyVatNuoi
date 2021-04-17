@@ -93,6 +93,7 @@ public class DongVatDAO {
             return false;
         }
     }
+
     private List<DongVat> getData(String sql,String... selectionArgs) throws ParseException{
         List<DongVat> list = new ArrayList<>();
         Cursor c = db.rawQuery(sql,selectionArgs);

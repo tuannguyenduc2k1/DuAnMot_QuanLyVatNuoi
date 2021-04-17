@@ -92,50 +92,11 @@ public class Login extends AppCompatActivity {
                         }
                     });
                 }
+
             }
+
         });
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ProgressDialog pd = new ProgressDialog(Login.this);
-//                pd.setMessage("Đang Load");
-//                pd.show();
-//                String edt_tendangnhap = tendangnhap.getText().toString();
-//                String edt_matkhau = matkhau.getText().toString();
-//                if (TextUtils.isEmpty(edt_tendangnhap) || TextUtils.isEmpty(edt_matkhau)){
-//                    pd.dismiss();
-//                    Toast.makeText(Login.this, "Không được để trống", Toast.LENGTH_SHORT).show();
-//                } else {
-//
-//                    firebaseAuth.signInWithEmailAndPassword(edt_tendangnhap,edt_matkhau)
-//                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<AuthResult> task) {
-//                                    if (task.isSuccessful()) {
-//                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseAuth.getCurrentUser().getUid());
-//                                reference.addValueEventListener(new ValueEventListener() {
-//                                    @Override
-//                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                        pd.dismiss();
-//                                        Intent intent = new Intent(Login.this,MainActivity.class);
-//                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                                        startActivity(intent);
-//                                        finish();
-//                                    }
-//                                    @Override
-//                                    public void onCancelled(@NonNull DatabaseError error) {
-//                                        pd.dismiss();
-//                                    }
-//                                });
-//                            } else {
-//                                pd.dismiss();
-//                                Toast.makeText(Login.this, "Đang nhập thất bại", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    });
-//                }
-//            }
-//        });
+
         txt_dang_ki.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

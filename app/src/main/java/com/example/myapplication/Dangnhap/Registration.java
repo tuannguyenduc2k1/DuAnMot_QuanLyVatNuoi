@@ -40,6 +40,8 @@ public class Registration extends AppCompatActivity {
     EditText Sodienthoai;
     EditText MatKhau;
     EditText Hovaten;
+    EditText diachi;
+    EditText tennongtrai;
     ProgressBar progressBar;
     private FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
@@ -77,11 +79,17 @@ public class Registration extends AppCompatActivity {
                 String str_tendangnhap = Tendangnhap.getText().toString();
                 String str_matKhau = MatKhau.getText().toString();
                 String str_sodienthoai = Sodienthoai.getText().toString();
+                String str_diachi = diachi.getText().toString();
+                String str_tennongtrai = tennongtrai.getText().toString();
 
-                if (TextUtils.isEmpty(str_tendangnhap) || TextUtils.isEmpty(str_matKhau) || TextUtils.isEmpty(str_hovaten) || TextUtils.isEmpty(str_sodienthoai) ){
+
+                if (TextUtils.isEmpty(str_tendangnhap) || TextUtils.isEmpty(str_matKhau)|| TextUtils.isEmpty(str_diachi) || TextUtils.isEmpty(str_tennongtrai) || TextUtils.isEmpty(str_hovaten) || TextUtils.isEmpty(str_sodienthoai) )
+                {
+                    pd.dismiss();
                     Toast.makeText(Registration.this, "Không được để trống",Toast.LENGTH_LONG).show();
                     return;
                 } else if(str_matKhau.length()<6){
+                    pd.dismiss();
                     Toast.makeText(Registration.this, "Mật khẩu không được để dưới 6 kí tự ",Toast.LENGTH_LONG).show();
                     return;
                 }else {
@@ -92,12 +100,13 @@ public class Registration extends AppCompatActivity {
                                 userID = mAuth.getCurrentUser().getUid();
                                 DocumentReference documentReference = firebaseFirestore.collection("Users").document(userID);
                                 Map<String,Object> user = new HashMap<>();
+                                user.put("Bio","");
                                 user.put("Hovaten",str_hovaten);
                                 user.put("Tendangnhap",str_tendangnhap);
                                 user.put("Matkhau",str_matKhau);
                                 user.put("Sodienthoai",str_sodienthoai);
-                                user.put("imageURL","https://firebasestorage.googleapis.com/v0/b/quan-ly-vat-nuoi.appspot.com/o/profile.png?alt=media&token=e273536a-c547-48c8-985e-5711fae1e134");
-
+                                user.put("Diachi",str_diachi);
+                                user.put("TenFarm",str_tennongtrai);
                                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
@@ -142,8 +151,10 @@ public class Registration extends AppCompatActivity {
     private void unit() {
         BtnRegistration = findViewById(R.id.btn_dangKi);
         Tendangnhap = findViewById(R.id.edt_dkemail);
-        MatKhau = findViewById(R.id.ext_dkmatkhau);
+        MatKhau = findViewById(R.id.ext_matkhau);
         Hovaten =  findViewById(R.id.ext_user_name);
         Sodienthoai = findViewById(R.id.ext_sodienthaoi);
+        diachi = findViewById(R.id.ext_diachi);
+        tennongtrai = findViewById(R.id.ext_namefarm);
     }
 }

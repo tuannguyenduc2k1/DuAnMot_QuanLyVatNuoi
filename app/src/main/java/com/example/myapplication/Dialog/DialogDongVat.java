@@ -44,7 +44,6 @@ public class DialogDongVat extends AppCompatActivity {
         unit();
         getTheLoai();
         unitUI();
-        
     }
 
     private void unitUI() {

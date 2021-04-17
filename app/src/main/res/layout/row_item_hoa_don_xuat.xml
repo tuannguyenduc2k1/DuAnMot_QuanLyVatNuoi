@@ -12,6 +12,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
+        android:background="@drawable/bogoctitle"
         android:layout_height="wrap_content"
         >
         <RelativeLayout
@@ -20,14 +21,7 @@
             android:gravity=""
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/img_update_hoa_don_xuat_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/img_delete_hoa_don_xuat_item"
-                android:layout_marginRight="50px"
-                android:src="@drawable/ic_baseline_edit_24"
-                />
+
 
             <ImageView
                 android:id="@+id/img_delete_hoa_don_xuat_item"
@@ -44,7 +38,7 @@
                 android:maxLines="1"
                 android:textColor="@color/white"
                 android:text="mahoadonxuat"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:textStyle="bold">
 
             </TextView>

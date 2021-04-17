@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.myapplication.Database.DBHelper;
+import com.example.myapplication.Model.DongVat;
 import com.example.myapplication.Model.LoaiDongVat;
 
 import java.text.ParseException;
@@ -32,15 +33,15 @@ public class LoaiDongVatDAO {
         return db.insert("LoaiDongVat",null,values);
     }
     //update
-    public int update(LoaiDongVat ldv){
+    public int update(String ldv,String a ){
         ContentValues values = new ContentValues();
-        values.put(Name.loaiDongVat,ldv.getmLoaiDongVat());
-        int result = db.update("LoaiDongVat",values,"loaiDongVat=?",new String[]{String.valueOf(ldv.getmLoaiDongVat())}) ;
-        if(result == 0){
+        values.put("loaiDongVat", a);
+        int result = db.update(TABLE_NAME, values, "loaiDongVat=?", new
+                String[]{ldv});
+        if (result == 0) {
             return -1;
-        }else {
-            return 1;
         }
+        return 1;
     }
 //    //updateInfor
     public long updateInforLoaiDongVat(String loaiDongVat,String ldv){
@@ -59,6 +60,23 @@ public class LoaiDongVatDAO {
 
     }
     //get all
+
+    public List<LoaiDongVat> getAllTheLoai() {
+        List<LoaiDongVat> lsdongvay = new ArrayList<>();
+        Cursor c = db.query(TABLE_NAME, null, null, null, null, null, null);
+        c.moveToFirst();
+        while (c.isAfterLast() == false) {
+            LoaiDongVat dv = new LoaiDongVat();
+            dv.setmLoaiDongVat(c.getString(0));
+            lsdongvay.add(dv);
+            Log.d("//=====", dv.toString());
+            c.moveToNext();
+
+        }
+        c.close();
+        return lsdongvay;
+    }
+
     public List<LoaiDongVat> getAll() throws ParseException{
         String sql =" select * from LoaiDongVat ";
             return getData(sql);

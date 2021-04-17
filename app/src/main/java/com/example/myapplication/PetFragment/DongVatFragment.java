@@ -61,8 +61,8 @@ public class DongVatFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(),DialogDongVatUpdate.class);
                 Bundle b = new Bundle();
-                b.putString("MADONGVAT",lsDongvat.get(position).getmMaDongVat());
                 b.putString("LOAIDONGVAT",lsDongvat.get(position).getmLoaiDongVat());
+                b.putString("MADONGVAT",lsDongvat.get(position).getmMaDongVat());
                 b.putString("GHICHU", lsDongvat.get(position).getmGhiChu());
                 intent.putExtras(b);
                 startActivity(intent);

@@ -3,49 +3,47 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="horizontal"
+    android:layout_height="match_parent"
     android:background="@color/white"
-    android:layout_height="match_parent">
+    >
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bogoctitle"
+
         >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:padding="7dp"
-                android:gravity=""
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/dv_sua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/dv_xoa"
-                    android:layout_marginRight="50px"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    />
-
-                <ImageView
-                    android:id="@+id/dv_xoa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_delete_24"
-                    />
-
-                <TextView
-                    android:id="@+id/dv_madongvat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="aaaaaaaaaaa"
-                    android:maxLines="1"
-                    android:textStyle="bold">
-
-                </TextView>
-            </RelativeLayout>
 
 
-            <LinearLayout
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity=""
+            android:padding="7dp">
+
+
+
+            <ImageView
+                android:id="@+id/dv_xoa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_baseline_delete_24" />
+
+            <TextView
+                android:id="@+id/dv_madongvat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="aaaaaaaaaaa"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold">
+
+            </TextView>
+        </RelativeLayout>
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

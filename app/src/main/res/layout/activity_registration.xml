@@ -43,18 +43,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ext_user_name"
         android:layout_marginTop="40px"/>
-    <EditText
-        android:id="@+id/ext_dkmatkhau"
-        android:layout_width="1000px"
-        android:layout_height="120px"
-        android:hint="Mật khẩu"
-        android:textStyle="italic"
-        android:padding="15px"
-        android:background="@drawable/bogocedittext"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ext_sodienthaoi"
-        android:layout_marginTop="40px"/>
+
     <EditText
         android:id="@+id/ext_sodienthaoi"
         android:layout_width="1000px"
@@ -68,6 +57,43 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_dkemail"
         android:layout_marginTop="40px"/>
 
+    <EditText
+        android:id="@+id/ext_diachi"
+        android:layout_width="1000px"
+        android:layout_height="120px"
+        android:hint="Địa chỉ"
+        android:textStyle="italic"
+        android:padding="15px"
+        android:background="@drawable/bogocedittext"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ext_sodienthaoi"
+        android:layout_marginTop="40px"/>
+    <EditText
+        android:id="@+id/ext_namefarm"
+        android:layout_width="1000px"
+        android:layout_height="120px"
+        android:hint="Tên Farm"
+        android:textStyle="italic"
+        android:padding="15px"
+        android:background="@drawable/bogocedittext"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ext_diachi"
+        android:layout_marginTop="40px"/>
+    <EditText
+        android:id="@+id/ext_matkhau"
+        android:layout_width="1000px"
+        android:layout_height="120px"
+        android:hint="Mật khẩu"
+        android:textStyle="italic"
+        android:padding="15px"
+        android:background="@drawable/bogocedittext"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ext_namefarm"
+        android:layout_marginTop="40px"/>
+
     <Button
         android:id="@+id/btn_dangKi"
         android:layout_width="1000px"
@@ -77,6 +103,6 @@
         android:textSize="45px"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ext_dkmatkhau" />
+        app:layout_constraintTop_toBottomOf="@+id/ext_matkhau" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

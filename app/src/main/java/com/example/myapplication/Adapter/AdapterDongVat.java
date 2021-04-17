@@ -2,6 +2,8 @@ package com.example.myapplication.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.myapplication.DAO.DongVatDAO;
 import com.example.myapplication.DAO.LoaiDongVatDAO;
+import com.example.myapplication.Dialog.DialogDongVatUpdate;
+import com.example.myapplication.Dialog.DialogLoaiDongVatUpdate;
 import com.example.myapplication.Model.DongVat;
 import com.example.myapplication.Model.LoaiDongVat;
 import com.example.myapplication.R;
@@ -28,6 +32,7 @@ public class AdapterDongVat extends  BaseAdapter {
     List<DongVat> getGetSortSach;
     DongVatDAO dongVatDAO;
     private Filter sachFilter;
+
 
     public AdapterDongVat (Activity context, List<DongVat> arraySach) {
         super();
@@ -63,8 +68,8 @@ public class AdapterDongVat extends  BaseAdapter {
             hoder.maDongVat = convertView.findViewById(R.id.dv_madongvat);
             //hoder.soLuong = convertView.findViewById(R.id.dv_soluong);
             hoder.ghiChu = convertView.findViewById(R.id.dv_ghichu);
-            hoder.update = convertView.findViewById(R.id.dv_sua);
             hoder.imgDelete = convertView.findViewById(R.id.dv_xoa);
+
             hoder.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -9,11 +9,12 @@
         android:id="@+id/tv_title_dong_vat_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_200"
+        android:background="@drawable/bogoctitle"
         android:gravity="center_horizontal"
         android:text="Hóa Đơn Nhập"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:padding="25px"
         android:textStyle="bold" />
 
     <TextView
@@ -23,7 +24,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
         android:paddingBottom="5dp"
-        android:text="Mã Động Vật:" />
+        android:text=" Mã Động Vật:" />
 
     <Spinner
         android:id="@+id/spiner_maDongVat_hoaDonNhap_add"
@@ -38,7 +39,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
         android:paddingBottom="5dp"
-        android:text="Mã Hóa Đơn Nhập:" />
+        android:text=" Mã Hóa Đơn Nhập:" />
 
     <EditText
         android:id="@+id/ed_nhap_maHoaDonNhap_add"
@@ -55,7 +56,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:paddingVertical="5dp"
-        android:text="Giá Nhập: " />
+        android:text=" Giá Nhập: " />
 
     <EditText
         android:id="@+id/ed_nhap_gia_nhap_hoaDonNhap_add"
@@ -70,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="5dp"
-        android:text="Số Lượng Nhập: " />
+        android:text=" Số Lượng Nhập: " />
     <EditText
         android:id="@+id/ed_nhap_so_luong_hoaDonNhap_add"
         android:layout_width="match_parent"
@@ -84,7 +85,7 @@
         android:layout_height="wrap_content"
         android:inputType=""
         android:paddingVertical="5dp"
-        android:text="Ngày Nhập: " />
+        android:text=" Ngày Nhập: " />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -104,13 +105,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="5dp"
-        android:text="Ghi Chú: " />
+        android:text=" Ghi Chú: " />
     <EditText
         android:id="@+id/ed_nhap_ghi_chu_hoaDonNhap_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="5dp"
-        android:hint="ghi chú"
+        android:hint="Ghi chú"
          />
 
 
@@ -124,6 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:background="@drawable/bogocbutton"
             android:layout_weight="1"
             android:text="Hủy" />
 
@@ -133,6 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:background="@drawable/bogocbutton"
             android:layout_weight="1"
             android:text="Lưu" />
     </LinearLayout>

@@ -24,13 +24,14 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
     List<LoaiDongVat> arrGetLoaiDongVat;
     LoaiDongVatDAO loaiDongVatDAO;
 
-
     public AdapterLoaiDongVat(Activity context, List<LoaiDongVat> arrLoaiDongVat) {
         this.context = context;
         this.arrLoaiDongVat = arrLoaiDongVat;
         this.arrGetLoaiDongVat = arrLoaiDongVat;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         loaiDongVatDAO = new LoaiDongVatDAO(context);
+
+
     }
 
     @Override
@@ -55,7 +56,6 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
             hoder = new ViewHoder();
             convertView = inflater.inflate(R.layout.row_item_loai_dong_vat,null);
             hoder.txtLoaiDongVat = convertView.findViewById(R.id.tv_name_row_item_loai_dong_vat);
-            hoder.imgUpdate = convertView.findViewById(R.id.img_update_loai_dong_vat);
             hoder.imgDelete = convertView.findViewById(R.id.img_delete_loai_dong_vat);
 
 
@@ -90,7 +90,7 @@ public class AdapterLoaiDongVat extends BaseAdapter  {
 
     public static class ViewHoder{
         TextView txtLoaiDongVat;
-        ImageView imgDelete,imgUpdate;
+        ImageView imgDelete;
 
     }
 }

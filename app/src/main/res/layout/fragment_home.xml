@@ -9,10 +9,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textAlignment="center"
-    android:textColor="@color/black"
+    android:background="@color/purple_500"
+    android:textColor="@color/white"
     android:textStyle="bold"
-    android:textSize="30dp"
-    android:text="Du Bao Thoi Tiet"></TextView>
+    android:padding="20px"
+    android:textSize="25dp"
+    android:text="Thời Tiết"></TextView>
 <ListView
     android:layout_width="match_parent"
     android:layout_height="match_parent"

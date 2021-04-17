@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,201 +7,405 @@
     android:orientation="horizontal"
     android:background="@color/white"
     tools:context=".ActivityFragment.PetFragment">
-    <com.google.android.material.appbar.AppBarLayout
+
+    <ImageView
+        android:id="@+id/anhdautien_profile"
         android:layout_width="match_parent"
+        android:layout_height="500px"
+        android:scaleType="fitXY"
+        android:src="@drawable/biaprifile"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image_profile"
+                    android:src="@drawable/chandung"
+                    android:layout_width="130dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/anhdautien_profile"
+                    app:layout_constraintBottom_toBottomOf="@+id/anhdautien_profile"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/pr_hovaten"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="23dp"
+                android:textColor="#000"
+                android:layout_marginTop="30px"
+                app:layout_constraintTop_toBottomOf="@+id/image_profile"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="NGUYỄN VĨNH TIẾN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_marginTop="20px"
+       android:id="@+id/LNOT"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/pr_hovaten"
+       >
+
+       <Button
+           android:id="@+id/chinhsuaprofile"
+           android:layout_width="930px"
+           android:text="Chỉnh sửa thông tin"
+           android:textStyle="normal"
+           android:layout_height="130px"
+           />
+       <ImageButton
+           android:id="@+id/dangxuat"
+           android:layout_width="100px"
+           android:layout_height="130px"
+           android:src="@drawable/more"
+           ></ImageButton>
+
+   </LinearLayout>
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="1030px"
+        android:layout_height="5px"
+        android:background="#f1f1f1"
+        app:layout_constraintTop_toBottomOf="@+id/LNOT"
+        android:layout_marginTop="30px"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <LinearLayout
+        android:layout_width="1030px"
         android:layout_height="wrap_content"
-    >
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:orientation="vertical"
+        android:layout_marginTop="30px"
+        app:layout_constraintTop_toBottomOf="@+id/tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:padding="10dp"
-                android:layout_height="wrap_content">
+             <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16px"
+                        android:background="#ffffff">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:src="@drawable/phonecall"
+                            android:layout_height="27dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="20dp"
+                            android:text="  Số điện thoại "
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/sodienthoai"
+                            android:layout_width="wrap_content"
+                            android:text="Đây là số điện"
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16px"
+                        android:background="#ffffff"
+                        >
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:src="@drawable/gmail"
+                            android:layout_height="27dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="20dp"
+                            android:text="  Gmail "
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/gmail"
+                            android:layout_width="wrap_content"
+                            android:text="Đây là gmail"
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
 
-
-                <ImageView
-                    android:id="@+id/dangxuat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_dehaze_24"
-                   />
-
-                <TextView
-                    android:id="@+id/username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:maxLines="1"
-                    android:textStyle="bold">
-
-                </TextView>
-            </RelativeLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bar">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="16px"
             android:background="#ffffff"
-            android:id="@+id/top_bar"
             >
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/image_profile"
-                android:src="@drawable/profile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16px"
-                android:background="#ffffff"
-                android:id="@+id/bottom_bar"
-                >
-                <TextView
-                    android:id="@+id/pr_hovaten"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:textSize="23dp"
-                    android:textColor="#000"
-                    android:text="fafaf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-
-                android:padding="16px"
-                android:background="#ffffff"
-          >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Ngày sinh:"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/ngaysinh"
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16px"
-                android:background="#ffffff"
-               >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Địa chỉ:"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/diachi"
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16px"
-                android:background="#ffffff">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Số điện loại:"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/sodienthoai"
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16px"
-                android:background="#ffffff"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Gmail:"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/gmail"
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16px"
-                android:background="#ffffff"
-               >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Giới tính:"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/gioitinh"
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16px"
-                android:background="#ffffff"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:text="Tên trang trại:"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/tentrangtrai"
-                    android:layout_width="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:padding="16px"
-                android:layout_height="wrap_content">
-              <androidx.recyclerview.widget.RecyclerView
-                  android:layout_width="match_parent"
-                  android:layout_weight="1"
-                  android:layout_height="match_parent"/>
-            </LinearLayout>
-
+            <ImageView
+                android:layout_width="20dp"
+                android:src="@drawable/home"
+                android:layout_height="27dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:text="  Địa chỉ "
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/diachi"
+                android:layout_width="wrap_content"
+                android:text="Đây là địa chỉ"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
-    </ScrollView>
-    </com.google.android.material.appbar.AppBarLayout>
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16px"
+            android:background="#ffffff"
+            >
+            <ImageView
+                android:layout_width="20dp"
+                android:src="@drawable/barn"
+                android:layout_height="27dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:text="  Tên Farm "
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tentrangtrai"
+                android:layout_width="wrap_content"
+                android:text="Đây là Farm"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16px"
+            android:background="#ffffff"
+            >
+            <ImageView
+                android:layout_width="20dp"
+                android:src="@drawable/morengang"
+                android:layout_height="27dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:text="  Xem thêm thông tin giới thiệu "
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--    >-->
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:padding="10dp"-->
+<!--                android:layout_height="wrap_content">-->
+
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/dangxuat"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:src="@drawable/ic_baseline_dehaze_24"-->
+<!--                   />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/username"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:textStyle="bold">-->
+
+<!--                </TextView>-->
+<!--            </RelativeLayout>-->
+
+<!--        </androidx.appcompat.widget.Toolbar>-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="300px"-->
+
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/bar">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="16px"-->
+<!--            android:background="#ffffff"-->
+<!--            android:id="@+id/top_bar"-->
+<!--            >-->
+
+<!--            <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                android:id="@+id/image_profile"-->
+<!--                android:src="@drawable/profile"-->
+<!--                android:layout_width="130dp"-->
+<!--                android:layout_height="130dp"-->
+<!--                android:layout_gravity="center"/>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="16px"-->
+<!--                android:background="#ffffff"-->
+<!--                android:id="@+id/bottom_bar"-->
+<!--                >-->
+<!--                <TextView-->
+<!--                    android:id="@+id/pr_hovaten"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:textSize="23dp"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:text="fafaf"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+
+<!--                android:padding="16px"-->
+<!--                android:background="#ffffff"-->
+<!--          >-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:text="Ngày sinh:"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/ngaysinh"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:padding="16px"-->
+<!--                android:background="#ffffff"-->
+<!--               >-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:text="Địa chỉ:"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/diachi"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:padding="16px"-->
+<!--                android:background="#ffffff">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:text="Số điện loại:"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/sodienthoai"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:padding="16px"-->
+<!--                android:background="#ffffff"-->
+<!--                >-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:text="Gmail:"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/gmail"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:padding="16px"-->
+<!--                android:background="#ffffff"-->
+<!--               >-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:text="Giới tính:"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/gioitinh"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_height="wrap_content"/>-->
+
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:padding="16px"-->
+<!--                android:background="#ffffff"-->
+<!--                >-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:text="Tên trang trại:"-->
+<!--                    android:layout_height="wrap_content"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tentrangtrai"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_height="wrap_content"/>-->
+
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:padding="16px"-->
+<!--                android:layout_height="wrap_content">-->
+<!--              <androidx.recyclerview.widget.RecyclerView-->
+<!--                  android:layout_width="match_parent"-->
+<!--                  android:layout_weight="1"-->
+<!--                  android:layout_height="match_parent"/>-->
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </ScrollView>-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

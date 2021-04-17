@@ -16,7 +16,7 @@ import java.util.List;
 
 public class HoaDonXuatDAO {
     public static final String TABLE_NAME = "HoaDonXuat";
-    public static final String SQL_HOA_DON_XUAT = "CREATE TABLE HoaDonXuat(maHoaDonXuat text primary key , maDongVat text  , giaXuat double , soLuongXuat int , ngayXuat text , ghiChu text )";
+    public static final String SQL_HOA_DON_XUAT = "CREATE TABLE HoaDonXuat(maHoaDonXuat text primary key , maDongVat text  , giaXuat double , soLuongXuat int , ngayXuat date , ghiChu date )";
     public static final String TAG = "HoaDonXuatDAO";
 
 
@@ -74,6 +74,46 @@ public class HoaDonXuatDAO {
         }
         return list;
     }
+    public double getDoanhThuTheoNgay() {
+        double doanhThu = 0;
+        String sSQL = "SELECT SUM(tongtienlai) from (SELECT SUM((HoaDonXuat.soLuongXuat * HoaDonXuat.giaXuat) - (HoaDonNhap.giaNhap * HoaDonNhap.soLuongNhap)) as 'tongtienlai' "
+                + "FROM HoaDonXuat INNER JOIN HoaDonXuat on HoaDonXuat.maHoaDonXuat = HoaDonNhap.maHoaDonNhap "
+                + "INNER JOIN HoaDonXuat on  HoaDonXuat.maDongVat = HoaDonNhap.maDongVat  where HoaDonXuat.ngayXuat = date('now') " +
+                "GROUP BY HoaDonXuat.maDongVat)tmp";
+        Cursor c = db.rawQuery(sSQL, null);
+        c.moveToFirst();
+        while (c.isAfterLast() == false) {
+            doanhThu = c.getDouble(0);
+            c.moveToNext();
+        }
+        c.close();
+        return doanhThu;
+    }
+//    public double getDoanhThuTheoThang() {
+//        double doanhThu = 0;
+//        String sSQL = "SELECT SUM(tongtien) from (SELECT SUM(Sach.giaBia * HoaDonChiTiet.soLuong) as 'tongtien' " + "FROM HoaDon INNER JOIN HoaDonChiTiet on HoaDon.maHoaDon = HoaDonChiTiet.maHoaDon " + "INNER JOIN Sach on HoaDonChiTiet.maSach = Sach.maSach where strftime('%m',HoaDon.ngayMua) = strftime('%m','now') GROUP BY HoaDonChiTiet.maSach)tmp";
+//        Cursor c = db.rawQuery(sSQL, null);
+//        c.moveToFirst();
+//        while (c.isAfterLast() == false) {
+//            doanhThu = c.getDouble(0);
+//            c.moveToNext();
+//        }
+//        c.close();
+//        return doanhThu;
+//    }
+//
+//    public double getDoanhThuTheoNam() {
+//        double doanhThu = 0;
+//        String sSQL = "SELECT SUM(tongtien) from (SELECT SUM(Sach.giaBia * HoaDonChiTiet.soLuong) as 'tongtien' " + "FROM HoaDon INNER JOIN HoaDonChiTiet on HoaDon.maHoaDon = HoaDonChiTiet.maHoaDon " + "INNER JOIN Sach on HoaDonChiTiet.maSach = Sach.maSach where strftime('%Y',HoaDon.ngayMua) = strftime('%Y','now') GROUP BY HoaDonChiTiet.maSach)tmp";
+//        Cursor c = db.rawQuery(sSQL, null);
+//        c.moveToFirst();
+//        while (c.isAfterLast() == false) {
+//            doanhThu = c.getDouble(0);
+//            c.moveToNext();
+//        }
+//        c.close();
+//        return doanhThu;
+//    }
 
     private static class Name {
         public static String maDongVat = "maDongVat";
