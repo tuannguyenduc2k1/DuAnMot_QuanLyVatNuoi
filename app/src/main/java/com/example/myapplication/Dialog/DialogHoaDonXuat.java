@@ -95,7 +95,7 @@ public class DialogHoaDonXuat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 hoaDonXuatDAO = new HoaDonXuatDAO(DialogHoaDonXuat.this);//
-                HoaDonXuat hoaDonXuat = new HoaDonXuat( edtMaHoaDonXuat.getText().toString(),maDongVat, Double.parseDouble(edtGiaXuat.getText().toString()), Integer.parseInt(edtSoLuong.getText().toString()), edtNgayXuat.getText().toString(), edtGhiChu.getText().toString());
+                HoaDonXuat hoaDonXuat = new HoaDonXuat(maDongVat, edtMaHoaDonXuat.getText().toString(), Double.parseDouble(edtGiaXuat.getText().toString()), Integer.parseInt(edtSoLuong.getText().toString()), edtNgayXuat.getText().toString(), edtGhiChu.getText().toString());
                 try {
                     if (hoaDonXuatDAO.insertHoaDonXuat(hoaDonXuat) > 0) {
                         onBackPressed();
@@ -120,4 +120,7 @@ public class DialogHoaDonXuat extends AppCompatActivity {
     }
 
 
+    public void quayLai_HDX(View view) {
+        finish();
+    }
 }

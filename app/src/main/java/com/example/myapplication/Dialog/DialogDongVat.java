@@ -34,7 +34,7 @@ public class DialogDongVat extends AppCompatActivity {
     private String mMadongvat = "";
     private EditText madongvat, soluong,ghichu;
     private Spinner spnloaidongvat;
-    private Button huy,luu;
+    private Button luu;
     private  LoaiDongVatDAO loaiDongVatDAO;
     private DongVatDAO dongVatDAO;
     @Override
@@ -58,14 +58,6 @@ public class DialogDongVat extends AppCompatActivity {
 
                  }
             });
-//            Intent in = getIntent();//load data into form
-//            Bundle b = in.getExtras();
-//            if (b != null) {
-//                madongvat.setText(b.getString("MADONGVAT"));
-//                ghichu.setText(b.getString("GHICHU"));
-//                String loaidongvat = b.getString("LOAIDONGVAT");
-//                spnloaidongvat.setSelection(checkPositionTheLoai(loaidongvat));
-//        }
 
         luu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +94,6 @@ public class DialogDongVat extends AppCompatActivity {
         //soluong = findViewById(R.id.ed_nhap_so_luong_dongVat_add);
         ghichu = findViewById(R.id.ed_nhap_ghi_chu_dongVat_add);
         spnloaidongvat = findViewById(R.id.spiner_loaiDongVat_dongVat_add);
-        huy = findViewById(R.id.btn_huy_dong_vat_add);
         luu = findViewById(R.id.btn_luu_dong_vat_add);
     }
 
@@ -136,6 +127,10 @@ public class DialogDongVat extends AppCompatActivity {
     }
 
     public void cancel(View view) {
+        finish();
+    }
+
+    public void quayLai_DV(View view) {
         finish();
     }
 }

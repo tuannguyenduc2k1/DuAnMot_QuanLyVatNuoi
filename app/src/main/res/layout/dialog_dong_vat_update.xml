@@ -33,24 +33,6 @@
         android:layout_marginVertical="5dp"
         android:hint="Mã Động Vật" />
 
-
-
-<!--    <TextView-->
-<!--        android:textColor="#FF0000"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:inputType="number"-->
-<!--        android:paddingVertical="5dp"-->
-<!--        android:text="Số Lượng: " />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/ed_nhap_so_luong_dongVat_update"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginVertical="5dp"-->
-<!--        android:hint="Nhập số tiền"-->
-<!--        android:inputType="number" />-->
-
     <TextView
         android:textColor="#FF0000"
         android:layout_width="match_parent"
@@ -71,7 +53,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
+        <Button
+        android:id="@+id/btn_huy_dong_vat_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="huy_update"
+        android:layout_margin="5dp"
+        android:background="@drawable/bogocbutton"
+        android:layout_weight="1"
+        android:text="Quay Lại" />
         <Button
             android:id="@+id/btn_luu_dong_vat_update"
             android:layout_width="wrap_content"

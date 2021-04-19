@@ -93,4 +93,7 @@ public class DialogHoaDonNhapUpdate extends AppCompatActivity {
         btnLuu = findViewById(R.id.btn_luu_hoa_don_nhap_update);
     }
 
+    public void quayLai_HDN_update(View view) {
+        finish();
+    }
 }

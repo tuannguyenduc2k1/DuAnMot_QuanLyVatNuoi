@@ -127,4 +127,7 @@ public class DialogHoaDonNhap extends AppCompatActivity {
 
     }
 
+    public void quayLai_HDN(View view) {
+        finish();
+    }
 }

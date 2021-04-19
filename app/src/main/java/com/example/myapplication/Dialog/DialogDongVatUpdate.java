@@ -64,8 +64,11 @@ public class DialogDongVatUpdate extends AppCompatActivity {
         madongvat = findViewById(R.id.ed_nhap_maDongVat_dongVat__update);
         //soluong = findViewById(R.id.ed_nhap_so_luong_dongVat_update);
         ghichu = findViewById(R.id.ed_nhap_ghi_chu_dongVat_update);
-        huy = findViewById(R.id.btn_huy_dong_vat_add);
         luu = findViewById(R.id.btn_luu_dong_vat_update);
+    }
+
+    public void huy_update(View view) {
+        finish();
     }
 
 }
