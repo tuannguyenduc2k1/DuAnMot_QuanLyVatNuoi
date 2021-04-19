@@ -78,6 +78,19 @@ public long insertHoaDonNhap(HoaDonNhap hdn){
         return list;
     }
 
+    public double getDoanhThuNhap(){
+        double doanhNhap = 0;
+        String sSQL = "SELECT SUM(soLuongNhap * giaNhap) from HoaDonNhap";
+        Cursor c = db.rawQuery(sSQL,null);
+        c.moveToFirst();
+        while (c.isAfterLast()  == false){
+            doanhNhap = c.getDouble(0);
+            c.moveToNext();
+        }
+        c.close();
+        return doanhNhap;
+    }
+
     private static class Name {
         public static String maDongVat = "maDongVat";
         public static String maHoaDonNhap = "maHoaDonNhap";

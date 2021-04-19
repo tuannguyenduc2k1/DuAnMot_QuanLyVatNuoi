@@ -78,15 +78,12 @@ public class HoaDonXuatDAO {
         }
         return list;
     }
-    public double getDoanhThuTheoNgay() {
+    public double getDoanhThuXuat(){
         double doanhThu = 0;
-        String sSQL = "SELECT SUM(tongtienlai) from (SELECT SUM((HoaDonXuat.soLuongXuat * HoaDonXuat.giaXuat) - (HoaDonNhap.giaNhap * HoaDonNhap.soLuongNhap)) as 'tongtienlai' "
-                + "FROM HoaDonXuat INNER JOIN HoaDonXuat on HoaDonXuat.maHoaDonXuat = HoaDonNhap.maHoaDonNhap "
-                + "INNER JOIN HoaDonXuat on  HoaDonXuat.maDongVat = HoaDonNhap.maDongVat  where HoaDonXuat.ngayXuat = date('now') " +
-                "GROUP BY HoaDonXuat.maDongVat)tmp";
-        Cursor c = db.rawQuery(sSQL, null);
+        String sSQL = "SELECT SUM(soLuongXuat * giaXuat) from HoaDonXuat";
+        Cursor c = db.rawQuery(sSQL,null);
         c.moveToFirst();
-        while (c.isAfterLast() == false) {
+        while (c.isAfterLast()  == false){
             doanhThu = c.getDouble(0);
             c.moveToNext();
         }
