@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity  {
                     case R.id.action_cai_dat:
                         mViewPager.setCurrentItem(4);
                         break;
-
                 }
                 return true;
             }

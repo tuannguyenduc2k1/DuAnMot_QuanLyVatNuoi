@@ -87,7 +87,7 @@ public class Login extends AppCompatActivity {
 
                             } else {
                                 pd.dismiss();
-                                Toast.makeText(Login.this, "Đang nhập thất bại", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Đăng nhập thất bại sai thông tin đăng nhập", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

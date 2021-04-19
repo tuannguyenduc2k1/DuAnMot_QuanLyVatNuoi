@@ -82,6 +82,7 @@ public class AdapterDongVat extends  BaseAdapter {
             convertView.setTag(hoder);
 
         } else
+
             hoder = (ViewHoder) convertView.getTag();
             DongVat dongVat = getSortSach.get(position);
             convertView.setTag(hoder);
@@ -120,7 +121,6 @@ public class AdapterDongVat extends  BaseAdapter {
         ImageView imgDelete;
         ImageView update;
         String ldv;
-
     }
     private class CustomFilter extends Filter {
         @Override

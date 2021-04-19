@@ -3,6 +3,7 @@ package com.example.myapplication.Dialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -21,6 +22,8 @@ import com.example.myapplication.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import static java.lang.Double.parseDouble;
 
 
 public class DialogHoaDonNhapUpdate extends AppCompatActivity {
@@ -59,12 +62,28 @@ public class DialogHoaDonNhapUpdate extends AppCompatActivity {
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(hoaDonNhapDAO.update(mhdn,edtMaHoaDonNhap.getText().toString(),edtGiaNhap.getText().toString(),edtSoLuongNhap.getText().toString(),edtNgayNhap.getText().toString(),edtGhiChu.getText().toString())>0){
+
+                String mhd =edtMaHoaDonNhap.getText().toString();
+                String gnhap = edtGiaNhap.getText().toString();
+                String sluong = edtSoLuongNhap.getText().toString();
+                String nnhap =edtNgayNhap.getText().toString();
+                String ghichu =edtGhiChu.getText().toString();
+
+            try {
+                if (TextUtils.isEmpty(mhd) || TextUtils.isEmpty(gnhap)|| TextUtils.isEmpty(sluong) || TextUtils.isEmpty(nnhap) || TextUtils.isEmpty(nnhap) ) {
+                    Toast.makeText(DialogHoaDonNhapUpdate.this, "Không được để trống ", Toast.LENGTH_SHORT).show();
+                }else if (Integer.parseInt(sluong)  < 1){
+                    Toast.makeText(DialogHoaDonNhapUpdate.this, "Số lượng phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+                }else {
+                    hoaDonNhapDAO.update(mhdn,mhd,gnhap,sluong,nnhap,ghichu);
                     Toast.makeText(getApplicationContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     onBackPressed();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Update thất bại ", Toast.LENGTH_SHORT).show();
                 }
+            }catch (Exception e){
+                Toast.makeText(DialogHoaDonNhapUpdate.this, "Không đúng định dạng", Toast.LENGTH_SHORT).show();
+
+            }
+
             }
         });
         edtNgayNhap.setOnClickListener(new View.OnClickListener() {

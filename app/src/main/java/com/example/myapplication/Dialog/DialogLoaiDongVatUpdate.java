@@ -3,6 +3,7 @@ package com.example.myapplication.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,13 +54,19 @@ public class DialogLoaiDongVatUpdate extends AppCompatActivity {
     }
 
     public void updateDongVat(View view)  {
-        if(loaiDongVatDAO.updateInforLoaiDongVat(ldv,edtLoaiDongVatUpdate.getText().toString())>0){
+
+        String ud_ldv = edtLoaiDongVatUpdate.getText().toString();
+
+
+        if (TextUtils.isEmpty(ud_ldv)){
+            Toast.makeText(getApplicationContext(), "Không được để trống", Toast.LENGTH_SHORT).show();
+        }
+        else if (loaiDongVatDAO.updateInforLoaiDongVat(ldv,ud_ldv)>0){
             Toast.makeText(getApplicationContext(), "Update thành công", Toast.LENGTH_SHORT).show();
+
         }else{
             Toast.makeText(getApplicationContext(), "Update thất bại ", Toast.LENGTH_SHORT).show();
         }
-
     }
-
 
 }

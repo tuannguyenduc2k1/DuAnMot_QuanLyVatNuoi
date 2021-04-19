@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -84,6 +85,7 @@ public class DialogHoaDonNhap extends AppCompatActivity {
 
 
         //su kien chon ngay
+
         edtNgayNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,18 +114,39 @@ public class DialogHoaDonNhap extends AppCompatActivity {
 
 
     public void btnLuuHoaDonNhap(View view) {
-            hoaDonNhapDAO = new HoaDonNhapDAO(DialogHoaDonNhap.this);//
-            HoaDonNhap hoaDonNhap = new HoaDonNhap(maDongVat,edtMaHoaDonNhap.getText().toString(),Double.parseDouble(edtGiaNhap.getText().toString()),Integer.parseInt(edtSoLuong.getText().toString()), edtNgayNhap.getText().toString(),edtGhiChu.getText().toString());
-            try{
-                if(hoaDonNhapDAO.insertHoaDonNhap(hoaDonNhap) > 0 ){
-                        onBackPressed();
-                        Toast.makeText(DialogHoaDonNhap.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(DialogHoaDonNhap.this, "Them That Bai", Toast.LENGTH_SHORT).show();
+            hoaDonNhapDAO = new HoaDonNhapDAO(DialogHoaDonNhap.this);
+            String _mahoadon = edtMaHoaDonNhap.getText().toString();
+            String gianhap = edtGiaNhap.getText().toString();
+            String soluong =  edtSoLuong.getText().toString();
+            String ngaynhap= edtNgayNhap.getText().toString();
+            String ghichu = edtGhiChu.getText().toString();
+            try {
+                if (TextUtils.isEmpty(_mahoadon) || TextUtils.isEmpty(gianhap)|| TextUtils.isEmpty(soluong) || TextUtils.isEmpty(ngaynhap)  ){
+                    Toast.makeText(DialogHoaDonNhap.this, "Không được để trống ", Toast.LENGTH_SHORT).show();
+                }else if (Integer.parseInt(soluong) < 1){
+                    Toast.makeText(DialogHoaDonNhap.this, "Số lượng phải lơn hơn 0 ", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    try{
+                        HoaDonNhap hoaDonNhap = new HoaDonNhap(maDongVat,_mahoadon,Double.parseDouble(gianhap),Integer.parseInt(soluong),ngaynhap ,ghichu);
+                        if(hoaDonNhapDAO.insertHoaDonNhap(hoaDonNhap) > 0 ){
+                            onBackPressed();
+                            Toast.makeText(DialogHoaDonNhap.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(DialogHoaDonNhap.this, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }catch (Exception ex){
+                        Log.e("Lỗi:", ex.toString());
+                        Toast.makeText(DialogHoaDonNhap.this, "Không đúng định dạng", Toast.LENGTH_SHORT).show();
+
                     }
-            }catch (Exception ex){
-                Log.e("Lỗi:", ex.toString());
-        }
+                }
+            }catch (Exception e){
+
+            }
+
+
+
 
     }
 

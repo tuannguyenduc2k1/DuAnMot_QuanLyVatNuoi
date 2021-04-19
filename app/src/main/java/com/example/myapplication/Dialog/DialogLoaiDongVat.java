@@ -3,6 +3,7 @@ package com.example.myapplication.Dialog;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,8 +43,13 @@ public class DialogLoaiDongVat extends AppCompatActivity {
             public void onClick(View view) {
 
                     loaiDongVatDAO = new LoaiDongVatDAO(DialogLoaiDongVat.this);
-                    LoaiDongVat ldv = new LoaiDongVat(edt_ldv.getText().toString());
+                    String _ldv = edt_ldv.getText().toString();
+
+                if (TextUtils.isEmpty(_ldv) ){
+                    Toast.makeText(DialogLoaiDongVat.this, "Không được để trống ", Toast.LENGTH_SHORT).show();
+                }else {
                     try {
+                        LoaiDongVat ldv = new LoaiDongVat(_ldv);
                         if (loaiDongVatDAO.insertLoaiDongVat(ldv) > 0) {
                             onBackPressed();
                             Toast.makeText(DialogLoaiDongVat.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
@@ -54,7 +60,9 @@ public class DialogLoaiDongVat extends AppCompatActivity {
                         Log.e("Lỗi:", ex.toString());
                     }
 
-            }
+                }
+                }
+
 
 
         });

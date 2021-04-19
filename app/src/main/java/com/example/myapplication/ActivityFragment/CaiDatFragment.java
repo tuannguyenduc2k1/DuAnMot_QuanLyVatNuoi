@@ -116,11 +116,16 @@ public class CaiDatFragment extends Fragment {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
 
-                        ed_hovaten.setText(documentSnapshot.getString("Hovaten"));
-                        ed_sodienthoai.setText(documentSnapshot.getString("Sodienthoai"));
-                        ed_gmail.setText(documentSnapshot.getString("Tendangnhap"));
-                        ed_diachi.setText(documentSnapshot.getString("Diachi"));
-                        ed_tentrangtrai.setText(documentSnapshot.getString("Tentrangtrai"));
+                        try {
+                            ed_hovaten.setText(documentSnapshot.getString("Hovaten"));
+                            ed_sodienthoai.setText(documentSnapshot.getString("Sodienthoai"));
+                            ed_gmail.setText(documentSnapshot.getString("Tendangnhap"));
+                            ed_diachi.setText(documentSnapshot.getString("Diachi"));
+                            ed_tentrangtrai.setText(documentSnapshot.getString("Tentrangtrai"));
+                        }catch (Exception e){
+
+                        }
+
                     }
 
                 });
@@ -129,10 +134,15 @@ public class CaiDatFragment extends Fragment {
                 luu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                               UserDangNhap userDangNhap = new UserDangNhap(ed_hovaten.getText().toString(),ed_diachi.getText().toString(),
-                                       ed_sodienthoai.getText().toString(),ed_gmail.getText().toString(),ed_tentrangtrai.getText().toString());
+                        try {
+                            UserDangNhap userDangNhap = new UserDangNhap(ed_hovaten.getText().toString(),ed_diachi.getText().toString(),
+                                    ed_sodienthoai.getText().toString(),ed_gmail.getText().toString(),ed_tentrangtrai.getText().toString());
+                            firebaseFirestore.collection("Users").document(UserID).set(userDangNhap);
 
-                               firebaseFirestore.collection("Users").document(UserID).set(userDangNhap);
+                        }catch (Exception e ){
+
+                        }
+
                     }
                 });
 

@@ -71,56 +71,76 @@ public class Registration extends AppCompatActivity {
         BtnRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pd = new ProgressDialog(Registration.this);
-                pd.setMessage("Please wait...");
-                pd.show();
+                try {
 
-                String str_hovaten = Hovaten.getText().toString();
-                String str_tendangnhap = Tendangnhap.getText().toString();
-                String str_matKhau = MatKhau.getText().toString();
-                String str_sodienthoai = Sodienthoai.getText().toString();
-                String str_diachi = diachi.getText().toString();
-                String str_tennongtrai = tennongtrai.getText().toString();
+                    pd = new ProgressDialog(Registration.this);
+                    pd.setMessage("Please wait...");
+                    pd.show();
+
+                    String str_hovaten = Hovaten.getText().toString();
+                    String str_tendangnhap = Tendangnhap.getText().toString();
+                    String str_matKhau = MatKhau.getText().toString();
+                    String str_sodienthoai = Sodienthoai.getText().toString();
+                    String str_diachi = diachi.getText().toString();
+                    String str_tennongtrai = tennongtrai.getText().toString();
+
+                    //String P_day = "^(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$";
+
+                    //String p_hoten = "[a-zA-Z ]+";
+                    //String p_email = "^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$";
+//                String p_sdt = "0[0-9]{9}";
+                    //String p_scmt = "[0-9]{12}";
+                    String regexDate = "^(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$";
 
 
-                if (TextUtils.isEmpty(str_tendangnhap) || TextUtils.isEmpty(str_matKhau)|| TextUtils.isEmpty(str_diachi) || TextUtils.isEmpty(str_tennongtrai) || TextUtils.isEmpty(str_hovaten) || TextUtils.isEmpty(str_sodienthoai) )
-                {
-                    pd.dismiss();
-                    Toast.makeText(Registration.this, "Không được để trống",Toast.LENGTH_LONG).show();
-                    return;
-                } else if(str_matKhau.length()<6){
-                    pd.dismiss();
-                    Toast.makeText(Registration.this, "Mật khẩu không được để dưới 6 kí tự ",Toast.LENGTH_LONG).show();
-                    return;
-                }else {
-                    mAuth.createUserWithEmailAndPassword(str_tendangnhap,str_matKhau).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                userID = mAuth.getCurrentUser().getUid();
-                                DocumentReference documentReference = firebaseFirestore.collection("Users").document(userID);
-                                Map<String,Object> user = new HashMap<>();
-                                user.put("Bio","");
-                                user.put("Hovaten",str_hovaten);
-                                user.put("Tendangnhap",str_tendangnhap);
-                                user.put("Matkhau",str_matKhau);
-                                user.put("Sodienthoai",str_sodienthoai);
-                                user.put("Diachi",str_diachi);
-                                user.put("TenFarm",str_tennongtrai);
-                                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.d("TAG","ID");
-                                    }
-                                });
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                            }else {
-                                pd.dismiss();
-                                Toast.makeText(Registration.this, "Thất bại", Toast.LENGTH_SHORT).show();
+                    if (TextUtils.isEmpty(str_tendangnhap) || TextUtils.isEmpty(str_matKhau)|| TextUtils.isEmpty(str_diachi) || TextUtils.isEmpty(str_tennongtrai) || TextUtils.isEmpty(str_hovaten) || TextUtils.isEmpty(str_sodienthoai) )
+                    {
+                        pd.dismiss();
+                        Toast.makeText(Registration.this, "Không được để trống",Toast.LENGTH_LONG).show();
+                        return;
+                    } else if(str_matKhau.length()<6) {
+                        pd.dismiss();
+                        Toast.makeText(Registration.this, "Mật khẩu không được để dưới 6 kí tự ", Toast.LENGTH_LONG).show();
+                        return;
+
+                    } else if(!str_sodienthoai.matches(regexDate)) {
+
+                        pd.dismiss();
+                        Toast.makeText(Registration.this, "Sai số điện thoại ", Toast.LENGTH_LONG).show();
+                    }else {
+                        mAuth.createUserWithEmailAndPassword(str_tendangnhap,str_matKhau).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()){
+                                    userID = mAuth.getCurrentUser().getUid();
+                                    DocumentReference documentReference = firebaseFirestore.collection("Users").document(userID);
+                                    Map<String,Object> user = new HashMap<>();
+                                    user.put("Bio","");
+                                    user.put("Hovaten",str_hovaten);
+                                    user.put("Tendangnhap",str_tendangnhap);
+                                    user.put("Matkhau",str_matKhau);
+                                    user.put("Sodienthoai",str_sodienthoai);
+                                    user.put("Diachi",str_diachi);
+                                    user.put("TenFarm",str_tennongtrai);
+                                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d("TAG","ID");
+                                        }
+                                    });
+                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                }else {
+                                    pd.dismiss();
+                                    Toast.makeText(Registration.this, "Thất bại", Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
+
+                }catch (Exception e){
+
                 }
+
 
 
             }

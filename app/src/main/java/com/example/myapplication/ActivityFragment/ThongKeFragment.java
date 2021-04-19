@@ -43,18 +43,14 @@ public class ThongKeFragment extends Fragment {
         ArrayList<PieEntry> visitors = new ArrayList<>();
         hoaDonNhapDAO = new HoaDonNhapDAO(getActivity());
         hoaDonXuatDAO = new HoaDonXuatDAO(getActivity());
-        Double lai = hoaDonXuatDAO.getDoanhThuXuat()-hoaDonNhapDAO.getDoanhThuNhap();
-        Double tongThe = hoaDonNhapDAO.getDoanhThuNhap()+hoaDonXuatDAO.getDoanhThuXuat()+lai;
-        Double tiTrongNhap = (hoaDonNhapDAO.getDoanhThuNhap()/tongThe)*100 ;
-//        Double tongNhap =tong/hoaDonNhapDAO.getDoanhThuNhap();
 
 
-        visitors.add(new PieEntry((float) hoaDonNhapDAO.getDoanhThuNhap(),"Tổng Nhập :"+Math.ceil(tiTrongNhap) +"%"));
+        visitors.add(new PieEntry((float) hoaDonNhapDAO.getDoanhThuNhap(),"Tổng Nhập"));
         visitors.add(new PieEntry((float) hoaDonXuatDAO.getDoanhThuXuat(),"Tổng Xuất"));
         visitors.add(new PieEntry((float) (hoaDonXuatDAO.getDoanhThuXuat() - hoaDonNhapDAO.getDoanhThuNhap()),"Lãi"));
 
 
-        PieDataSet pieDataSet = new PieDataSet(visitors,"");
+        PieDataSet pieDataSet = new PieDataSet(visitors,"SƠ ĐỒ THỐNG KÊ");
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDataSet.setValueTextColor(Color.BLACK);
         pieDataSet.setValueTextSize(16f);
@@ -62,7 +58,7 @@ public class ThongKeFragment extends Fragment {
         PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("Tổng : "+(hoaDonXuatDAO.getDoanhThuXuat() + hoaDonNhapDAO.getDoanhThuNhap()));
+        pieChart.setCenterText("Tổng : "+String.valueOf(hoaDonXuatDAO.getDoanhThuXuat() + hoaDonNhapDAO.getDoanhThuNhap()));
         pieChart.animate();
 
         return view;

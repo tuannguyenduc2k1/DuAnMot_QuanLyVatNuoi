@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -63,30 +64,26 @@ public class DialogDongVat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                dongVatDAO = new DongVatDAO(DialogDongVat.this);
-                DongVat dongVat = new DongVat(madongvat.getText().toString(),mMadongvat,ghichu.getText().toString());
-                if (dongVatDAO.insertDongVat(dongVat) > 0) {
-                    onBackPressed();
-                    Toast.makeText(getApplicationContext(), "Thêm thành công",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Thêm thất bại",
-                            Toast.LENGTH_SHORT).show();
-                }
-                } catch (Exception ex) {
-                    if (madongvat.getText().length() == 0 || ghichu.getText().length() == 0) {
-                        Toast.makeText(getApplicationContext(), "Bạn chưa nhập đầy đủ thông tin ", Toast.LENGTH_SHORT).show();
-                    }
-                    try {
 
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "Kiểm tra định dạng số lượng ", Toast.LENGTH_SHORT).show();
-                    }
-                }
+                    String dv = madongvat.getText().toString();
 
+                    if (TextUtils.isEmpty(dv)){
+                        Toast.makeText(getApplicationContext(), "Không được để trống",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        dongVatDAO = new DongVatDAO(DialogDongVat.this);
+                        DongVat dongVat = new DongVat(dv, mMadongvat, ghichu.getText().toString());
+                        dongVatDAO.insertDongVat(dongVat);
+                        onBackPressed();
+                        Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Kiểm tra định dạng số lượng ", Toast.LENGTH_SHORT).show();
+                }
             }
+        });
 
-    });
     }
 
     private void unit() {

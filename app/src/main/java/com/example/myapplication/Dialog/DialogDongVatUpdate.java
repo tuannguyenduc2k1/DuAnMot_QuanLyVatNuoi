@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,13 +50,16 @@ public class DialogDongVatUpdate extends AppCompatActivity {
         luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dongVatDAO.update(mdv,madongvat.getText().toString(),ghichu.getText().toString())>0){
+                String mdvupdate = madongvat.getText().toString();
+                if (TextUtils.isEmpty(mdvupdate)){
+                    Toast.makeText(getApplicationContext(), "Không được để trống", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    dongVatDAO.update(mdv,mdvupdate,ghichu.getText().toString());
                     Toast.makeText(getApplicationContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     onBackPressed();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Update thất bại ", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

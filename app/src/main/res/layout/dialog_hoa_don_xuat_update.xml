@@ -96,6 +96,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginVertical="5dp"
+        android:focusable="false"
+
         android:hint="Ngày Xuất"
         android:inputType="number" />
 

@@ -3,10 +3,12 @@ package com.example.myapplication.Dialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +17,8 @@ import com.example.myapplication.DAO.HoaDonXuatDAO;
 import com.example.myapplication.R;
 
 import java.util.Calendar;
+
+import static java.lang.Double.parseDouble;
 
 
 public class DialogHoaDonXuatUpdate extends AppCompatActivity {
@@ -53,6 +57,27 @@ public class DialogHoaDonXuatUpdate extends AppCompatActivity {
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            String dx = edtMaHoaDonXuat.getText().toString();
+            String sldx = edtSoLuongXuat.getText().toString();
+            String gdx = edtGiaXuat.getText().toString();
+            String nxdx = edtNgayXuat.getText().toString();
+            String dcdx = edtGhiChu.getText().toString();
+            try {
+                if (TextUtils.isEmpty(dx)||TextUtils.isEmpty(sldx)||TextUtils.isEmpty(gdx)||TextUtils.isEmpty(nxdx)||TextUtils.isEmpty(dcdx)){
+                    Toast.makeText(DialogHoaDonXuatUpdate.this, "Không được để trống", Toast.LENGTH_SHORT).show();
+                }else if(parseDouble(sldx)  < 1){
+                    Toast.makeText(DialogHoaDonXuatUpdate.this, "Số lượng phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    hoaDonXuatDAO.update(dx,mhdx,gdx,sldx,nxdx,dcdx);
+                    Toast.makeText(getApplicationContext(), "Update thành công", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
+                }
+            }catch (Exception e ){
+                Toast.makeText(getApplicationContext(), "Không đúng định dạng", Toast.LENGTH_SHORT).show();
+
+            }
+
 
             }
         });
