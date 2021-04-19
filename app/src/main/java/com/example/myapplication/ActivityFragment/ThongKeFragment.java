@@ -43,13 +43,13 @@ public class ThongKeFragment extends Fragment {
         ArrayList<PieEntry> visitors = new ArrayList<>();
         hoaDonNhapDAO = new HoaDonNhapDAO(getActivity());
         hoaDonXuatDAO = new HoaDonXuatDAO(getActivity());
-
-//        Double tong = hoaDonNhapDAO.getDoanhThuNhap()+hoaDonXuatDAO.getDoanhThuXuat();
+        Double lai = hoaDonXuatDAO.getDoanhThuXuat()-hoaDonNhapDAO.getDoanhThuNhap();
+        Double tongThe = hoaDonNhapDAO.getDoanhThuNhap()+hoaDonXuatDAO.getDoanhThuXuat()+lai;
+        Double tiTrongNhap = (hoaDonNhapDAO.getDoanhThuNhap()/tongThe)*100 ;
 //        Double tongNhap =tong/hoaDonNhapDAO.getDoanhThuNhap();
-////        double tongpc1phan =
 
 
-        visitors.add(new PieEntry((float) hoaDonNhapDAO.getDoanhThuNhap(),"Tổng Nhập"));
+        visitors.add(new PieEntry((float) hoaDonNhapDAO.getDoanhThuNhap(),"Tổng Nhập :"+Math.ceil(tiTrongNhap) +"%"));
         visitors.add(new PieEntry((float) hoaDonXuatDAO.getDoanhThuXuat(),"Tổng Xuất"));
         visitors.add(new PieEntry((float) (hoaDonXuatDAO.getDoanhThuXuat() - hoaDonNhapDAO.getDoanhThuNhap()),"Lãi"));
 
