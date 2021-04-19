@@ -124,10 +124,11 @@
             android:id="@+id/btn_huy_hoa_don_nhap_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="quayLai_HDN"
             android:layout_margin="5dp"
             android:background="@drawable/bogocbutton"
             android:layout_weight="1"
-            android:text="Hủy" />
+            android:text="Quay Lại" />
 
         <Button
             android:id="@+id/btn_luu_hoa_don_nhap_add"

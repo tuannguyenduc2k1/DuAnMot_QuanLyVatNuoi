@@ -44,13 +44,17 @@ public class ThongKeFragment extends Fragment {
         hoaDonNhapDAO = new HoaDonNhapDAO(getActivity());
         hoaDonXuatDAO = new HoaDonXuatDAO(getActivity());
 
+//        Double tong = hoaDonNhapDAO.getDoanhThuNhap()+hoaDonXuatDAO.getDoanhThuXuat();
+//        Double tongNhap =tong/hoaDonNhapDAO.getDoanhThuNhap();
+////        double tongpc1phan =
+
 
         visitors.add(new PieEntry((float) hoaDonNhapDAO.getDoanhThuNhap(),"Tổng Nhập"));
         visitors.add(new PieEntry((float) hoaDonXuatDAO.getDoanhThuXuat(),"Tổng Xuất"));
         visitors.add(new PieEntry((float) (hoaDonXuatDAO.getDoanhThuXuat() - hoaDonNhapDAO.getDoanhThuNhap()),"Lãi"));
 
 
-        PieDataSet pieDataSet = new PieDataSet(visitors,"SƠ ĐỒ THỐNG KÊ");
+        PieDataSet pieDataSet = new PieDataSet(visitors,"");
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDataSet.setValueTextColor(Color.BLACK);
         pieDataSet.setValueTextSize(16f);
@@ -58,7 +62,7 @@ public class ThongKeFragment extends Fragment {
         PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("Tổng : "+String.valueOf(hoaDonXuatDAO.getDoanhThuXuat() + hoaDonNhapDAO.getDoanhThuNhap()));
+        pieChart.setCenterText("Tổng : "+(hoaDonXuatDAO.getDoanhThuXuat() + hoaDonNhapDAO.getDoanhThuNhap()));
         pieChart.animate();
 
         return view;

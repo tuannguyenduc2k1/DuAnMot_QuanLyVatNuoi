@@ -87,14 +87,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_huy_dong_vat_add"
+            android:id="@+id/btn_quay_lai_dong_vat_add"
+            android:onClick="quayLai_DV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:background="@drawable/bogocbutton"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="Hủy" />
-
+            android:text="Quay Lại" />
         <Button
             android:id="@+id/btn_luu_dong_vat_add"
             android:layout_width="wrap_content"
