@@ -43,14 +43,18 @@ public class ThongKeFragment extends Fragment {
         ArrayList<PieEntry> visitors = new ArrayList<>();
         hoaDonNhapDAO = new HoaDonNhapDAO(getActivity());
         hoaDonXuatDAO = new HoaDonXuatDAO(getActivity());
+        double lai = hoaDonXuatDAO.getDoanhThuXuat() - hoaDonNhapDAO.getDoanhThuNhap();
+        double tongThe = hoaDonXuatDAO.getDoanhThuXuat()+hoaDonNhapDAO.getDoanhThuNhap()+lai;
+        double tiTrongNhap = Math.round((hoaDonNhapDAO.getDoanhThuNhap()/tongThe)*100);
+        double tiTrongXuat = Math.round((hoaDonXuatDAO.getDoanhThuXuat()/tongThe)*100);
+        double tiTrongLai = Math.round((lai/tongThe)*100);
+
+        visitors.add(new PieEntry((float) hoaDonNhapDAO.getDoanhThuNhap(),"Tổng Nhập :"+tiTrongNhap+"%"));
+        visitors.add(new PieEntry((float) hoaDonXuatDAO.getDoanhThuXuat(),"Tổng Xuất :"+tiTrongXuat+"%"));
+        visitors.add(new PieEntry((float) lai,"Lãi :"+tiTrongLai+"%"));
 
 
-        visitors.add(new PieEntry((float) hoaDonNhapDAO.getDoanhThuNhap(),"Tổng Nhập"));
-        visitors.add(new PieEntry((float) hoaDonXuatDAO.getDoanhThuXuat(),"Tổng Xuất"));
-        visitors.add(new PieEntry((float) (hoaDonXuatDAO.getDoanhThuXuat() - hoaDonNhapDAO.getDoanhThuNhap()),"Lãi"));
-
-
-        PieDataSet pieDataSet = new PieDataSet(visitors,"SƠ ĐỒ THỐNG KÊ");
+        PieDataSet pieDataSet = new PieDataSet(visitors,"");
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDataSet.setValueTextColor(Color.BLACK);
         pieDataSet.setValueTextSize(16f);
@@ -58,7 +62,7 @@ public class ThongKeFragment extends Fragment {
         PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("Tổng : "+String.valueOf(hoaDonXuatDAO.getDoanhThuXuat() + hoaDonNhapDAO.getDoanhThuNhap()));
+        pieChart.setCenterText("Tổng : "+tongThe);
         pieChart.animate();
 
         return view;
