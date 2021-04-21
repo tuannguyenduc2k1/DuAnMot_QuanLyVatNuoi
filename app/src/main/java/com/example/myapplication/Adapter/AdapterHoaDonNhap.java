@@ -85,11 +85,10 @@ public class AdapterHoaDonNhap extends BaseAdapter {
             converView.setTag(hoder);
             hoder.txtMaHoaDonNhapVatNuoi.setText("Mã Hóa Đơn Nhập : "+hdn.getmMaHoaDonNhap());
             hoder.txtMaDongVat.setText(""+hdn.getmMaDongVat());
-            hoder.txtTongGiaNhap.setText(""+hdn.getmSoLuongNhap() * hdn.getmGiaNhap()+"vnd");
+            hoder.txtTongGiaNhap.setText(""+(hdn.getmSoLuongNhap() * hdn.getmGiaNhap())+"vnd");
             hoder.txtNgayNhap.setText(""+hdn.getmNgayNhap());
             //hoder.txtGiaNhap.setText(""+hdn.getmGiaNhap());
-
-
+        
         return converView;
     }
     public static class ViewHoder{

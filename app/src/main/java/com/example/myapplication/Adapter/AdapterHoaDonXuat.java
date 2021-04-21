@@ -77,8 +77,8 @@ public class AdapterHoaDonXuat extends BaseAdapter {
             hoder = (ViewHoder) converView.getTag();
             HoaDonXuat hdx = lstHoaDonXuat.get(position);
             converView.setTag(hoder);
-            hoder.txtMaHoaDonXuatVatNuoi.setText("Mã Hóa Đơn Xuất : "+hdx.getmMaDongVat());
-            hoder.txtMaHoaDongVat.setText(""+hdx.getmMaHoaDonXuat());
+            hoder.txtMaHoaDonXuatVatNuoi.setText("Mã Hóa Đơn Xuất : "+hdx.getmMaHoaDonXuat());
+            hoder.txtMaHoaDongVat.setText(""+hdx.getmMaDongVat());
             hoder.txtNgayXuat.setText(""+hdx.getmNgayXuat());
             hoder.txtTongGiaXuat.setText(""+hdx.getmSoLuongXuat()* hdx.getmGiaXuat()+"vnd");
 
