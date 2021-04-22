@@ -39,7 +39,7 @@ public class DialogDongVatUpdate extends AppCompatActivity {
         dongVatDAO = new DongVatDAO(this);
         Intent in = getIntent();
         Bundle b = in.getExtras();
-        //ldv = b.getString("LOAIDONGVAT");
+        ldv = b.getString("LOAIDONGVAT");
         mdv = b.getString("MADONGVAT");
         gc = b.getString("GHICHU");
         in.putExtras(b);
@@ -56,7 +56,7 @@ public class DialogDongVatUpdate extends AppCompatActivity {
 
                 }
                 else {
-                    dongVatDAO.update(mdv,mdvupdate,ghichu.getText().toString());
+                    dongVatDAO.update(ldv,mdv,ghichu.getText().toString());
                     Toast.makeText(getApplicationContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     onBackPressed();
                 }

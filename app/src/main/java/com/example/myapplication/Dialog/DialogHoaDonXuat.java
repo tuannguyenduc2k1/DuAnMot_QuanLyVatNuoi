@@ -2,6 +2,7 @@ package com.example.myapplication.Dialog;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -94,9 +95,19 @@ public class DialogHoaDonXuat extends AppCompatActivity {
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String mdx =edtMaHoaDonXuat.getText().toString();
+                String gdx =edtGiaXuat.getText().toString();
+                String sldx =edtSoLuong.getText().toString();
+                String ngdx =edtNgayXuat.getText().toString();
+                String gcdx =edtGhiChu.getText().toString();
                 hoaDonXuatDAO = new HoaDonXuatDAO(DialogHoaDonXuat.this);//
-                HoaDonXuat hoaDonXuat = new HoaDonXuat(maDongVat, edtMaHoaDonXuat.getText().toString(), Double.parseDouble(edtGiaXuat.getText().toString()), Integer.parseInt(edtSoLuong.getText().toString()), edtNgayXuat.getText().toString(), edtGhiChu.getText().toString());
+                HoaDonXuat hoaDonXuat = new HoaDonXuat(mdx ,maDongVat, Double.parseDouble(gdx), Integer.parseInt(sldx), ngdx,gcdx );
                 try {
+                    if (TextUtils.isEmpty(mdx) || TextUtils.isEmpty(sldx) || TextUtils.isEmpty(gdx) || TextUtils.isEmpty(ngdx) ){
+                        Toast.makeText(DialogHoaDonXuat.this, "Không được để trống", Toast.LENGTH_SHORT).show();
+                    }else if(Integer.parseInt(sldx) < 1){
+                        Toast.makeText(DialogHoaDonXuat.this, "Số lượng phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+                    }
                     if (hoaDonXuatDAO.insertHoaDonXuat(hoaDonXuat) > 0) {
                         onBackPressed();
                         Toast.makeText(DialogHoaDonXuat.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
@@ -105,6 +116,8 @@ public class DialogHoaDonXuat extends AppCompatActivity {
                     }
                 } catch (Exception ex) {
                     Log.e("Lỗi:", ex.toString());
+                    Toast.makeText(DialogHoaDonXuat.this, "Không đúng định dạng", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -120,7 +133,4 @@ public class DialogHoaDonXuat extends AppCompatActivity {
     }
 
 
-    public void quayLai_HDX(View view) {
-        finish();
-    }
 }

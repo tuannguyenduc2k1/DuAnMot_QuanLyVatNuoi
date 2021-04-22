@@ -32,7 +32,7 @@ import java.util.List;
 
 public class DialogDongVat extends AppCompatActivity {
     private List<LoaiDongVat> listdongVat = new ArrayList<>();
-    private String mMadongvat = "";
+    private String loaidongvat = "";
     private EditText madongvat, soluong,ghichu;
     private Spinner spnloaidongvat;
     private Button luu;
@@ -51,7 +51,7 @@ public class DialogDongVat extends AppCompatActivity {
         spnloaidongvat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mMadongvat = listdongVat.get(spnloaidongvat.getSelectedItemPosition()).getmLoaiDongVat();
+                loaidongvat = listdongVat.get(spnloaidongvat.getSelectedItemPosition()).getmLoaiDongVat();
             }
 
             @Override
@@ -72,8 +72,9 @@ public class DialogDongVat extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
                     else {
+
                         dongVatDAO = new DongVatDAO(DialogDongVat.this);
-                        DongVat dongVat = new DongVat(dv, mMadongvat, ghichu.getText().toString());
+                        DongVat dongVat = new DongVat(dv, loaidongvat, ghichu.getText().toString());
                         dongVatDAO.insertDongVat(dongVat);
                         onBackPressed();
                         Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();

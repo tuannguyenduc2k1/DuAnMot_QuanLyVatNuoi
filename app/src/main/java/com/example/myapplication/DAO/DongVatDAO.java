@@ -29,11 +29,12 @@ public class DongVatDAO {
     }
 
     public long insertDongVat(DongVat dv){
+
         ContentValues values = new ContentValues();
-        values.put(Name.maDongVat,dv.getmMaDongVat());
-        values.put(Name.loaiDongVat,dv.getmLoaiDongVat());
-        //values.put(Name.soLuongDongVat,dv.getmSoLuongDongVat());
-        values.put(Name.ghiChuDongVat,dv.getmGhiChu());
+        values.put("maDongVat", dv.getmMaDongVat());
+        values.put("loaiDongVat", dv.getmLoaiDongVat());
+        values.put("ghiChu", dv.getmGhiChu());
+
         if (checkPrimaryKey(dv.getmMaDongVat())) {
             int result = db.update(TABLE_NAME, values, "maDongVat=?", new
                     String[]{dv.getmMaDongVat()});
@@ -52,9 +53,10 @@ public class DongVatDAO {
         return 1;
     }
     //update
-    public long update(String dongVat, String ma ,  String ghiChu) {
+    public long update(String dongVat, String ma , String ghiChu) {
         ContentValues values = new ContentValues();
-        values.put("maDongVat", ma);
+//        values.put("maDongVat", ma);
+        values.put("loaiDongVat", ma);
         values.put("ghiChu", ghiChu);
         int result = db.update(TABLE_NAME, values, "maDongVat=?", new String[]{dongVat});
         if (result == 0) {
