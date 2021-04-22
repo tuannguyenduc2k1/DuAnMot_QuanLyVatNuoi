@@ -40,9 +40,9 @@ public class AdapterHome extends BaseAdapter {
         return 0;
     }
     public static class ViewHoder{
-        TextView tv_link;
+        //TextView tv_link;
         TextView tv_title;
-        TextView tv_des;
+        //TextView tv_des;
         TextView tv_pubDate;
     }
 
@@ -55,17 +55,17 @@ public class AdapterHome extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.row_item_show_tin_tuc,null);
 
-            viewHoder.tv_link = convertView.findViewById(R.id.tv_id);
+            //viewHoder.tv_link = convertView.findViewById(R.id.tv_id);
             viewHoder.tv_title = convertView.findViewById(R.id.tv_title);
-            viewHoder.tv_des = convertView.findViewById(R.id.tv_des);
+            //viewHoder.tv_des = convertView.findViewById(R.id.tv_des);
             viewHoder.tv_pubDate = convertView.findViewById(R.id.tv_pubDate);
             convertView.setTag(viewHoder);
         }else{
             viewHoder = (ViewHoder) convertView.getTag();
         }
-        viewHoder.tv_link.setText("");
+        //viewHoder.tv_link.setText("");
         viewHoder.tv_title.setText(tinTucList.get(position).getTitle());
-        viewHoder.tv_des.setText("");
+        //viewHoder.tv_des.setText("");
         viewHoder.tv_pubDate.setText(tinTucList.get(position).getPubDate());
 
         return convertView;
