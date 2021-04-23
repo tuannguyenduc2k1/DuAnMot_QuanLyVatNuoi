@@ -110,21 +110,6 @@ public class HoaDonNhapFragment extends Fragment {
         return mView;
     }
 
-//    private void filter(String charText) {
-//        charText = charText.toLowerCase(Locale.getDefault());
-//        lstHoaDonNhap.clear();
-//        if (charText.length() == 0) {
-//            lstHoaDonNhap.addAll(lstHoaDonNhap);
-//        } else {
-//            for (HoaDonNhap wp : lstHoaDonNhap) {
-//                if (wp.getmMaDongVat().toLowerCase(Locale.getDefault())
-//                        .contains(charText)) {
-//                    lstHoaDonNhap.add(wp);
-//                }
-//            }
-//        }
-//        adapterHoaDonNhap.notifyDataSetChanged();
-//    }
     //load lai du lieu
     @Override
     public void onResume() {
