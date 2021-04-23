@@ -5,9 +5,20 @@
     android:id="@+id/fragment_hoa_don_nhap"
     android:layout_height="match_parent"
     android:padding="16dp">
+    <EditText
+        android:id="@+id/timkiemhoadonnhap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:drawableLeft="@drawable/ic_baseline_search_24"
+        android:padding="10px"
+        android:background="@drawable/bogocedittext"
+        android:hint=" Tìm kiếm"
+        />
 
     <ListView
         android:id="@+id/lv_hoa_don_nhap"
+        android:layout_below="@+id/timkiemhoadonnhap"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

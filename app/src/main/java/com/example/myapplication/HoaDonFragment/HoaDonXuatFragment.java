@@ -2,10 +2,13 @@ package com.example.myapplication.HoaDonFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
@@ -32,14 +35,13 @@ public class HoaDonXuatFragment extends Fragment {
     View mView;
     FloatingActionButton floatingActionButton;
     ListView listView;
+    EditText timkiemxuat;
     HoaDonXuatDAO hoaDonXuatDAO;
     public static List<HoaDonXuat> lstHoaDonXuat = new ArrayList<>();
     AdapterHoaDonXuat adapterHoaDonXuat;
     public HoaDonXuatFragment() {
         // Required empty public constructor
     }
-
-
 
 
     @Override
@@ -49,6 +51,7 @@ public class HoaDonXuatFragment extends Fragment {
         mView =  inflater.inflate(R.layout.fragment_hoa_don_xuat, container, false);
         floatingActionButton = (FloatingActionButton)mView.findViewById(R.id.btn_action_float_add_hoa_don_xuat);
         listView = (ListView)mView.findViewById(R.id.lv_hoa_don_xuat);
+        timkiemxuat = (EditText) mView.findViewById(R.id.timkiemhoadonxuat);
         registerForContextMenu(listView);
         hoaDonXuatDAO = new HoaDonXuatDAO(getActivity());
         try {
@@ -80,8 +83,37 @@ public class HoaDonXuatFragment extends Fragment {
                 startActivity(new Intent(getContext(), DialogHoaDonXuat.class));
             }
         });
+
+        listView.setTextFilterEnabled(true);
+        timkiemxuat.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                listView.invalidateViews();
+                System.out.println("Text [" + s + "] - Start [" + start + "] - Before [" + before + "] - Count [" + count + "]");
+                if (count < before) {
+
+                    adapterHoaDonXuat.resetData();
+                }
+                    adapterHoaDonXuat.getFilter().filter(s.toString());
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         return mView;
+
     }
+
     //load lai du lieu
     @Override
     public void onResume() {

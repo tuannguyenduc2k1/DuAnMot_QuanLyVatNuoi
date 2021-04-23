@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".ActivityFragment.MainActivity">
+        <activity android:name=".ActivityFragment.MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            >
 
         </activity>
         <activity android:name=".Dangnhap.Login">

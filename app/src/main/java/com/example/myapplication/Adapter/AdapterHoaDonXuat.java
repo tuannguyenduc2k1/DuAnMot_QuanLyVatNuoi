@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import com.example.myapplication.Model.HoaDonNhap;
 import com.example.myapplication.Model.HoaDonXuat;
 import com.example.myapplication.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterHoaDonXuat extends BaseAdapter {
@@ -24,6 +26,8 @@ public class AdapterHoaDonXuat extends BaseAdapter {
     List<HoaDonXuat> lstHoaDonXuat;
     List<HoaDonXuat> lstGetHoaDonXuat;
     HoaDonXuatDAO hoaDonXuatDAO;
+    private Filter hoaDonxuatFilter;
+
 
     public AdapterHoaDonXuat(Activity context, List<HoaDonXuat> lstHoaDonXuat) {
         super();
@@ -84,22 +88,64 @@ public class AdapterHoaDonXuat extends BaseAdapter {
 
         return converView;
     }
-    public static class ViewHoder{
+    public void changeDataset(List<HoaDonXuat> items){
+        this.lstHoaDonXuat = items;
+        notifyDataSetChanged();
+    }
+
+    public void resetData() {
+        lstHoaDonXuat = lstGetHoaDonXuat;
+    }
+    public Filter getFilter() {
+       
+        if (hoaDonxuatFilter == null)
+            hoaDonxuatFilter = new CustomFilter();
+        return hoaDonxuatFilter;
+    }
+    private class CustomFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            if (constraint == null || constraint.length() == 0) {
+                results.values = lstGetHoaDonXuat;
+                results.count = lstGetHoaDonXuat.size();
+            } else {
+                List<HoaDonXuat> lshoadonxuat = new ArrayList<HoaDonXuat>();
+                for (HoaDonXuat p : lstHoaDonXuat) {
+                    if
+                    (p.getmMaDongVat().toUpperCase().startsWith(constraint.toString().toUpperCase()))
+                        lshoadonxuat.add(p);
+                }
+                results.values = lshoadonxuat;
+                results.count = lshoadonxuat.size();
+            }
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            if (results.count == 0)
+                notifyDataSetInvalidated();
+            else {
+                lstHoaDonXuat = (List<HoaDonXuat>) results.values;
+                notifyDataSetChanged();
+            }
+        }
+    }
+
+
+    public static class ViewHoder {
         TextView txtMaHoaDonXuatVatNuoi;
         TextView txtMaHoaDongVat;
         TextView txtNgayXuat;
         TextView txtTongGiaXuat;
         ImageView imgDelete;
 
-    }
 
+    }
     @Override
     public void notifyDataSetChanged() {
         super.notifyDataSetChanged();
     }
 
-    public void changeDataset(List<HoaDonXuat> items){
-        this.lstHoaDonXuat = items;
-        notifyDataSetChanged();
-    }
+
 }

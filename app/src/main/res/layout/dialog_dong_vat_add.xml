@@ -48,23 +48,6 @@
         android:layout_marginVertical="5dp"
         />
 
-
-
-<!--    <TextView-->
-<!--        android:textColor="#FF0000"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:inputType="number"-->
-<!--        android:paddingVertical="5dp"-->
-<!--        android:text="Số Lượng: " />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/ed_nhap_so_luong_dongVat_add"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginVertical="5dp"-->
-<!--        android:inputType="number" />-->
-
     <TextView
         android:textColor="#FF0000"
         android:layout_width="match_parent"

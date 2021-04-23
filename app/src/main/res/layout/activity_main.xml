@@ -19,6 +19,7 @@
         android:id="@+id/btn_nav"
         app:menu="@menu/menu_bottom_nav"
         app:itemTextColor="#fff"
+        android:layout_gravity="bottom"
         app:itemBackground="@color/purple_500"
         app:itemIconTint="@color/white"
         ></com.google.android.material.bottomnavigation.BottomNavigationView>

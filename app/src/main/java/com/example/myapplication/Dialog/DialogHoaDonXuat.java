@@ -101,7 +101,7 @@ public class DialogHoaDonXuat extends AppCompatActivity {
                 String ngdx =edtNgayXuat.getText().toString();
                 String gcdx =edtGhiChu.getText().toString();
                 hoaDonXuatDAO = new HoaDonXuatDAO(DialogHoaDonXuat.this);//
-                HoaDonXuat hoaDonXuat = new HoaDonXuat(mdx ,maDongVat, Double.parseDouble(gdx), Integer.parseInt(sldx), ngdx,gcdx );
+                HoaDonXuat hoaDonXuat = new HoaDonXuat( maDongVat,mdx, Double.parseDouble(gdx), Integer.parseInt(sldx), ngdx,gcdx );
                 try {
                     if (TextUtils.isEmpty(mdx) || TextUtils.isEmpty(sldx) || TextUtils.isEmpty(gdx) || TextUtils.isEmpty(ngdx) ){
                         Toast.makeText(DialogHoaDonXuat.this, "Không được để trống", Toast.LENGTH_SHORT).show();
