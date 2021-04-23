@@ -114,7 +114,7 @@ public class AdapterHoaDonXuat extends BaseAdapter {
                 List<HoaDonXuat> lshoadonxuat = new ArrayList<HoaDonXuat>();
                 for (HoaDonXuat p : lstHoaDonXuat) {
                     if
-                    (p.getmMaDongVat().toUpperCase().startsWith(constraint.toString().toUpperCase()))
+                    (p.getmMaHoaDonXuat().toUpperCase().startsWith(constraint.toString().toUpperCase()))
                         lshoadonxuat.add(p);
                 }
                 results.values = lshoadonxuat;

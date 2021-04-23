@@ -14,11 +14,13 @@
     android:textStyle="bold"
     android:padding="20px"
     android:textSize="25dp"
-    android:text="Thời Tiết"></TextView>
-<ListView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/lv_tin_tuc"
-    ></ListView>
+    android:text="BẢNG TIN CHĂN NUÔI">
+
+</TextView>
+
+    <ListView
+        android:id="@+id/lv_tin_tuc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
 
 </LinearLayout>

@@ -78,7 +78,6 @@ public class DialogHoaDonXuatUpdate extends AppCompatActivity {
 
             }
 
-
             }
         });
         edtNgayXuat.setOnClickListener(new View.OnClickListener() {

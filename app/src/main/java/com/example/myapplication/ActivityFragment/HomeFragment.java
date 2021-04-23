@@ -33,13 +33,12 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     ListView lv_tin_tuc;
     View mView;
-    String link = "https://vtv.vn/du-bao-thoi-tiet.rss";
+    String link = "https://nongnghiep.vn/chan-nuoi.rss";
     List<TinTuc> tin_tucList;
 
     public HomeFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

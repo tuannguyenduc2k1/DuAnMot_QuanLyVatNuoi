@@ -54,12 +54,14 @@ public class HoaDonNhapFragment extends Fragment {
 
         try {
             lstHoaDonNhap = hoaDonNhapDAO.getAll();
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         adapterHoaDonNhap = new AdapterHoaDonNhap(getActivity(),lstHoaDonNhap);
         listView.setAdapter(adapterHoaDonNhap);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -117,10 +119,11 @@ public class HoaDonNhapFragment extends Fragment {
 //        lstHoaDonNhap.clear();
         try {
             lstHoaDonNhap = hoaDonNhapDAO.getAll();
+            adapterHoaDonNhap.changeDataset(lstHoaDonNhap);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        adapterHoaDonNhap.changeDataset(lstHoaDonNhap);
+
     }
 
 }

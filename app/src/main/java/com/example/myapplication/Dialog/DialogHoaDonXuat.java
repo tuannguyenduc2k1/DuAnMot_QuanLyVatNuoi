@@ -135,7 +135,6 @@ public class DialogHoaDonXuat extends AppCompatActivity {
     public void getMaDongVat() {
         dongVatDAO = new DongVatDAO(this);
         lstDongVat = DongVatDAO.getAllTheLoai();
-
         ArrayAdapter<DongVat> adapter = new ArrayAdapter<DongVat>(this, android.R.layout.simple_spinner_item, lstDongVat);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMaDongVat.setAdapter(adapter);

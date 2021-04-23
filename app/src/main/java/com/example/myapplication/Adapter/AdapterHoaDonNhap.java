@@ -113,8 +113,9 @@ public class AdapterHoaDonNhap extends BaseAdapter {
             hoaDonnhapFilter = new CustomFilter();
         return hoaDonnhapFilter;
     }
+
     public void resetData() {
-        lstHoaDonNhap  =  lstGetHoaDonNhap ;
+        lstHoaDonNhap =  lstGetHoaDonNhap  ;
     }
 
     @Override
@@ -138,7 +139,7 @@ public class AdapterHoaDonNhap extends BaseAdapter {
                 List<HoaDonNhap> lshoadonnhap = new ArrayList<HoaDonNhap>();
                 for (HoaDonNhap p : lstHoaDonNhap) {
                     if
-                    (p.getmMaDongVat().toUpperCase().startsWith(constraint.toString().toUpperCase()))
+                    (p.getmMaHoaDonNhap().toUpperCase().startsWith(constraint.toString().toUpperCase()))
                         lshoadonnhap.add(p);
                 }
                 results.values = lshoadonnhap;

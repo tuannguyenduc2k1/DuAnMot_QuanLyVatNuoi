@@ -91,9 +91,13 @@ public class HoaDonXuatFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 listView.invalidateViews();
                 System.out.println("Text [" + s + "] - Start [" + start + "] - Before [" + before + "] - Count [" + count + "]");
+
+                adapterHoaDonXuat.changeDataset(lstHoaDonXuat);
                 if (count < before) {
 
                     adapterHoaDonXuat.resetData();
+                    onResume();
+
                 }
                     adapterHoaDonXuat.getFilter().filter(s.toString());
 
@@ -109,6 +113,7 @@ public class HoaDonXuatFragment extends Fragment {
             public void afterTextChanged(Editable s) {
 
             }
+
         });
 
         return mView;
@@ -119,6 +124,7 @@ public class HoaDonXuatFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
 //        lstHoaDonXuat.clear();
         try {
             lstHoaDonXuat = hoaDonXuatDAO.getAll();
@@ -126,5 +132,7 @@ public class HoaDonXuatFragment extends Fragment {
             e.printStackTrace();
         }
         adapterHoaDonXuat.changeDataset(lstHoaDonXuat);
+
+//
     }
 }
