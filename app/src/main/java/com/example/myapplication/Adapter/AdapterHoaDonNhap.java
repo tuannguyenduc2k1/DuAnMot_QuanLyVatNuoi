@@ -27,17 +27,20 @@ import java.util.zip.Inflater;
 public class AdapterHoaDonNhap extends BaseAdapter {
     public Activity context;
     public LayoutInflater inflater;
+
     List<HoaDonNhap> lstHoaDonNhap;
     List<HoaDonNhap> lstGetHoaDonNhap;
+
     HoaDonNhapDAO hoaDonNhapDAO;
+
     private Filter hoaDonnhapFilter;
 
     public AdapterHoaDonNhap(Activity context, List<HoaDonNhap> lstHoaDonNhap) {
         super();
         this.context = context;
-        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.lstHoaDonNhap = lstHoaDonNhap;
         this.lstGetHoaDonNhap = lstHoaDonNhap;
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         hoaDonNhapDAO = new HoaDonNhapDAO(context);
     }
@@ -110,9 +113,8 @@ public class AdapterHoaDonNhap extends BaseAdapter {
             hoaDonnhapFilter = new CustomFilter();
         return hoaDonnhapFilter;
     }
-
     public void resetData() {
-        lstHoaDonNhap = lstGetHoaDonNhap;
+        lstHoaDonNhap  =  lstGetHoaDonNhap ;
     }
 
     @Override

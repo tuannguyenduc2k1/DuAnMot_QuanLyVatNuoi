@@ -40,7 +40,7 @@ import static java.lang.Double.parseDouble;
 public class DialogHoaDonNhap extends AppCompatActivity {
 //    Context context;
     EditText edtNgayNhap,edtMaHoaDonNhap,edtGiaNhap,edtSoLuong,edtGhiChu;
-//    List<HoaDonNhap> lstHoaDonNhap = new ArrayList<>();
+
     List<DongVat> lstDongVat = new ArrayList<>();
     HoaDonNhapDAO hoaDonNhapDAO;
     DongVatDAO dongVatDAO;

@@ -32,7 +32,7 @@ import java.util.List;
 public class DialogHoaDonXuat extends AppCompatActivity {
     //    Context context;
     EditText edtNgayXuat, edtMaHoaDonXuat, edtGiaXuat, edtSoLuong, edtGhiChu;
-    Button btnThem;
+    Button btnThem,quaylai;
     //    List<HoaDonNhap> lstHoaDonNhap = new ArrayList<>();
     List<DongVat> lstDongVat = new ArrayList<>();
     HoaDonXuatDAO hoaDonXuatDAO;
@@ -60,6 +60,7 @@ public class DialogHoaDonXuat extends AppCompatActivity {
         edtNgayXuat = findViewById(R.id.ed_nhap_ngay_nhap_hoa_don_xuat_add);
         edtGhiChu = findViewById(R.id.ed_nhap_ghi_chu_hoaDonXuat_add);
         btnThem = findViewById(R.id.btn_luu_hoa_don_xuat_add);
+        quaylai = findViewById(R.id.btn_huy_hoa_don_xuat_add);
         listView = findViewById(R.id.lv_hoa_don_xuat);
 
         //su kien chon Spinner
@@ -91,6 +92,12 @@ public class DialogHoaDonXuat extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+        quaylai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,19 +107,21 @@ public class DialogHoaDonXuat extends AppCompatActivity {
                 String sldx =edtSoLuong.getText().toString();
                 String ngdx =edtNgayXuat.getText().toString();
                 String gcdx =edtGhiChu.getText().toString();
-                hoaDonXuatDAO = new HoaDonXuatDAO(DialogHoaDonXuat.this);//
-                HoaDonXuat hoaDonXuat = new HoaDonXuat( maDongVat,mdx, Double.parseDouble(gdx), Integer.parseInt(sldx), ngdx,gcdx );
+
                 try {
                     if (TextUtils.isEmpty(mdx) || TextUtils.isEmpty(sldx) || TextUtils.isEmpty(gdx) || TextUtils.isEmpty(ngdx) ){
                         Toast.makeText(DialogHoaDonXuat.this, "Không được để trống", Toast.LENGTH_SHORT).show();
                     }else if(Integer.parseInt(sldx) < 1){
                         Toast.makeText(DialogHoaDonXuat.this, "Số lượng phải lớn hơn 0", Toast.LENGTH_SHORT).show();
-                    }
-                    if (hoaDonXuatDAO.insertHoaDonXuat(hoaDonXuat) > 0) {
-                        onBackPressed();
-                        Toast.makeText(DialogHoaDonXuat.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
+
                     } else {
-                        Toast.makeText(DialogHoaDonXuat.this, "Them That Bai", Toast.LENGTH_SHORT).show();
+                        hoaDonXuatDAO = new HoaDonXuatDAO(DialogHoaDonXuat.this);//
+                        HoaDonXuat hoaDonXuat = new HoaDonXuat(maDongVat, mdx, Double.parseDouble(gdx), Integer.parseInt(sldx), ngdx, gcdx);
+                        if (hoaDonXuatDAO.insertHoaDonXuat(hoaDonXuat) > 0) {
+                            ;
+                            onBackPressed();
+                            Toast.makeText(DialogHoaDonXuat.this, "Them Thanh Cong", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } catch (Exception ex) {
                     Log.e("Lỗi:", ex.toString());

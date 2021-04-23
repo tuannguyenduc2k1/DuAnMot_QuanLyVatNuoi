@@ -64,6 +64,7 @@ public class HoaDonXuatFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                HoaDonXuat hoaDonXuat = (HoaDonXuat) adapterView.getItemAtPosition(position);
                 Intent intent = new Intent(getActivity(), DialogHoaDonXuatUpdate.class);
                 Bundle bb = new Bundle();
                 bb.putString("MAHOADONXUAT",lstHoaDonXuat.get(position).getmMaHoaDonXuat());
@@ -114,11 +115,11 @@ public class HoaDonXuatFragment extends Fragment {
 
     }
 
-    //load lai du lieu
+//    load lai du lieu
     @Override
     public void onResume() {
         super.onResume();
-        lstHoaDonXuat.clear();
+//        lstHoaDonXuat.clear();
         try {
             lstHoaDonXuat = hoaDonXuatDAO.getAll();
         } catch (ParseException e) {

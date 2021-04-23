@@ -36,7 +36,7 @@ public class HoaDonNhapFragment extends Fragment {
     ListView listView;
     HoaDonNhapDAO hoaDonNhapDAO;
     public static List<HoaDonNhap> lstHoaDonNhap = new ArrayList<>();
-    AdapterHoaDonNhap adapterHoaDonNhap;
+    AdapterHoaDonNhap adapterHoaDonNhap ;
     public HoaDonNhapFragment() {
         // Required empty public constructor
     }
@@ -63,6 +63,7 @@ public class HoaDonNhapFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                HoaDonNhap hoaDonNhap = (HoaDonNhap) adapterView.getItemAtPosition(position);
                 Intent intent = new Intent(getActivity(), DialogHoaDonNhapUpdate.class);
                 Bundle b = new Bundle();
                 b.putString("m",lstHoaDonNhap.get(position).getmMaHoaDonNhap());
@@ -85,11 +86,8 @@ public class HoaDonNhapFragment extends Fragment {
         timkiemnhap.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                listView.invalidateViews();
-
                 System.out.println("Text [" + s + "] - Start [" + start + "] - Before [" + before + "] - Count [" + count + "]");
                 if (count < before) {
-                    adapterHoaDonNhap.notifyDataSetChanged();
                     adapterHoaDonNhap.resetData();
 
                 }
@@ -127,13 +125,11 @@ public class HoaDonNhapFragment extends Fragment {
 //        }
 //        adapterHoaDonNhap.notifyDataSetChanged();
 //    }
-
-
     //load lai du lieu
     @Override
     public void onResume() {
         super.onResume();
-        lstHoaDonNhap.clear();
+//        lstHoaDonNhap.clear();
         try {
             lstHoaDonNhap = hoaDonNhapDAO.getAll();
         } catch (ParseException e) {

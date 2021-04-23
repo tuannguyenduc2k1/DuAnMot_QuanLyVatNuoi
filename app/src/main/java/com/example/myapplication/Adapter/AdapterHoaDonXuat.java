@@ -133,7 +133,6 @@ public class AdapterHoaDonXuat extends BaseAdapter {
         }
     }
 
-
     public static class ViewHoder {
         TextView txtMaHoaDonXuatVatNuoi;
         TextView txtMaHoaDongVat;
