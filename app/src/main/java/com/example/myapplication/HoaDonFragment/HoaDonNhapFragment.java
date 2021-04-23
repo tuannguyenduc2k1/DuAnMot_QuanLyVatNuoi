@@ -26,6 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class HoaDonNhapFragment extends Fragment {
@@ -56,6 +57,7 @@ public class HoaDonNhapFragment extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         adapterHoaDonNhap = new AdapterHoaDonNhap(getActivity(),lstHoaDonNhap);
         listView.setAdapter(adapterHoaDonNhap);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -84,12 +86,16 @@ public class HoaDonNhapFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 listView.invalidateViews();
+
                 System.out.println("Text [" + s + "] - Start [" + start + "] - Before [" + before + "] - Count [" + count + "]");
                 if (count < before) {
-
+                    adapterHoaDonNhap.notifyDataSetChanged();
                     adapterHoaDonNhap.resetData();
+
                 }
                 adapterHoaDonNhap.getFilter().filter(s.toString());
+//                String text = timkiemnhap.getText().toString().toLowerCase(Locale.getDefault());
+//                filter(text);
 
             }
             @Override
@@ -105,6 +111,24 @@ public class HoaDonNhapFragment extends Fragment {
 
         return mView;
     }
+
+//    private void filter(String charText) {
+//        charText = charText.toLowerCase(Locale.getDefault());
+//        lstHoaDonNhap.clear();
+//        if (charText.length() == 0) {
+//            lstHoaDonNhap.addAll(lstHoaDonNhap);
+//        } else {
+//            for (HoaDonNhap wp : lstHoaDonNhap) {
+//                if (wp.getmMaDongVat().toLowerCase(Locale.getDefault())
+//                        .contains(charText)) {
+//                    lstHoaDonNhap.add(wp);
+//                }
+//            }
+//        }
+//        adapterHoaDonNhap.notifyDataSetChanged();
+//    }
+
+
     //load lai du lieu
     @Override
     public void onResume() {

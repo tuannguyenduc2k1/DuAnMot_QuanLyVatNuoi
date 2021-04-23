@@ -1,5 +1,6 @@
 package com.example.myapplication.ActivityFragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -165,8 +166,6 @@ public class CaiDatFragment extends Fragment {
            public void onClick(View v) {
                View layout = getLayoutInflater().inflate(R.layout.dialog_caidat_profile, null);
                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//                TextView hengio =  layout.findViewById(R.id.hengio);
-//                TextView chinhsua =  layout.findViewById(R.id.chinhsuaprofile);
                 TextView dl_dangxuat =  layout.findViewById(R.id.dl_dangxuat);
                builder.setView(layout);
                AlertDialog alertDialog = builder.create();
@@ -175,10 +174,12 @@ public class CaiDatFragment extends Fragment {
                    public void onClick(View v) {
                        FirebaseAuth.getInstance().signOut();
                        startActivity(new Intent(getActivity(), Login.class));
+                       Intent intent = new Intent(getActivity(), Login.class);
+                       getActivity().startActivity(intent);
+                       ((Activity) getActivity()).finish();
 
                    }
                });
-
 
                alertDialog.show();
            }

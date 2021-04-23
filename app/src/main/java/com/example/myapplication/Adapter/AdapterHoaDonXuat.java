@@ -95,6 +95,7 @@ public class AdapterHoaDonXuat extends BaseAdapter {
 
     public void resetData() {
         lstHoaDonXuat = lstGetHoaDonXuat;
+
     }
     public Filter getFilter() {
        
