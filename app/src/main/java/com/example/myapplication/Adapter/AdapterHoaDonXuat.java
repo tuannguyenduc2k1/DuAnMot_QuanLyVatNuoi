@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import com.example.myapplication.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterHoaDonXuat extends BaseAdapter {
+public class AdapterHoaDonXuat extends BaseAdapter implements Filterable {
     public Activity context;
     public LayoutInflater inflater;
     List<HoaDonXuat> lstHoaDonXuat;

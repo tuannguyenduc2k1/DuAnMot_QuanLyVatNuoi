@@ -108,7 +108,8 @@ public class HoaDonNhapFragment extends Fragment {
 
             }
         });
-
+//        adapterHoaDonNhap.getFilter();
+//        adapterHoaDonNhap.resetData();
         return mView;
     }
 
@@ -117,6 +118,7 @@ public class HoaDonNhapFragment extends Fragment {
     public void onResume() {
         super.onResume();
 //        lstHoaDonNhap.clear();
+
         try {
             lstHoaDonNhap = hoaDonNhapDAO.getAll();
             adapterHoaDonNhap.changeDataset(lstHoaDonNhap);
@@ -125,5 +127,6 @@ public class HoaDonNhapFragment extends Fragment {
         }
 
     }
+
 
 }

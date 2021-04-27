@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
-public class AdapterHoaDonNhap extends BaseAdapter {
+public class AdapterHoaDonNhap extends BaseAdapter implements Filterable {
     public Activity context;
     public LayoutInflater inflater;
 
@@ -91,7 +92,7 @@ public class AdapterHoaDonNhap extends BaseAdapter {
         converView.setTag(hoder);
         hoder.txtMaHoaDonNhapVatNuoi.setText("Mã Hóa Đơn Nhập : " + hdn.getmMaHoaDonNhap());
         hoder.txtMaDongVat.setText("" + hdn.getmMaDongVat());
-        hoder.txtTongGiaNhap.setText("" + (hdn.getmSoLuongNhap() * hdn.getmGiaNhap()) + "vnd");
+        hoder.txtTongGiaNhap.setText("" + Double.toString(hdn.getmSoLuongNhap() * hdn.getmGiaNhap()) + "vnd");
         hoder.txtNgayNhap.setText("" + hdn.getmNgayNhap());
         //hoder.txtGiaNhap.setText(""+hdn.getmGiaNhap());
 

@@ -47,28 +47,9 @@ public class ThongKeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_thong_ke, container, false);
-        BarChart barChart = view.findViewById(R.id.barChart);
-        lstVisitors = new ArrayList<>();
-        hoaDonNhapDAO = new HoaDonNhapDAO(getActivity());
-        hoaDonXuatDAO = new HoaDonXuatDAO(getActivity());
-        lstVisitors.add(new BarEntry(-1, (int) hoaDonNhapDAO.getDoanhThuNhap()));
-        lstVisitors.add(new BarEntry(1, (int) hoaDonXuatDAO.getDoanhThuXuat()));
 
 
-        BarDataSet barDataSet = new BarDataSet(lstVisitors, "Thong Ke");
-        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setLabel("Hóa Đơn Nhập,Hóa Đơn Xuất");
-        barDataSet.setValueTextSize(16f);
-
-        BarData barData = new BarData(barDataSet);
-
-        //barChart.setFitBars(true);
-        barChart.setData(barData);
-        barChart.getDescription().setText("Doanh Thu");
-        barChart.animateY(2000);
-
-
+//so do tron
 //        double lai = hoaDonXuatDAO.getDoanhThuXuat() - hoaDonNhapDAO.getDoanhThuNhap();
 //        double tongThe = hoaDonXuatDAO.getDoanhThuXuat()+hoaDonNhapDAO.getDoanhThuNhap()+lai;
 //        double tiTrongNhap = Math.round((hoaDonNhapDAO.getDoanhThuNhap()/tongThe)*100);
@@ -94,4 +75,35 @@ public class ThongKeFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        BarChart barChart = view.findViewById(R.id.barChart);
+        lstVisitors = new ArrayList<>();
+        hoaDonNhapDAO = new HoaDonNhapDAO(getActivity());
+        hoaDonXuatDAO = new HoaDonXuatDAO(getActivity());
+        lstVisitors.add(new BarEntry(-1, (int) hoaDonNhapDAO.getDoanhThuNhap()));
+        lstVisitors.add(new BarEntry(1, (int) hoaDonXuatDAO.getDoanhThuXuat()));
+
+
+        BarDataSet barDataSet = new BarDataSet(lstVisitors, "Thong Ke");
+        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        barDataSet.setValueTextColor(Color.BLACK);
+        barDataSet.setLabel("Hóa Đơn Nhập,Hóa Đơn Xuất");
+        barDataSet.setValueTextSize(16f);
+
+        BarData barData = new BarData(barDataSet);
+
+        //barChart.setFitBars(true);
+        barChart.setData(barData);
+        barChart.getDescription().setText("Doanh Thu");
+        barChart.animateY(2000);
+//        try {
+//            hoaDonNhapDAO.getAll();
+//            hoaDonXuatDAO.getAll();
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+
+    }
 }
